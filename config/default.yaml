@@ -1,0 +1,63 @@
+tracking:
+  lmps_cache_size: 4
+  tmps_cache_size: 16
+  obs_threshold: 8
+  obs_ratio_threshold: 0.6
+  nkf_t_threshold: 0.5
+  nkf_r_threshold: 0.5
+  small_object_pixel: 5
+  small_object_scale: 0.1
+
+g_matcher:
+  knn_search_num: 8
+  neighbour_radius: 0.2
+  desc_dist_threshold: 0.5
+  scale_dist_threshold: 0.6
+  dist_scale_ratio: 0.5
+
+l_matcher:
+  knn_search_num: 8
+  neighbour_radius: 0.1
+  desc_dist_threshold: 0.6
+  scale_dist_threshold: 0.7
+  dist_scale_ratio: 0.5
+
+mapping:
+  dist_threshold: 0.2
+  dist_scale_ratio: 0.7
+  desc_score_threshold_1: 0.5
+  scale_score_threshold_1: 0.8
+  desc_score_threshold_2: 0.5
+  scale_score_threshold_2: 0.8
+
+relocation:
+  neighbour_radius: 3
+  scale_score_threshold: 0.8
+  desc_score_threshold: 0.5
+  pair_score_threshold: 0.5
+  best_match_threshold: 2
+  fine_dist_threshold: 0.3
+  fine_desc_threshold: 0.3
+
+camera:
+  fx: 462.266357421875
+  fy: 462.266357421875
+  cx: 320
+  cy: 240
+  width: 640
+  height: 480
+  min_depth: 0.5
+  max_depth: 8.0
+  valid_wh_ratio: 0.95
+
+ros:
+  rgb_topic: "/rgor/camera/color"
+  depth_topic: "/rgor/camera/depth"
+  pose_topic: "/rgor/camera/pose"
+  object_topic: "/rgor/object"
+  output_path: "~/rgor_data/"
+
+centernet:
+  nms_thresh: 0.01
+  k: 100
+  intra_threads: 8

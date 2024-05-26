@@ -1,0 +1,24 @@
+message PMPDescriptor{
+  repeated float data = 1;
+}
+
+message PMPPose{
+  required float x = 1;
+  required float y = 2;
+  required float z = 3;
+}
+
+message PMPScale{
+  required float s = 1;
+  required float l = 2;
+}
+
+message PMapPoint{
+  required PMPPose pose = 1;
+  required PMPScale scale = 2;
+  required PMPDescriptor desc = 3;
+}
+
+message PMap{
+  repeated PMapPoint points = 1;
+}
