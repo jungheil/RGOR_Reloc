@@ -56,5 +56,5 @@ T MPInViews(T &mps, Eigen::Vector4f r_cw, Eigen::Vector3f t_cw,
   }
   return ret;
 }
-} // namespace rgor
-#endif // RGOR_TOOLKITS_H_
+}  // namespace rgor
+#endif  // RGOR_TOOLKITS_H_

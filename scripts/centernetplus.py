@@ -151,6 +151,7 @@ class CenterNetPlus:
         topk_scores = topk_scores[0]
         topk_cls_inds = topk_clses[0]
         topk_cls = cls.reshape(1, -1, cls.shape[1])[0, topk_inds[0], :]
+        tok_feat = feat.reshape(1, -1, feat.shape[1])[0, topk_inds[0], :]
         topk_bbox = bbox[0, topk_inds[0], :]
         topk_xywh = xywh[0, topk_inds[0], :]
         topk_xywh[:, [1, 2]] = topk_xywh[:, [1, 2]] * self.stride / self.img_size[1]
@@ -163,7 +164,8 @@ class CenterNetPlus:
             topk_scores = topk_scores[keep]
             topk_cls_inds = topk_cls_inds[keep]
             topk_cls = topk_cls[keep]
-            
+            tok_feat = tok_feat[keep]
+
         # keep = topk_scores > 0.4
         # topk_bbox = topk_bbox[keep]
         # topk_xywh = topk_xywh[keep]
@@ -171,13 +173,7 @@ class CenterNetPlus:
         # topk_cls_inds = topk_cls_inds[keep]
         # topk_cls = topk_cls[keep]
 
-        return (
-            topk_bbox,
-            topk_xywh,
-            topk_scores,
-            topk_cls_inds,
-            topk_cls,
-        )
+        return (topk_bbox, topk_xywh, topk_scores, topk_cls_inds, topk_cls, tok_feat)
 
     def predict(self, img):
         img_shape = img.shape
@@ -185,25 +181,24 @@ class CenterNetPlus:
         ort_inputs = {self.input_name: img}
         ort_outs = self._ort_session.run(None, ort_inputs)
         feat, cls, xy, wh = ort_outs
-        box, xywh, score, cls_ind, cls_vct = self.postproc(feat, cls, xy, wh)
+        box, xywh, score, cls_ind, cls_vct, feat_vct = self.postproc(feat, cls, xy, wh)
         box[:, [0, 2]] *= img_shape[1]
         box[:, [1, 3]] *= img_shape[0]
         xywh[:, [1, 2]] *= img_shape[1]
         xywh[:, [0, 3]] *= img_shape[0]
-        
-        
 
-        return box, xywh, score, cls_ind, cls_vct, feat
+        return box, xywh, score, cls_ind, cls_vct, feat_vct
 
     def __call__(self, img):
         return self.predict(img)
 
 
 if __name__ == "__main__":
-    model = CenterNetPlus("centernet_plus.onnx", nms_thresh=0.1)
+    model = CenterNetPlus("weights/centernet_feat.onnx", nms_thresh=0.1)
     img = cv2.imread("test.jpg")
 
-    box, _, score, cls_ind, cls_vct, _ = model.predict(img)
+    box, _, score, cls_ind, cls_vct, feat_vct = model.predict(img)
+    print(feat_vct[0])
 
     for i in range(len(box)):
         cv2.rectangle(

@@ -13,3 +13,4 @@
 // TODO 加前缀 MACROS
 #define MAPPOINT_TOP_K 3
 #define MATCHER_EPS 1e-3
+#define SEARCH_RADIUS 1.0

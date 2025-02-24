@@ -3,4 +3,4 @@ float32 y
 float32 w
 float32 h
 int64 class_id
-float32[] class_prob
+float32[] desc

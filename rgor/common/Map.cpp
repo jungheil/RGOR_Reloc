@@ -14,6 +14,7 @@
 
 #include <cstddef>
 #include <fstream>
+#include <unordered_set>
 
 #include "proto/PMap.pb.h"
 
@@ -29,7 +30,7 @@ const std::set<std::shared_ptr<KeyFrame>> Map::get_kfs() const {
 
 // TODO 不安全，尤其是&，除非至少要浅拷贝vector
 const std::vector<MapPoint<KeyFrame>::Ptr> Map::get_mps() const {
-  std::shared_lock lock(map_mutex_);
+  //  std::shared_lock lock(map_mutex_);
   return mps_;
 }
 
@@ -52,6 +53,8 @@ void Map::AddMapPoint(MapPoint<KeyFrame>::Ptr mp) {
   mp->set_on_map(true);
   mp->set_map_id(mps_.size() - 1);
   kd_tree_.addPoints(mps_.size() - 1, mps_.size() - 1);
+  // TODO 探讨add_feature的uuid存在与update的区别
+  feat_index_.add_feature(mp->get_uuid(), mp->get_descriptor());
 
   for (auto c : mp->get_cls()) {
     cls_index_[c].insert({mp->get_uuid(), mp});
@@ -69,6 +72,7 @@ void Map::EraseMapPoint(MapPoint<KeyFrame>::Ptr mp) {
     // std::swap(mps_[mp->get_map_id()], mps_.back());
     // mps_.pop_back();
     kd_tree_.removePoint(mp->get_map_id());
+    feat_index_.remove_feature(mp->get_uuid());
   }
   uuid_index_.erase(mp->get_uuid());
 }
@@ -80,8 +84,8 @@ MapPoint<KeyFrame>::Ptr Map::GetMapPointPtr(uuids::uuid uuid) {
   return nullptr;
 }
 
-std::vector<MapPoint<KeyFrame>::Ptr>
-Map::GetNeighbors(const Eigen::Vector3f &pos, float radius) {
+std::vector<MapPoint<KeyFrame>::Ptr> Map::GetNeighbors(
+    const Eigen::Vector3f &pos, float radius) {
   std::vector<MapPoint<KeyFrame>::Ptr> ret;
   std::vector<size_t> indices;
   std::vector<float> dists;
@@ -111,8 +115,8 @@ std::shared_ptr<KeyFrame> Map::get_last_kf() const {
   return ret;
 }
 
-void Map::UpdateClsIndex(MapPoint<KeyFrame>::Ptr mp,
-                         std::array<size_t, MAPPOINT_TOP_K> old_cls) {
+[[deprecated("remove")]] void Map::UpdateClsIndex(
+    MapPoint<KeyFrame>::Ptr mp, std::array<size_t, MAPPOINT_TOP_K> old_cls) {
   // XXX 此处可以优化忽略一致的
   for (size_t i : old_cls) {
     cls_index_[i].erase(mp->get_uuid());
@@ -121,6 +125,16 @@ void Map::UpdateClsIndex(MapPoint<KeyFrame>::Ptr mp,
     cls_index_[i].insert({mp->get_uuid(), mp});
   }
 }
+
+void Map::UpdateDescriptor(MapPoint<KeyFrame>::Ptr mp) {
+  feat_index_.update_feature(mp->get_uuid(), mp->get_descriptor());
+}
+
+// void Map::UpdateIndex(std::vector<MapPoint<KeyFrame>::Ptr> mps) {
+//   for (auto &mp : mps) {
+//
+//   }
+// }
 
 // PersistentMap class implementations
 PersistentMap::PersistentMap(std::vector<MapPoint<KeyFrame>::Ptr> map_points)
@@ -213,4 +227,4 @@ void Map::DumpMapPoints(std::string_view filename) {
   }
 }
 
-} // namespace rgor
+}  // namespace rgor

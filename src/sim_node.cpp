@@ -218,8 +218,8 @@ struct SysCB {
       float x_scaled = object_data->obj[i].w;
       float y_scaled = object_data->obj[i].h;
 
-      std::vector<float> desc_data(object_data->obj[i].class_prob.begin(),
-                                   object_data->obj[i].class_prob.end());
+      std::vector<float> desc_data(object_data->obj[i].desc.begin(),
+                                   object_data->obj[i].desc.end());
       auto descriptor =
           Eigen::Map<Eigen::VectorXf>(desc_data.data(), desc_data.size());
       kps.emplace_back(std::make_shared<rgor::KeyPoint>(

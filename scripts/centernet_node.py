@@ -31,7 +31,7 @@ class CenterNetCB:
     def __init__(self, nms_thresh=0.2, k=50, intra_threads=4):
         self.bridge = CvBridge()
         self.detector = CenterNetPlus(
-            os.path.join(ROOT_PATH, "weights/centernetplus_3.onnx"),
+            os.path.join(ROOT_PATH, "weights/centernet_feat.onnx"),
             nms_thresh=nms_thresh,
             k=k,
             intra_threads=intra_threads,
@@ -47,18 +47,18 @@ class CenterNetCB:
     def __call__(self, data):
         color_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
         box, xywh, score, cls_ind, cls_vct, feat = self.detector(color_image)
-        desc = (self.pca_components.dot(cls_vct.T).T - self.pca_mean) / np.sqrt(
-            self.pca_variance
-        )
-        pdesc = desc.copy()
-        pdesc[pdesc < 0] = 0
-        ndesc = desc.copy()
-        ndesc = -ndesc
-        ndesc[ndesc < 0] = 0
-        desc = np.concatenate((pdesc, ndesc), axis=1)
-        desc = desc / np.max(desc, axis=1, keepdims=True)
-        # desc = cls_vct
-        ind = np.argmax(desc, axis=1)
+        # desc = (self.pca_components.dot(cls_vct.T).T - self.pca_mean) / np.sqrt(
+        #     self.pca_variance
+        # )
+        # pdesc = desc.copy()
+        # pdesc[pdesc < 0] = 0
+        # ndesc = desc.copy()
+        # ndesc = -ndesc
+        # ndesc[ndesc < 0] = 0
+        # desc = np.concatenate((pdesc, ndesc), axis=1)
+        # desc = desc / np.max(desc, axis=1, keepdims=True)
+        # # desc = cls_vct
+        ind = np.argmax(cls_vct, axis=1)
         obj_list = []
         for i in range(box.shape[0]):
             obj = DetectionObj()
@@ -67,7 +67,7 @@ class CenterNetCB:
             obj.w = xywh[i][2]
             obj.h = xywh[i][3]
             obj.class_id = ind[i]
-            obj.class_prob = desc[i].tolist()
+            obj.desc = feat[i].tolist()
             obj_list.append(obj)
         multi_obj = MultiDetectionObj()
         multi_obj.header = data.header

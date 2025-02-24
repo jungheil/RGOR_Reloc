@@ -1,5 +1,5 @@
 tracking:
-  lmps_cache_size: 4
+  lmps_cache_size: 16
   tmps_cache_size: 16
   obs_threshold: 8
   obs_ratio_threshold: 0.6
@@ -11,31 +11,31 @@ tracking:
 g_matcher:
   knn_search_num: 8
   neighbour_radius: 0.2
-  desc_dist_threshold: 0.5
+  desc_dist_threshold: 0.6
   scale_dist_threshold: 0.6
   dist_scale_ratio: 0.5
 
 l_matcher:
   knn_search_num: 8
   neighbour_radius: 0.1
-  desc_dist_threshold: 0.6
-  scale_dist_threshold: 0.7
+  desc_dist_threshold: 0.9
+  scale_dist_threshold: 0.8
   dist_scale_ratio: 0.5
 
 mapping:
   dist_threshold: 0.2
   dist_scale_ratio: 0.7
-  desc_score_threshold_1: 0.5
-  scale_score_threshold_1: 0.8
-  desc_score_threshold_2: 0.5
-  scale_score_threshold_2: 0.8
+  desc_score_threshold_1: 0.8
+  scale_score_threshold_1: 0.6
+  desc_score_threshold_2: 0.2
+  scale_score_threshold_2: 0.9
 
 relocation:
   neighbour_radius: 3
   scale_score_threshold: 0.8
-  desc_score_threshold: 0.5
+  desc_score_threshold: 0.6
   pair_score_threshold: 0.5
-  best_match_threshold: 2
+  best_match_threshold: 5
   fine_dist_threshold: 0.3
   fine_desc_threshold: 0.3
 

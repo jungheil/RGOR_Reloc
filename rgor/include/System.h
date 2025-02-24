@@ -18,7 +18,7 @@
 #include <vector>
 
 #include "Mapping.h"
-#include "Relocation.h"
+#include "NeoRelocation.h"
 #include "Tracking.h"
 #include "common/Frame.h"
 #include "common/Map.h"
@@ -26,7 +26,7 @@
 
 namespace rgor {
 class System {
-public:
+ public:
   System(const TrackingParams &tracking_params,
          const MatcherParams &matcher_params,
          const MatcherParams &local_matcher_params,
@@ -35,22 +35,22 @@ public:
          std::string_view persistent_map_path = "")
       : map_(std::make_shared<Map>()),
         tracking_(map_, tracking_params, matcher_params, local_matcher_params),
-        mapping_(map_, mapping_params), relocation_(relocation_params),
+        mapping_(map_, mapping_params),
+        relocation_(relocation_params),
         pmap_(persistent_map_path) {}
 
   bool AddFrame(Frame &&frame, Eigen::Vector4f &R, Eigen::Vector3f &T);
 
   void SaveMap(std::string_view path) { map_->DumpMapPoints(path); }
 
-  std::vector<MapPoint<KeyFrame>::Ptr>
-  GetMPInViews(Eigen::Vector4f r_cw, Eigen::Vector3f t_cw,
-               std::shared_ptr<Camera> cam) {
+  std::vector<MapPoint<KeyFrame>::Ptr> GetMPInViews(
+      Eigen::Vector4f r_cw, Eigen::Vector3f t_cw, std::shared_ptr<Camera> cam) {
     return mapping_.GetMPInViews(r_cw, t_cw, cam);
   }
 
   const Map::Ptr get_map() const { return map_; }
 
-private:
+ private:
   Map::Ptr map_;
 
   Tracking tracking_;
@@ -60,8 +60,9 @@ private:
   KeyFrame::Ptr last_kf_;
 
   PersistentMap pmap_;
+  NeoMap::Ptr neo_map_ = std::make_shared<NeoMap>();
 };
 
-} // namespace rgor
+}  // namespace rgor
 
-#endif // RGOR_SYSTEM_H
+#endif  // RGOR_SYSTEM_H

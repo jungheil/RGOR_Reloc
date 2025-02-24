@@ -24,8 +24,8 @@
 namespace rgor {
 
 template <typename N, typename H>
-std::vector<std::tuple<size_t, size_t, float>>
-Matcher::operator()(const N &new_lmps, const H &hist_lmps) const {
+std::vector<std::tuple<size_t, size_t, float>> Matcher::operator()(
+    const N &new_lmps, const H &hist_lmps) const {
   using MPKDADT = PointCloudAdaptor<H>;
   using MPKDTree = nanoflann::KDTreeSingleIndexAdaptor<
       nanoflann::L2_Simple_Adaptor<float, MPKDADT>, MPKDADT, 3>;
@@ -39,16 +39,16 @@ Matcher::operator()(const N &new_lmps, const H &hist_lmps) const {
 }
 
 template <typename N, typename H, typename K>
-std::vector<std::tuple<size_t, size_t, float>>
-Matcher::operator()(const N &new_lmps, const H &hist_lmps, const K &kdt,
-                    const H &kdt_mps) const {
+std::vector<std::tuple<size_t, size_t, float>> Matcher::operator()(
+    const N &new_lmps, const H &hist_lmps, const K &kdt,
+    const H &kdt_mps) const {
   return Match_<N, H, K>(new_lmps, hist_lmps, kdt, kdt_mps);
 }
 
 template <typename N, typename H, typename K>
-std::vector<std::tuple<size_t, size_t, float>>
-Matcher::Match_(const N &new_lmps, const H &hist_lmps, const K &kdt,
-                const H &kdt_mps) const {
+std::vector<std::tuple<size_t, size_t, float>> Matcher::Match_(
+    const N &new_lmps, const H &hist_lmps, const K &kdt,
+    const H &kdt_mps) const {
   std::vector<std::vector<float>> cost_matrix(
       new_lmps.size(), std::vector<float>(hist_lmps.size(), MATCHER_EPS));
   std::vector<size_t> ret_indexes(knn_search_num_);
@@ -156,4 +156,4 @@ template std::vector<std::tuple<size_t, size_t, float>> Matcher::operator()(
     const Map::MPKDTree &kdt,
     const std::vector<std::shared_ptr<MapPoint<KeyFrame>>> &kdt_mps) const;
 
-} // namespace rgor
+}  // namespace rgor

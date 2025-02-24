@@ -186,7 +186,7 @@ FetchContent_Declare(
 )
 set(protobuf_BUILD_TESTS OFF)
 set(gmock_build_tests OFF)
-set(protobuf_BUILD_SHARED_LIBS OFF)
+set(protobuf_BUILD_SHARED_LIBS ON)
 set(protobuf_INSTALL OFF)
 set(protobuf_WITH_ZLIB OFF)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
@@ -207,6 +207,22 @@ FetchContent_Declare(
     include_directories(${stduuid_SOURCE_DIR})
 include_directories(${stduuid_SOURCE_DIR}/include)
 
+message(STATUS "Fetching FAISS")
+FetchContent_Declare(
+        faiss
+        GIT_REPOSITORY https://github.com/facebookresearch/faiss.git
+        GIT_TAG        v1.10.0
+        # GIT_SHALLOW TRUE
+        # GIT_PROGRESS TRUE
+)
+
+set(FAISS_ENABLE_GPU OFF)
+set(FAISS_ENABLE_PYTHON OFF)
+set(BUILD_TESTING OFF)
+set(BUILD_SHARED_LIBS ON)
+
+FetchContent_MakeAvailable(faiss)
+include_directories(${faiss_SOURCE_DIR})
 
 #FetchContent_Declare(
 #        dlib

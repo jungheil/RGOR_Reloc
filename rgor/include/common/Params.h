@@ -50,6 +50,6 @@ struct RelocationParams {
   float fine_desc_threshold = 0.3;
 };
 
-} // namespace rgor
+}  // namespace rgor
 
-#endif // RGOR_COMMON_PARAMS_H
+#endif  // RGOR_COMMON_PARAMS_H

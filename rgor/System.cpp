@@ -18,10 +18,9 @@
 #include <memory>
 #include <unordered_map>
 
-#include "Relocation.h"
 #include "Tracking.h"
 #include "include/Mapping.h"
-
+#include "include/common/Temp.h"
 namespace rgor {
 
 std::vector<MapPoint<KeyFrame>::Ptr> GetLocalMapPoint(KeyFrame::Ptr kf,
@@ -70,22 +69,47 @@ bool System::AddFrame(Frame &&frame, Eigen::Vector4f &R, Eigen::Vector3f &T) {
 
   if (need_kf) {
     auto new_kf = tracking_.CreateKeyFrame();
-
-    auto lmps = GetLocalMapPoint(new_kf, last_kf_);
-
-    Map lmap;
-    for (auto &mp : lmps) {
-      auto m = std::make_shared<MapPoint<KeyFrame>>(
-          mp->get_pos(), mp->get_scale(), mp->get_descriptor());
-      lmap.AddMapPoint(m);
-    }
-
     mapping_.AddKeyFrame(new_kf);
 
-    if (lmap.get_mps().size() > 0) {
-      auto [match, r, t] = relocation_.Get(
-          lmap.get_mps(), lmap.get_kd_tree(), lmap.get_mps(), pmap_.get_mps(),
-          pmap_.get_kd_tree(), pmap_.get_mps(), pmap_.get_cls_index());
+//    auto lmps = GetLocalMapPoint(new_kf, last_kf_);
+
+//    Map lmap;
+//    for (auto &mp : lmps) {
+//      auto m = std::make_shared<MapPoint<KeyFrame>>(
+//          mp->get_pos(), mp->get_scale(), mp->get_descriptor());
+//      lmap.AddMapPoint(m);
+//    }
+//
+//    mapping_.AddKeyFrame(new_kf);
+//
+//    if (lmap.get_mps().size() > 0) {
+//      auto [match, r, t] = relocation_.Get(
+//          lmap.get_mps(), lmap.get_kd_tree(), lmap.get_mps(), pmap_.get_mps(),
+//          pmap_.get_kd_tree(), pmap_.get_mps(), pmap_.get_cls_index());
+//      if (match.size() > 0) {
+//        auto r_t = new_kf->get_r_cw();
+//        auto t_t = new_kf->get_t_cw();
+//        R = r;
+//        T = t;
+//      } else {
+//        R = Eigen::Vector4f(0, 0, 0, -1);
+//        T = Eigen::Vector3f(0, 0, 0);
+//      }
+//    }
+
+
+
+    new_kf->set_parents_kf(last_kf_);
+    last_kf_ = new_kf;
+
+
+    NeoMap::Ptr new_map = map_to_neo_map(map_);
+      merge_map(neo_map_,new_map);
+      std::cout << "map size:" << map_->get_mps().size() << std::endl;
+      std::cout << "new map size:" << new_map->size() << std::endl;
+      std::cout << "neo map size:" << neo_map_->size() << std::endl;
+
+      auto [match, r, t] = relocation_.Get<NeoMap,NeoMapPoint::Ptr>(neo_map_,neo_map_,neo_map_->GetHotMPs());
       if (match.size() > 0) {
         auto r_t = new_kf->get_r_cw();
         auto t_t = new_kf->get_t_cw();
@@ -95,10 +119,12 @@ bool System::AddFrame(Frame &&frame, Eigen::Vector4f &R, Eigen::Vector3f &T) {
         R = Eigen::Vector4f(0, 0, 0, -1);
         T = Eigen::Vector3f(0, 0, 0);
       }
-    }
 
-    new_kf->set_parents_kf(last_kf_);
-    last_kf_ = new_kf;
+
+
+
+
+
     return true;
   }
   return false;

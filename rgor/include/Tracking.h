@@ -23,11 +23,12 @@
 namespace rgor {
 
 class Tracking {
-public:
+ public:
   explicit Tracking(Map::Ptr map, const TrackingParams &tracking_params,
                     const MatcherParams &map_matcher_params,
                     const MatcherParams &local_matcher_params)
-      : map_(std::move(map)), lmps_cache_(tracking_params.lmps_cache_size),
+      : map_(std::move(map)),
+        lmps_cache_(tracking_params.lmps_cache_size),
         tmps_cache_(tracking_params.tmps_cache_size),
         obs_threshold_(tracking_params.obs_threshold),
         obs_ratio_threshold_(tracking_params.obs_ratio_threshold),
@@ -35,7 +36,8 @@ public:
         nkf_r_threshold_(tracking_params.nkf_r_threshold / 180. * M_PI),
         small_object_pixel_(tracking_params.small_object_pixel),
         small_object_scale_(tracking_params.small_object_scale),
-        map_matcher_(map_matcher_params), local_matcher_(local_matcher_params) {
+        map_matcher_(map_matcher_params),
+        local_matcher_(local_matcher_params) {
     if (obs_threshold_ <= 0 || obs_ratio_threshold_ < 0 ||
         obs_ratio_threshold_ > 1 || nkf_t_threshold_ < 0 ||
         nkf_r_threshold_ < 0 || small_object_pixel_ < 0 ||
@@ -50,11 +52,11 @@ public:
 
   KeyFrame::Ptr CreateKeyFrame();
 
-private:
+ private:
   void LMPFusion(const MapPoint<Frame>::Ptr new_lmp,
                  MapPoint<Frame>::Ptr &matched_lmp) const;
 
-private:
+ private:
   Map::Ptr map_;
   boost::circular_buffer<std::vector<MapPoint<Frame>::Ptr>> lmps_cache_;
   boost::circular_buffer<MapPoint<Frame>::Ptr> tmps_cache_;
@@ -68,7 +70,7 @@ private:
   Matcher map_matcher_;
   Matcher local_matcher_;
 
-private:
+ private:
   const size_t obs_threshold_;
   const float obs_ratio_threshold_;
 
@@ -79,6 +81,6 @@ private:
   float small_object_scale_;
 };
 
-} // namespace rgor
+}  // namespace rgor
 
-#endif // RGOR_TRACKING_H
+#endif  // RGOR_TRACKING_H

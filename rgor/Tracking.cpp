@@ -57,7 +57,8 @@ void Tracking::AddFrame(Frame::Ptr frame) {
 
   // Match new map points with existing map points
   std::vector<std::tuple<size_t, size_t, float>> map_match =
-      map_matcher_(lmps, map_->get_mps(), map_->get_kd_tree(), map_->get_mps());
+  map_matcher_(lmps, map_->get_mps(), map_->get_kd_tree(), map_->get_mps());
+
   for (auto &match : map_match) {
     auto [new_idx, hist_idx, dist] = match;
     if (lmps[new_idx] == nullptr) {
@@ -89,11 +90,11 @@ void Tracking::AddFrame(Frame::Ptr frame) {
       continue;
     }
     LMPFusion(lmps[new_idx], tmps_cache_[hist_idx]);
+    tmps_cache_[hist_idx]->IncreaseRealObservedTimes();
     if (tmps_cache_[hist_idx]->get_observations().size() > obs_threshold_ &&
         tmps_cache_[hist_idx]->GetObservedRatio() > obs_ratio_threshold_) {
       tmps_flag_ = true;
     }
-    tmps_cache_[hist_idx]->IncreaseRealObservedTimes();
     lmps[new_idx] = nullptr;
   }
   for (auto mp : tmps_cache_) {

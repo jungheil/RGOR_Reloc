@@ -25,7 +25,7 @@
 namespace rgor {
 
 class Mapping {
-public:
+ public:
   Mapping(Map::Ptr map, const MappingParams &params) {
     if (!map) {
       throw std::invalid_argument("Map pointer cannot be null");
@@ -53,9 +53,8 @@ public:
 
   void AddKeyFrame(KeyFrame::Ptr new_kf);
 
-  std::vector<MapPoint<KeyFrame>::Ptr>
-  GetMPInViews(Eigen::Vector4f r_cw, Eigen::Vector3f t_cw,
-               std::shared_ptr<Camera> cam) {
+  std::vector<MapPoint<KeyFrame>::Ptr> GetMPInViews(
+      Eigen::Vector4f r_cw, Eigen::Vector3f t_cw, std::shared_ptr<Camera> cam) {
     auto neighbors_mp = map_->GetNeighbors(t_cw, cam->max_depth);
     auto mp_views = MPInViews(neighbors_mp, r_cw, t_cw, cam);
     return mp_views;
@@ -65,11 +64,11 @@ public:
 
   bool get_add_kf_running() const { return add_kf_running_; }
 
-private:
+ private:
   Map::Ptr map_;
   std::atomic<bool> add_kf_running_{false};
 
-private:
+ private:
   float dist_threshold_ = 0.3;
   float dist_scale_ratio_ = 0.5;
   // XXX 很不优雅，请用更好的描述子
@@ -78,6 +77,6 @@ private:
   float desc_score_threshold_2_ = 0.5;
   float scale_score_threshold_2_ = 0.7;
 };
-} // namespace rgor
+}  // namespace rgor
 
-#endif // RGOR_MAPPING_H
+#endif  // RGOR_MAPPING_H

@@ -32,10 +32,13 @@ void Mapping::AddKeyFrame(KeyFrame::Ptr new_kf) {
   map_->AddKeyFrame(new_kf);
 
   for (const auto mp : new_kf->get_mps()) {
-    if (mp != nullptr && !mp->get_on_map()) {
+    if (mp == nullptr) {
+      continue;
+    }
+    if (!mp->get_on_map()) {
       auto mp_views = GetMPInViews(new_kf->get_r_cw(), new_kf->get_t_cw(),
                                    new_kf->get_camera());
-
+      // 合并图像iou相似的点
       std::vector<MapPoint<KeyFrame>::Ptr> mp_iou_neighbors;
       size_t best_iou_idx = 0;
       size_t max_iou_score = 0;
@@ -98,6 +101,7 @@ void Mapping::AddKeyFrame(KeyFrame::Ptr new_kf) {
         if (!descs.empty()) {
           auto desc = BestDescriptor(descs);
           best_mpv->SetDescriptor(desc);
+          map_->UpdateDescriptor(best_mpv);
           auto scale = BestScale(scales);
           best_mpv->set_scale(scale);
         }
@@ -108,7 +112,7 @@ void Mapping::AddKeyFrame(KeyFrame::Ptr new_kf) {
         }
         continue;
       }
-
+      // 合并位置相似的点
       std::vector<MapPoint<KeyFrame>::Ptr> mp_neighbors;
       size_t best_neighbor_idx = 0;
       size_t max_score = 0;
@@ -139,9 +143,7 @@ void Mapping::AddKeyFrame(KeyFrame::Ptr new_kf) {
           }
         }
       }
-      if (mp_neighbors.empty()) {
-        map_->AddMapPoint(mp);
-      } else {
+      if (!mp_neighbors.empty()) {
         // TODO
         // 这里可以考虑把所有else的都融合,一个地区只能有一个点,可以直接把邻近但不相似忽略掉
         MapPoint<KeyFrame>::Ptr best_mpv = mp_neighbors[best_neighbor_idx];
@@ -173,26 +175,28 @@ void Mapping::AddKeyFrame(KeyFrame::Ptr new_kf) {
             RemoveMapPoint(mp_neighbors[i]);
           }
         }
+        continue;
       }
+      // 添加一个新的地图点
+      map_->AddMapPoint(mp);
+
     } else {
-      if (mp != nullptr) {
-        std::vector<Eigen::VectorXf> dists;
-        std::vector<std::pair<float, float>> scales;
-        for (const auto &obs : mp->get_observations()) {
-          if (auto kf = obs.second.first.lock()) {
-            dists.push_back(
-                kf->get_measurement()[obs.second.second].descriptor);
-            scales.push_back(kf->get_measurement()[obs.second.second].scale);
-          }
+      std::vector<Eigen::VectorXf> dists;
+      std::vector<std::pair<float, float>> scales;
+      for (const auto &obs : mp->get_observations()) {
+        if (auto kf = obs.second.first.lock()) {
+          dists.push_back(kf->get_measurement()[obs.second.second].descriptor);
+          scales.push_back(kf->get_measurement()[obs.second.second].scale);
         }
-        if (!dists.empty()) {
-          auto desc = BestDescriptor(dists);
-          auto old_cls = mp->get_cls();
-          mp->SetDescriptor(desc);
-          map_->UpdateClsIndex(mp, old_cls);
-          auto scale = BestScale(scales);
-          mp->set_scale(scale);
-        }
+      }
+      if (!dists.empty()) {
+        auto desc = BestDescriptor(dists);
+        auto old_cls = mp->get_cls();
+        mp->SetDescriptor(desc);
+        map_->UpdateDescriptor(mp);
+        map_->UpdateClsIndex(mp, old_cls);
+        auto scale = BestScale(scales);
+        mp->set_scale(scale);
       }
     }
   }
@@ -206,4 +210,4 @@ void Mapping::AddKeyFrame(KeyFrame::Ptr new_kf) {
   opt_thread_->detach();
 };
 
-} // namespace rgor
+}  // namespace rgor

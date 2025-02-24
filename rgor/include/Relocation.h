@@ -24,6 +24,7 @@
 #include "Optimizer.h"
 #include "common/Frame.h"
 #include "common/Map.h"
+#include "utils/FeatureDB.h"
 #include "utils/KMAssignment.h"
 #include "utils/utils.h"
 
@@ -68,8 +69,8 @@ std::vector<MP> GetBestMatchGroup(
 }
 
 template <typename MP>
-std::tuple<std::vector<MP>, std::vector<MP>, Eigen::Vector4f>
-GetBestMatch(const std::vector<MP> &mps_1, const std::vector<MP> &mps_2) {
+std::tuple<std::vector<MP>, std::vector<MP>, Eigen::Vector4f> GetBestMatch(
+    const std::vector<MP> &mps_1, const std::vector<MP> &mps_2) {
   assert(mps_1.size() == mps_2.size());
   size_t points_size = mps_1.size();
   std::vector<size_t> ret_idx(points_size);
@@ -188,9 +189,9 @@ GetBestMatch(const std::vector<MP> &mps_1, const std::vector<MP> &mps_2) {
 }
 
 template <typename MP>
-std::pair<float, std::vector<std::pair<MP, MP>>>
-MatchByDesc(MP key, MP query, const std::vector<MP> &key_neigh,
-            const std::vector<MP> &query_neigh) {
+std::pair<float, std::vector<std::pair<MP, MP>>> MatchByDesc(
+    MP key, MP query, const std::vector<MP> &key_neigh,
+    const std::vector<MP> &query_neigh) {
   std::vector<std::vector<float>> cost(
       key_neigh.size(), std::vector<float>(query_neigh.size(), 0));
   for (size_t i = 0; i < key_neigh.size(); ++i) {
@@ -227,7 +228,7 @@ MatchByDesc(MP key, MP query, const std::vector<MP> &key_neigh,
 }
 
 class Relocation {
-public:
+ public:
   Relocation(const RelocationParams &params)
       : neighbour_radius_(params.neighbour_radius),
         scale_score_threshold_(params.scale_score_threshold),
@@ -244,8 +245,7 @@ public:
   Get(const std::vector<MP> &key, const K &key_kdt,
       const std::vector<MP> key_kdt_mps, std::vector<MP> query,
       const K &query_kdt, const std::vector<MP> query_kdt_mps,
-      const std::unordered_map<size_t, std::unordered_map<uuids::uuid, MP>>
-          &cls_index) const {
+      const FeatureDB &feature_index) const {
     // remove key in query
     std::unordered_map<uuids::uuid, MP> key_map;
     for (auto &item : key) {
@@ -308,8 +308,7 @@ public:
       std::vector<MP> key, const std::vector<MP> &query,
       const std::unordered_map<uuids::uuid, std::vector<MP>> key_neigh_dict,
       const std::unordered_map<uuids::uuid, std::vector<MP>> query_neigh_dict,
-      const std::unordered_map<size_t, std::unordered_map<uuids::uuid, MP>>
-          &cls_index) const {
+      const FeatureDB &feature_index) const {
     SortKey(key, key_neigh_dict, cls_index);
 
     std::unordered_map<uuids::uuid, std::pair<MP, MP>> mp_match;
@@ -483,19 +482,19 @@ public:
     return {ret, r_, t_};
   }
   // TODO 检查cls_index线程安全，sub_map线程安全
-private:
+ private:
   template <typename MP>
   void SortKey(
       std::vector<MP> &key,
       const std::unordered_map<uuids::uuid, std::vector<MP>> &key_neigh_dict,
-      const std::unordered_map<size_t, std::unordered_map<uuids::uuid, MP>>
-          &cls_index) const {
+      const FeatureDB &feature_index) const {
     auto neigh_size_map = std::unordered_map<uuids::uuid, size_t>();
     for (size_t i = 0; i < key.size(); ++i) {
       neigh_size_map[key[i]->get_uuid()] =
           key_neigh_dict.find(key[i]->get_uuid())->second.size();
     }
     auto cmp = [&](MP a, MP b) {
+      auto a_sim_feature = feature_index.search_range(a->get_d);
       if (cls_index.find(a->get_cls()[0]) == cls_index.end()) {
         return false;
       }
@@ -516,9 +515,9 @@ private:
   }
 
   template <typename MP, typename K>
-  std::unordered_map<uuids::uuid, std::vector<MP>>
-  GetNeighbor(const std::vector<MP> &key, const K &kdt,
-              const std::vector<MP> kdt_mps, float neighbour_radius) const {
+  std::unordered_map<uuids::uuid, std::vector<MP>> GetNeighbor(
+      const std::vector<MP> &key, const K &kdt, const std::vector<MP> kdt_mps,
+      float neighbour_radius) const {
     if (neighbour_radius <= 0) {
       throw std::invalid_argument("neighbour_radius must be positive");
     }
@@ -543,7 +542,7 @@ private:
     return ret;
   }
 
-private:
+ private:
   float neighbour_radius_;
   float scale_score_threshold_;
   float desc_score_threshold_;
@@ -552,6 +551,6 @@ private:
   float fine_dist_threshold_;
   float fine_desc_threshold_;
 };
-} // namespace rgor
+}  // namespace rgor
 
-#endif // RGOR_RELOCATION_H
+#endif  // RGOR_RELOCATION_H

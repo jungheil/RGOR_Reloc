@@ -29,6 +29,8 @@
 
 #include "common/macros.h"
 #include "nanoflann.hpp"
+#include "utils/FeatureDB.h"
+#include "utils/utils.h"
 #include "uuid.h"
 
 namespace rgor {
@@ -38,11 +40,12 @@ class KeyFrame;
 
 class Frame;
 
-template <typename Derived> struct PointCloudAdaptor {
+template <typename Derived>
+struct PointCloudAdaptor {
   using coord_t = float;
   //        using point_t = typename Derived::value_type;
 
-  const Derived &obj; //!< A const ref to the data set origin
+  const Derived &obj;  //!< A const ref to the data set origin
 
   /// The constructor that sets the data set source
   PointCloudAdaptor(const Derived &obj_) : obj(obj_) {}
@@ -62,7 +65,8 @@ template <typename Derived> struct PointCloudAdaptor {
     return derived()[idx]->get_pos()[dim];
   }
 
-  template <class BBOX> bool kdtree_get_bbox(BBOX & /*bb*/) const {
+  template <class BBOX>
+  bool kdtree_get_bbox(BBOX & /*bb*/) const {
     return false;
   }
 };
@@ -71,11 +75,12 @@ template <typename Derived> struct PointCloudAdaptor {
  * @brief 地图点类模板
  * @tparam frame_type 关键帧类型,默认为KeyFrame
  */
-template <typename frame_type = KeyFrame> class alignas(64) MapPoint {
-public:
+template <typename frame_type = KeyFrame>
+class alignas(64) MapPoint {
+ public:
   using Ptr = std::shared_ptr<MapPoint<frame_type>>;
   using coord_t = float;
-  static std::mutex id_counter_mutex_; // 用于保护id计数器的互斥锁
+  static std::mutex id_counter_mutex_;  // 用于保护id计数器的互斥锁
 
   /**
    * @brief 构造函数
@@ -86,11 +91,13 @@ public:
    */
   MapPoint(Eigen::Vector3f pos, std::pair<float, float> scale,
            Eigen::VectorXf descriptor, bool fixed = false)
-      : pos_(std::move(pos)), scale_(scale), descriptor_(descriptor),
+      : pos_(std::move(pos)),
+        scale_(scale),
+        descriptor_(descriptor),
         fixed_(fixed) {
     {
       std::lock_guard<std::mutex> lck(id_counter_mutex_);
-      id_ = ++id_counter_; // 原子操作生成唯一ID
+      id_ = ++id_counter_;  // 原子操作生成唯一ID
     }
     // 生成UUID
     std::random_device rd;
@@ -100,7 +107,7 @@ public:
     std::mt19937 engine(seq);
     uuids::uuid_random_generator gen(&engine);
     uuid_ = gen();
-    cls_ = GetTopCls(descriptor_); // 计算描述子的top-k类别
+    cls_ = GetTopCls(descriptor_);  // 计算描述子的top-k类别
   }
 
   // 禁用拷贝构造函数
@@ -163,7 +170,15 @@ public:
    */
   void SetDescriptor(Eigen::VectorXf descriptor) {
     std::unique_lock<std::shared_mutex> lock(data_mutex_);
-    descriptor_ = descriptor;
+    if (descriptor_.size()) {
+      if (descriptor.size() != descriptor_.size()) {
+        throw std::invalid_argument("Invalid descriptor size");
+      }
+      descriptor_ = descriptor;
+
+    } else {
+      descriptor_ = descriptor;
+    }
     cls_ = GetTopCls(descriptor_);
   }
 
@@ -247,7 +262,7 @@ public:
     return static_cast<float>(real_observed_times_) / observed_times_;
   }
 
-private:
+ private:
   /**
    * @brief 计算描述子的top-k类别
    * @param descriptor 输入描述子
@@ -274,46 +289,48 @@ private:
         }
       }
       cls[i] = max_idx;
-      desc_copy[max_idx] = 0; // 将已找到的最大值置0
+      desc_copy[max_idx] = 0;  // 将已找到的最大值置0
     }
     return cls;
   }
 
-private:
-  size_t id_ = 0;            // 地图点ID
-  static size_t id_counter_; // 全局ID计数器
-  uuids::uuid uuid_;         // 唯一标识符
+ private:
+  size_t id_ = 0;             // 地图点ID
+  static size_t id_counter_;  // 全局ID计数器
+  uuids::uuid uuid_;          // 唯一标识符
 
-  alignas(64) Eigen::Vector3f pos_;           // 3D位置
-  alignas(64) std::pair<float, float> scale_; // 特征点尺度
+  alignas(64) Eigen::Vector3f pos_;            // 3D位置
+  alignas(64) std::pair<float, float> scale_;  // 特征点尺度
   // NOTE 改变descriptor可能会有阈值和数值范围问题
-  Eigen::VectorXf descriptor_;             // 描述子
-  std::array<size_t, MAPPOINT_TOP_K> cls_; // 描述子的top-k类别
+  Eigen::VectorXf descriptor_;              // 描述子
+  std::array<size_t, MAPPOINT_TOP_K> cls_;  // 描述子的top-k类别
 
   // 观测到该点的所有关键帧
   std::unordered_map<uuids::uuid, std::pair<std::weak_ptr<frame_type>, size_t>>
       observations_{};
 
-  bool on_map_ = false; // 是否在地图中
-  bool bad_ = false;    // 是否是坏点
-  bool fixed_ = false;  // 是否固定(不优化)
-  size_t map_id = -1;   // 在地图数组中的索引
+  bool on_map_ = false;  // 是否在地图中
+  bool bad_ = false;     // 是否是坏点
+  bool fixed_ = false;   // 是否固定(不优化)
+  size_t map_id = -1;    // 在地图数组中的索引
 
   // 观测统计
-  size_t observed_times_ = 1;        // 应该被观测的次数
-  size_t recent_observed_times_ = 1; // 最近被观测的次数
-  size_t real_observed_times_ = 1;   // 实际被观测的次数
+  size_t observed_times_ = 1;         // 应该被观测的次数
+  size_t recent_observed_times_ = 1;  // 最近被观测的次数
+  size_t real_observed_times_ = 1;    // 实际被观测的次数
 
-  mutable std::shared_mutex data_mutex_; // 保护数据成员的读写锁
+  mutable std::shared_mutex data_mutex_;  // 保护数据成员的读写锁
 };
 
 // 静态成员初始化
-template <typename T> size_t MapPoint<T>::id_counter_ = 0;
+template <typename T>
+size_t MapPoint<T>::id_counter_ = 0;
 
-template <typename T> std::mutex MapPoint<T>::id_counter_mutex_;
+template <typename T>
+std::mutex MapPoint<T>::id_counter_mutex_;
 
 class Map {
-public:
+ public:
   using Ptr = std::shared_ptr<Map>;
   using MPKDADT = PointCloudAdaptor<std::vector<MapPoint<KeyFrame>::Ptr>>;
   using MPKDTree = nanoflann::KDTreeSingleIndexDynamicAdaptor<
@@ -335,7 +352,7 @@ public:
 
   std::shared_ptr<KeyFrame> get_last_kf() const;
 
-  const std::unordered_map<
+  [[deprecated("Use get_feat_index")]] const std::unordered_map<
       size_t, std::unordered_map<uuids::uuid, MapPoint<KeyFrame>::Ptr>>
   get_cls_index() const;
 
@@ -358,22 +375,28 @@ public:
   void UpdateClsIndex(MapPoint<KeyFrame>::Ptr mp,
                       std::array<size_t, MAPPOINT_TOP_K> old_cls);
 
-private:
+  void UpdateDescriptor(MapPoint<KeyFrame>::Ptr mp);
+
+  //  void UpdateIndex(std::vector<MapPoint<KeyFrame>::Ptr> mps);
+
+ private:
   mutable std::shared_mutex map_mutex_;
   mutable std::shared_mutex cls_mutex_;
 
   std::set<std::shared_ptr<KeyFrame>> kfs_{};
   std::vector<MapPoint<KeyFrame>::Ptr> mps_{};
-  std::unordered_map<size_t,
-                     std::unordered_map<uuids::uuid, MapPoint<KeyFrame>::Ptr>>
+  [[deprecated("Use feat_index")]] std::unordered_map<
+      size_t, std::unordered_map<uuids::uuid, MapPoint<KeyFrame>::Ptr>>
       cls_index_{};
+
+  FeatureDB feat_index_{32};
   MPKDADT mps_adt_{mps_};
   MPKDTree kd_tree_;
   std::unordered_map<uuids::uuid, MapPoint<KeyFrame>::Ptr> uuid_index_;
 };
 
 class PersistentMap {
-public:
+ public:
   using Ptr = std::shared_ptr<PersistentMap>;
   using MPKDADT = PointCloudAdaptor<std::vector<MapPoint<KeyFrame>::Ptr>>;
   using MPKDTree = nanoflann::KDTreeSingleIndexDynamicAdaptor<
@@ -395,18 +418,18 @@ public:
 
   const MPKDTree &get_kd_tree() const { return kd_tree_; }
 
-  const std::unordered_map<
-      size_t, std::unordered_map<uuids::uuid, MapPoint<KeyFrame>::Ptr>> &
-  get_cls_index() const {
+  [[deprecated("Use get_feat_index")]] const std::unordered_map<
+      size_t, std::unordered_map<uuids::uuid, MapPoint<KeyFrame>::Ptr>>
+      &get_cls_index() const {
     return cls_index_;
   }
 
   bool get_is_loaded() const { return is_loaded_; }
 
-private:
+ private:
   std::vector<MapPoint<KeyFrame>::Ptr> mps_{};
-  std::unordered_map<size_t,
-                     std::unordered_map<uuids::uuid, MapPoint<KeyFrame>::Ptr>>
+  [[deprecated("Use feat_index")]] std::unordered_map<
+      size_t, std::unordered_map<uuids::uuid, MapPoint<KeyFrame>::Ptr>>
       cls_index_{};
   MPKDADT mps_adt_{mps_};
   MPKDTree kd_tree_;
@@ -414,6 +437,6 @@ private:
   bool is_loaded_ = false;
 };
 
-} // namespace rgor
+}  // namespace rgor
 
-#endif // RGOR_MAP_H
+#endif  // RGOR_MAP_H

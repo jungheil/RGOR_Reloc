@@ -22,7 +22,10 @@ float l2_distance(const T &v1, const T &v2) {
 
 template <typename T>
 float corr_distance(const T &v1, const T &v2) {
-  return 1 - v1.dot(v2) / (v1.norm() * v2.norm() + 1e-6);
+  auto ret = v1.dot(v2) / (v1.norm() * v2.norm() + 1e-6);
+  ret = ret < 0 ? 0 : ret;
+  ret = ret > 1 ? 1 : ret;
+  return 1 - ret;
 }
 
 template <typename T>
