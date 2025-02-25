@@ -44,6 +44,27 @@ struct TableStruct_PMap_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_PMap_2eproto;
+class NeoKFMeasurement;
+struct NeoKFMeasurementDefaultTypeInternal;
+extern NeoKFMeasurementDefaultTypeInternal _NeoKFMeasurement_default_instance_;
+class NeoKeyFrame;
+struct NeoKeyFrameDefaultTypeInternal;
+extern NeoKeyFrameDefaultTypeInternal _NeoKeyFrame_default_instance_;
+class NeoMap;
+struct NeoMapDefaultTypeInternal;
+extern NeoMapDefaultTypeInternal _NeoMap_default_instance_;
+class NeoMapPoint;
+struct NeoMapPointDefaultTypeInternal;
+extern NeoMapPointDefaultTypeInternal _NeoMapPoint_default_instance_;
+class NeoPose;
+struct NeoPoseDefaultTypeInternal;
+extern NeoPoseDefaultTypeInternal _NeoPose_default_instance_;
+class NeoRotation;
+struct NeoRotationDefaultTypeInternal;
+extern NeoRotationDefaultTypeInternal _NeoRotation_default_instance_;
+class NeoScale;
+struct NeoScaleDefaultTypeInternal;
+extern NeoScaleDefaultTypeInternal _NeoScale_default_instance_;
 class PMPDescriptor;
 struct PMPDescriptorDefaultTypeInternal;
 extern PMPDescriptorDefaultTypeInternal _PMPDescriptor_default_instance_;
@@ -60,6 +81,13 @@ class PMapPoint;
 struct PMapPointDefaultTypeInternal;
 extern PMapPointDefaultTypeInternal _PMapPoint_default_instance_;
 PROTOBUF_NAMESPACE_OPEN
+template<> ::NeoKFMeasurement* Arena::CreateMaybeMessage<::NeoKFMeasurement>(Arena*);
+template<> ::NeoKeyFrame* Arena::CreateMaybeMessage<::NeoKeyFrame>(Arena*);
+template<> ::NeoMap* Arena::CreateMaybeMessage<::NeoMap>(Arena*);
+template<> ::NeoMapPoint* Arena::CreateMaybeMessage<::NeoMapPoint>(Arena*);
+template<> ::NeoPose* Arena::CreateMaybeMessage<::NeoPose>(Arena*);
+template<> ::NeoRotation* Arena::CreateMaybeMessage<::NeoRotation>(Arena*);
+template<> ::NeoScale* Arena::CreateMaybeMessage<::NeoScale>(Arena*);
 template<> ::PMPDescriptor* Arena::CreateMaybeMessage<::PMPDescriptor>(Arena*);
 template<> ::PMPPose* Arena::CreateMaybeMessage<::PMPPose>(Arena*);
 template<> ::PMPScale* Arena::CreateMaybeMessage<::PMPScale>(Arena*);
@@ -978,6 +1006,1579 @@ class PMap final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_PMap_2eproto;
 };
+// -------------------------------------------------------------------
+
+class NeoScale final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NeoScale) */ {
+ public:
+  inline NeoScale() : NeoScale(nullptr) {}
+  ~NeoScale() override;
+  explicit PROTOBUF_CONSTEXPR NeoScale(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  NeoScale(const NeoScale& from);
+  NeoScale(NeoScale&& from) noexcept
+    : NeoScale() {
+    *this = ::std::move(from);
+  }
+
+  inline NeoScale& operator=(const NeoScale& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NeoScale& operator=(NeoScale&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const NeoScale& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const NeoScale* internal_default_instance() {
+    return reinterpret_cast<const NeoScale*>(
+               &_NeoScale_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(NeoScale& a, NeoScale& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(NeoScale* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(NeoScale* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  NeoScale* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<NeoScale>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const NeoScale& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const NeoScale& from) {
+    NeoScale::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NeoScale* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "NeoScale";
+  }
+  protected:
+  explicit NeoScale(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSFieldNumber = 1,
+    kLFieldNumber = 2,
+  };
+  // required float s = 1;
+  bool has_s() const;
+  private:
+  bool _internal_has_s() const;
+  public:
+  void clear_s();
+  float s() const;
+  void set_s(float value);
+  private:
+  float _internal_s() const;
+  void _internal_set_s(float value);
+  public:
+
+  // required float l = 2;
+  bool has_l() const;
+  private:
+  bool _internal_has_l() const;
+  public:
+  void clear_l();
+  float l() const;
+  void set_l(float value);
+  private:
+  float _internal_l() const;
+  void _internal_set_l(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:NeoScale)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    float s_;
+    float l_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_PMap_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NeoPose final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NeoPose) */ {
+ public:
+  inline NeoPose() : NeoPose(nullptr) {}
+  ~NeoPose() override;
+  explicit PROTOBUF_CONSTEXPR NeoPose(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  NeoPose(const NeoPose& from);
+  NeoPose(NeoPose&& from) noexcept
+    : NeoPose() {
+    *this = ::std::move(from);
+  }
+
+  inline NeoPose& operator=(const NeoPose& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NeoPose& operator=(NeoPose&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const NeoPose& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const NeoPose* internal_default_instance() {
+    return reinterpret_cast<const NeoPose*>(
+               &_NeoPose_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(NeoPose& a, NeoPose& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(NeoPose* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(NeoPose* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  NeoPose* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<NeoPose>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const NeoPose& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const NeoPose& from) {
+    NeoPose::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NeoPose* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "NeoPose";
+  }
+  protected:
+  explicit NeoPose(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+    kZFieldNumber = 3,
+  };
+  // required float x = 1;
+  bool has_x() const;
+  private:
+  bool _internal_has_x() const;
+  public:
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // required float y = 2;
+  bool has_y() const;
+  private:
+  bool _internal_has_y() const;
+  public:
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // required float z = 3;
+  bool has_z() const;
+  private:
+  bool _internal_has_z() const;
+  public:
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:NeoPose)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    float x_;
+    float y_;
+    float z_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_PMap_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NeoRotation final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NeoRotation) */ {
+ public:
+  inline NeoRotation() : NeoRotation(nullptr) {}
+  ~NeoRotation() override;
+  explicit PROTOBUF_CONSTEXPR NeoRotation(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  NeoRotation(const NeoRotation& from);
+  NeoRotation(NeoRotation&& from) noexcept
+    : NeoRotation() {
+    *this = ::std::move(from);
+  }
+
+  inline NeoRotation& operator=(const NeoRotation& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NeoRotation& operator=(NeoRotation&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const NeoRotation& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const NeoRotation* internal_default_instance() {
+    return reinterpret_cast<const NeoRotation*>(
+               &_NeoRotation_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(NeoRotation& a, NeoRotation& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(NeoRotation* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(NeoRotation* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  NeoRotation* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<NeoRotation>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const NeoRotation& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const NeoRotation& from) {
+    NeoRotation::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NeoRotation* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "NeoRotation";
+  }
+  protected:
+  explicit NeoRotation(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kWFieldNumber = 1,
+    kXFieldNumber = 2,
+    kYFieldNumber = 3,
+    kZFieldNumber = 4,
+  };
+  // required float w = 1;
+  bool has_w() const;
+  private:
+  bool _internal_has_w() const;
+  public:
+  void clear_w();
+  float w() const;
+  void set_w(float value);
+  private:
+  float _internal_w() const;
+  void _internal_set_w(float value);
+  public:
+
+  // required float x = 2;
+  bool has_x() const;
+  private:
+  bool _internal_has_x() const;
+  public:
+  void clear_x();
+  float x() const;
+  void set_x(float value);
+  private:
+  float _internal_x() const;
+  void _internal_set_x(float value);
+  public:
+
+  // required float y = 3;
+  bool has_y() const;
+  private:
+  bool _internal_has_y() const;
+  public:
+  void clear_y();
+  float y() const;
+  void set_y(float value);
+  private:
+  float _internal_y() const;
+  void _internal_set_y(float value);
+  public:
+
+  // required float z = 4;
+  bool has_z() const;
+  private:
+  bool _internal_has_z() const;
+  public:
+  void clear_z();
+  float z() const;
+  void set_z(float value);
+  private:
+  float _internal_z() const;
+  void _internal_set_z(float value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:NeoRotation)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    float w_;
+    float x_;
+    float y_;
+    float z_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_PMap_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NeoMapPoint final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NeoMapPoint) */ {
+ public:
+  inline NeoMapPoint() : NeoMapPoint(nullptr) {}
+  ~NeoMapPoint() override;
+  explicit PROTOBUF_CONSTEXPR NeoMapPoint(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  NeoMapPoint(const NeoMapPoint& from);
+  NeoMapPoint(NeoMapPoint&& from) noexcept
+    : NeoMapPoint() {
+    *this = ::std::move(from);
+  }
+
+  inline NeoMapPoint& operator=(const NeoMapPoint& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NeoMapPoint& operator=(NeoMapPoint&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const NeoMapPoint& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const NeoMapPoint* internal_default_instance() {
+    return reinterpret_cast<const NeoMapPoint*>(
+               &_NeoMapPoint_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(NeoMapPoint& a, NeoMapPoint& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(NeoMapPoint* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(NeoMapPoint* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  NeoMapPoint* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<NeoMapPoint>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const NeoMapPoint& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const NeoMapPoint& from) {
+    NeoMapPoint::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NeoMapPoint* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "NeoMapPoint";
+  }
+  protected:
+  explicit NeoMapPoint(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kObservationsFieldNumber = 5,
+    kUuidFieldNumber = 1,
+    kDescFieldNumber = 2,
+    kScaleFieldNumber = 3,
+    kPoseFieldNumber = 4,
+    kUpdatedAtFieldNumber = 6,
+    kCreatedAtFieldNumber = 7,
+  };
+  // repeated bytes observations = 5;
+  int observations_size() const;
+  private:
+  int _internal_observations_size() const;
+  public:
+  void clear_observations();
+  const std::string& observations(int index) const;
+  std::string* mutable_observations(int index);
+  void set_observations(int index, const std::string& value);
+  void set_observations(int index, std::string&& value);
+  void set_observations(int index, const char* value);
+  void set_observations(int index, const void* value, size_t size);
+  std::string* add_observations();
+  void add_observations(const std::string& value);
+  void add_observations(std::string&& value);
+  void add_observations(const char* value);
+  void add_observations(const void* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& observations() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_observations();
+  private:
+  const std::string& _internal_observations(int index) const;
+  std::string* _internal_add_observations();
+  public:
+
+  // required bytes uuid = 1;
+  bool has_uuid() const;
+  private:
+  bool _internal_has_uuid() const;
+  public:
+  void clear_uuid();
+  const std::string& uuid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_uuid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_uuid();
+  PROTOBUF_NODISCARD std::string* release_uuid();
+  void set_allocated_uuid(std::string* uuid);
+  private:
+  const std::string& _internal_uuid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_uuid(const std::string& value);
+  std::string* _internal_mutable_uuid();
+  public:
+
+  // required bytes desc = 2;
+  bool has_desc() const;
+  private:
+  bool _internal_has_desc() const;
+  public:
+  void clear_desc();
+  const std::string& desc() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_desc(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_desc();
+  PROTOBUF_NODISCARD std::string* release_desc();
+  void set_allocated_desc(std::string* desc);
+  private:
+  const std::string& _internal_desc() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_desc(const std::string& value);
+  std::string* _internal_mutable_desc();
+  public:
+
+  // required .NeoScale scale = 3;
+  bool has_scale() const;
+  private:
+  bool _internal_has_scale() const;
+  public:
+  void clear_scale();
+  const ::NeoScale& scale() const;
+  PROTOBUF_NODISCARD ::NeoScale* release_scale();
+  ::NeoScale* mutable_scale();
+  void set_allocated_scale(::NeoScale* scale);
+  private:
+  const ::NeoScale& _internal_scale() const;
+  ::NeoScale* _internal_mutable_scale();
+  public:
+  void unsafe_arena_set_allocated_scale(
+      ::NeoScale* scale);
+  ::NeoScale* unsafe_arena_release_scale();
+
+  // required .NeoPose pose = 4;
+  bool has_pose() const;
+  private:
+  bool _internal_has_pose() const;
+  public:
+  void clear_pose();
+  const ::NeoPose& pose() const;
+  PROTOBUF_NODISCARD ::NeoPose* release_pose();
+  ::NeoPose* mutable_pose();
+  void set_allocated_pose(::NeoPose* pose);
+  private:
+  const ::NeoPose& _internal_pose() const;
+  ::NeoPose* _internal_mutable_pose();
+  public:
+  void unsafe_arena_set_allocated_pose(
+      ::NeoPose* pose);
+  ::NeoPose* unsafe_arena_release_pose();
+
+  // required int64 updated_at = 6;
+  bool has_updated_at() const;
+  private:
+  bool _internal_has_updated_at() const;
+  public:
+  void clear_updated_at();
+  int64_t updated_at() const;
+  void set_updated_at(int64_t value);
+  private:
+  int64_t _internal_updated_at() const;
+  void _internal_set_updated_at(int64_t value);
+  public:
+
+  // required int64 created_at = 7;
+  bool has_created_at() const;
+  private:
+  bool _internal_has_created_at() const;
+  public:
+  void clear_created_at();
+  int64_t created_at() const;
+  void set_created_at(int64_t value);
+  private:
+  int64_t _internal_created_at() const;
+  void _internal_set_created_at(int64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:NeoMapPoint)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> observations_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr uuid_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr desc_;
+    ::NeoScale* scale_;
+    ::NeoPose* pose_;
+    int64_t updated_at_;
+    int64_t created_at_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_PMap_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NeoKFMeasurement final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NeoKFMeasurement) */ {
+ public:
+  inline NeoKFMeasurement() : NeoKFMeasurement(nullptr) {}
+  ~NeoKFMeasurement() override;
+  explicit PROTOBUF_CONSTEXPR NeoKFMeasurement(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  NeoKFMeasurement(const NeoKFMeasurement& from);
+  NeoKFMeasurement(NeoKFMeasurement&& from) noexcept
+    : NeoKFMeasurement() {
+    *this = ::std::move(from);
+  }
+
+  inline NeoKFMeasurement& operator=(const NeoKFMeasurement& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NeoKFMeasurement& operator=(NeoKFMeasurement&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const NeoKFMeasurement& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const NeoKFMeasurement* internal_default_instance() {
+    return reinterpret_cast<const NeoKFMeasurement*>(
+               &_NeoKFMeasurement_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(NeoKFMeasurement& a, NeoKFMeasurement& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(NeoKFMeasurement* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(NeoKFMeasurement* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  NeoKFMeasurement* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<NeoKFMeasurement>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const NeoKFMeasurement& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const NeoKFMeasurement& from) {
+    NeoKFMeasurement::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NeoKFMeasurement* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "NeoKFMeasurement";
+  }
+  protected:
+  explicit NeoKFMeasurement(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUuidFieldNumber = 1,
+    kPoseFieldNumber = 2,
+  };
+  // required bytes uuid = 1;
+  bool has_uuid() const;
+  private:
+  bool _internal_has_uuid() const;
+  public:
+  void clear_uuid();
+  const std::string& uuid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_uuid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_uuid();
+  PROTOBUF_NODISCARD std::string* release_uuid();
+  void set_allocated_uuid(std::string* uuid);
+  private:
+  const std::string& _internal_uuid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_uuid(const std::string& value);
+  std::string* _internal_mutable_uuid();
+  public:
+
+  // required .NeoPose pose = 2;
+  bool has_pose() const;
+  private:
+  bool _internal_has_pose() const;
+  public:
+  void clear_pose();
+  const ::NeoPose& pose() const;
+  PROTOBUF_NODISCARD ::NeoPose* release_pose();
+  ::NeoPose* mutable_pose();
+  void set_allocated_pose(::NeoPose* pose);
+  private:
+  const ::NeoPose& _internal_pose() const;
+  ::NeoPose* _internal_mutable_pose();
+  public:
+  void unsafe_arena_set_allocated_pose(
+      ::NeoPose* pose);
+  ::NeoPose* unsafe_arena_release_pose();
+
+  // @@protoc_insertion_point(class_scope:NeoKFMeasurement)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr uuid_;
+    ::NeoPose* pose_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_PMap_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NeoKeyFrame final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NeoKeyFrame) */ {
+ public:
+  inline NeoKeyFrame() : NeoKeyFrame(nullptr) {}
+  ~NeoKeyFrame() override;
+  explicit PROTOBUF_CONSTEXPR NeoKeyFrame(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  NeoKeyFrame(const NeoKeyFrame& from);
+  NeoKeyFrame(NeoKeyFrame&& from) noexcept
+    : NeoKeyFrame() {
+    *this = ::std::move(from);
+  }
+
+  inline NeoKeyFrame& operator=(const NeoKeyFrame& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NeoKeyFrame& operator=(NeoKeyFrame&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const NeoKeyFrame& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const NeoKeyFrame* internal_default_instance() {
+    return reinterpret_cast<const NeoKeyFrame*>(
+               &_NeoKeyFrame_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(NeoKeyFrame& a, NeoKeyFrame& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(NeoKeyFrame* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(NeoKeyFrame* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  NeoKeyFrame* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<NeoKeyFrame>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const NeoKeyFrame& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const NeoKeyFrame& from) {
+    NeoKeyFrame::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NeoKeyFrame* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "NeoKeyFrame";
+  }
+  protected:
+  explicit NeoKeyFrame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMeasurementFieldNumber = 8,
+    kUuidFieldNumber = 1,
+    kPreKfFieldNumber = 6,
+    kNextKfFieldNumber = 7,
+    kPoseRelFieldNumber = 2,
+    kRotationRelFieldNumber = 3,
+    kPoseAbsFieldNumber = 4,
+    kRotationAbsFieldNumber = 5,
+    kUpdatedAtFieldNumber = 9,
+    kCreatedAtFieldNumber = 10,
+  };
+  // repeated .NeoKFMeasurement measurement = 8;
+  int measurement_size() const;
+  private:
+  int _internal_measurement_size() const;
+  public:
+  void clear_measurement();
+  ::NeoKFMeasurement* mutable_measurement(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKFMeasurement >*
+      mutable_measurement();
+  private:
+  const ::NeoKFMeasurement& _internal_measurement(int index) const;
+  ::NeoKFMeasurement* _internal_add_measurement();
+  public:
+  const ::NeoKFMeasurement& measurement(int index) const;
+  ::NeoKFMeasurement* add_measurement();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKFMeasurement >&
+      measurement() const;
+
+  // required bytes uuid = 1;
+  bool has_uuid() const;
+  private:
+  bool _internal_has_uuid() const;
+  public:
+  void clear_uuid();
+  const std::string& uuid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_uuid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_uuid();
+  PROTOBUF_NODISCARD std::string* release_uuid();
+  void set_allocated_uuid(std::string* uuid);
+  private:
+  const std::string& _internal_uuid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_uuid(const std::string& value);
+  std::string* _internal_mutable_uuid();
+  public:
+
+  // required bytes pre_kf = 6;
+  bool has_pre_kf() const;
+  private:
+  bool _internal_has_pre_kf() const;
+  public:
+  void clear_pre_kf();
+  const std::string& pre_kf() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_pre_kf(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_pre_kf();
+  PROTOBUF_NODISCARD std::string* release_pre_kf();
+  void set_allocated_pre_kf(std::string* pre_kf);
+  private:
+  const std::string& _internal_pre_kf() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_pre_kf(const std::string& value);
+  std::string* _internal_mutable_pre_kf();
+  public:
+
+  // required bytes next_kf = 7;
+  bool has_next_kf() const;
+  private:
+  bool _internal_has_next_kf() const;
+  public:
+  void clear_next_kf();
+  const std::string& next_kf() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_next_kf(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_next_kf();
+  PROTOBUF_NODISCARD std::string* release_next_kf();
+  void set_allocated_next_kf(std::string* next_kf);
+  private:
+  const std::string& _internal_next_kf() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_next_kf(const std::string& value);
+  std::string* _internal_mutable_next_kf();
+  public:
+
+  // required .NeoPose pose_rel = 2;
+  bool has_pose_rel() const;
+  private:
+  bool _internal_has_pose_rel() const;
+  public:
+  void clear_pose_rel();
+  const ::NeoPose& pose_rel() const;
+  PROTOBUF_NODISCARD ::NeoPose* release_pose_rel();
+  ::NeoPose* mutable_pose_rel();
+  void set_allocated_pose_rel(::NeoPose* pose_rel);
+  private:
+  const ::NeoPose& _internal_pose_rel() const;
+  ::NeoPose* _internal_mutable_pose_rel();
+  public:
+  void unsafe_arena_set_allocated_pose_rel(
+      ::NeoPose* pose_rel);
+  ::NeoPose* unsafe_arena_release_pose_rel();
+
+  // required .NeoRotation rotation_rel = 3;
+  bool has_rotation_rel() const;
+  private:
+  bool _internal_has_rotation_rel() const;
+  public:
+  void clear_rotation_rel();
+  const ::NeoRotation& rotation_rel() const;
+  PROTOBUF_NODISCARD ::NeoRotation* release_rotation_rel();
+  ::NeoRotation* mutable_rotation_rel();
+  void set_allocated_rotation_rel(::NeoRotation* rotation_rel);
+  private:
+  const ::NeoRotation& _internal_rotation_rel() const;
+  ::NeoRotation* _internal_mutable_rotation_rel();
+  public:
+  void unsafe_arena_set_allocated_rotation_rel(
+      ::NeoRotation* rotation_rel);
+  ::NeoRotation* unsafe_arena_release_rotation_rel();
+
+  // required .NeoPose pose_abs = 4;
+  bool has_pose_abs() const;
+  private:
+  bool _internal_has_pose_abs() const;
+  public:
+  void clear_pose_abs();
+  const ::NeoPose& pose_abs() const;
+  PROTOBUF_NODISCARD ::NeoPose* release_pose_abs();
+  ::NeoPose* mutable_pose_abs();
+  void set_allocated_pose_abs(::NeoPose* pose_abs);
+  private:
+  const ::NeoPose& _internal_pose_abs() const;
+  ::NeoPose* _internal_mutable_pose_abs();
+  public:
+  void unsafe_arena_set_allocated_pose_abs(
+      ::NeoPose* pose_abs);
+  ::NeoPose* unsafe_arena_release_pose_abs();
+
+  // required .NeoRotation rotation_abs = 5;
+  bool has_rotation_abs() const;
+  private:
+  bool _internal_has_rotation_abs() const;
+  public:
+  void clear_rotation_abs();
+  const ::NeoRotation& rotation_abs() const;
+  PROTOBUF_NODISCARD ::NeoRotation* release_rotation_abs();
+  ::NeoRotation* mutable_rotation_abs();
+  void set_allocated_rotation_abs(::NeoRotation* rotation_abs);
+  private:
+  const ::NeoRotation& _internal_rotation_abs() const;
+  ::NeoRotation* _internal_mutable_rotation_abs();
+  public:
+  void unsafe_arena_set_allocated_rotation_abs(
+      ::NeoRotation* rotation_abs);
+  ::NeoRotation* unsafe_arena_release_rotation_abs();
+
+  // required int64 updated_at = 9;
+  bool has_updated_at() const;
+  private:
+  bool _internal_has_updated_at() const;
+  public:
+  void clear_updated_at();
+  int64_t updated_at() const;
+  void set_updated_at(int64_t value);
+  private:
+  int64_t _internal_updated_at() const;
+  void _internal_set_updated_at(int64_t value);
+  public:
+
+  // required int64 created_at = 10;
+  bool has_created_at() const;
+  private:
+  bool _internal_has_created_at() const;
+  public:
+  void clear_created_at();
+  int64_t created_at() const;
+  void set_created_at(int64_t value);
+  private:
+  int64_t _internal_created_at() const;
+  void _internal_set_created_at(int64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:NeoKeyFrame)
+ private:
+  class _Internal;
+
+  // helper for ByteSizeLong()
+  size_t RequiredFieldsByteSizeFallback() const;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKFMeasurement > measurement_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr uuid_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr pre_kf_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr next_kf_;
+    ::NeoPose* pose_rel_;
+    ::NeoRotation* rotation_rel_;
+    ::NeoPose* pose_abs_;
+    ::NeoRotation* rotation_abs_;
+    int64_t updated_at_;
+    int64_t created_at_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_PMap_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NeoMap final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:NeoMap) */ {
+ public:
+  inline NeoMap() : NeoMap(nullptr) {}
+  ~NeoMap() override;
+  explicit PROTOBUF_CONSTEXPR NeoMap(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  NeoMap(const NeoMap& from);
+  NeoMap(NeoMap&& from) noexcept
+    : NeoMap() {
+    *this = ::std::move(from);
+  }
+
+  inline NeoMap& operator=(const NeoMap& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline NeoMap& operator=(NeoMap&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const NeoMap& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const NeoMap* internal_default_instance() {
+    return reinterpret_cast<const NeoMap*>(
+               &_NeoMap_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(NeoMap& a, NeoMap& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(NeoMap* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(NeoMap* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  NeoMap* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<NeoMap>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const NeoMap& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const NeoMap& from) {
+    NeoMap::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NeoMap* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "NeoMap";
+  }
+  protected:
+  explicit NeoMap(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMpsFieldNumber = 1,
+    kKfsFieldNumber = 2,
+  };
+  // repeated .NeoMapPoint mps = 1;
+  int mps_size() const;
+  private:
+  int _internal_mps_size() const;
+  public:
+  void clear_mps();
+  ::NeoMapPoint* mutable_mps(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoMapPoint >*
+      mutable_mps();
+  private:
+  const ::NeoMapPoint& _internal_mps(int index) const;
+  ::NeoMapPoint* _internal_add_mps();
+  public:
+  const ::NeoMapPoint& mps(int index) const;
+  ::NeoMapPoint* add_mps();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoMapPoint >&
+      mps() const;
+
+  // repeated .NeoKeyFrame kfs = 2;
+  int kfs_size() const;
+  private:
+  int _internal_kfs_size() const;
+  public:
+  void clear_kfs();
+  ::NeoKeyFrame* mutable_kfs(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKeyFrame >*
+      mutable_kfs();
+  private:
+  const ::NeoKeyFrame& _internal_kfs(int index) const;
+  ::NeoKeyFrame* _internal_add_kfs();
+  public:
+  const ::NeoKeyFrame& kfs(int index) const;
+  ::NeoKeyFrame* add_kfs();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKeyFrame >&
+      kfs() const;
+
+  // @@protoc_insertion_point(class_scope:NeoMap)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoMapPoint > mps_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKeyFrame > kfs_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_PMap_2eproto;
+};
 // ===================================================================
 
 
@@ -1502,9 +3103,1648 @@ PMap::points() const {
   return _impl_.points_;
 }
 
+// -------------------------------------------------------------------
+
+// NeoScale
+
+// required float s = 1;
+inline bool NeoScale::_internal_has_s() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool NeoScale::has_s() const {
+  return _internal_has_s();
+}
+inline void NeoScale::clear_s() {
+  _impl_.s_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline float NeoScale::_internal_s() const {
+  return _impl_.s_;
+}
+inline float NeoScale::s() const {
+  // @@protoc_insertion_point(field_get:NeoScale.s)
+  return _internal_s();
+}
+inline void NeoScale::_internal_set_s(float value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.s_ = value;
+}
+inline void NeoScale::set_s(float value) {
+  _internal_set_s(value);
+  // @@protoc_insertion_point(field_set:NeoScale.s)
+}
+
+// required float l = 2;
+inline bool NeoScale::_internal_has_l() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool NeoScale::has_l() const {
+  return _internal_has_l();
+}
+inline void NeoScale::clear_l() {
+  _impl_.l_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline float NeoScale::_internal_l() const {
+  return _impl_.l_;
+}
+inline float NeoScale::l() const {
+  // @@protoc_insertion_point(field_get:NeoScale.l)
+  return _internal_l();
+}
+inline void NeoScale::_internal_set_l(float value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.l_ = value;
+}
+inline void NeoScale::set_l(float value) {
+  _internal_set_l(value);
+  // @@protoc_insertion_point(field_set:NeoScale.l)
+}
+
+// -------------------------------------------------------------------
+
+// NeoPose
+
+// required float x = 1;
+inline bool NeoPose::_internal_has_x() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool NeoPose::has_x() const {
+  return _internal_has_x();
+}
+inline void NeoPose::clear_x() {
+  _impl_.x_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline float NeoPose::_internal_x() const {
+  return _impl_.x_;
+}
+inline float NeoPose::x() const {
+  // @@protoc_insertion_point(field_get:NeoPose.x)
+  return _internal_x();
+}
+inline void NeoPose::_internal_set_x(float value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.x_ = value;
+}
+inline void NeoPose::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:NeoPose.x)
+}
+
+// required float y = 2;
+inline bool NeoPose::_internal_has_y() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool NeoPose::has_y() const {
+  return _internal_has_y();
+}
+inline void NeoPose::clear_y() {
+  _impl_.y_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline float NeoPose::_internal_y() const {
+  return _impl_.y_;
+}
+inline float NeoPose::y() const {
+  // @@protoc_insertion_point(field_get:NeoPose.y)
+  return _internal_y();
+}
+inline void NeoPose::_internal_set_y(float value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.y_ = value;
+}
+inline void NeoPose::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:NeoPose.y)
+}
+
+// required float z = 3;
+inline bool NeoPose::_internal_has_z() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool NeoPose::has_z() const {
+  return _internal_has_z();
+}
+inline void NeoPose::clear_z() {
+  _impl_.z_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline float NeoPose::_internal_z() const {
+  return _impl_.z_;
+}
+inline float NeoPose::z() const {
+  // @@protoc_insertion_point(field_get:NeoPose.z)
+  return _internal_z();
+}
+inline void NeoPose::_internal_set_z(float value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.z_ = value;
+}
+inline void NeoPose::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:NeoPose.z)
+}
+
+// -------------------------------------------------------------------
+
+// NeoRotation
+
+// required float w = 1;
+inline bool NeoRotation::_internal_has_w() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool NeoRotation::has_w() const {
+  return _internal_has_w();
+}
+inline void NeoRotation::clear_w() {
+  _impl_.w_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline float NeoRotation::_internal_w() const {
+  return _impl_.w_;
+}
+inline float NeoRotation::w() const {
+  // @@protoc_insertion_point(field_get:NeoRotation.w)
+  return _internal_w();
+}
+inline void NeoRotation::_internal_set_w(float value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.w_ = value;
+}
+inline void NeoRotation::set_w(float value) {
+  _internal_set_w(value);
+  // @@protoc_insertion_point(field_set:NeoRotation.w)
+}
+
+// required float x = 2;
+inline bool NeoRotation::_internal_has_x() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool NeoRotation::has_x() const {
+  return _internal_has_x();
+}
+inline void NeoRotation::clear_x() {
+  _impl_.x_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline float NeoRotation::_internal_x() const {
+  return _impl_.x_;
+}
+inline float NeoRotation::x() const {
+  // @@protoc_insertion_point(field_get:NeoRotation.x)
+  return _internal_x();
+}
+inline void NeoRotation::_internal_set_x(float value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.x_ = value;
+}
+inline void NeoRotation::set_x(float value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:NeoRotation.x)
+}
+
+// required float y = 3;
+inline bool NeoRotation::_internal_has_y() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool NeoRotation::has_y() const {
+  return _internal_has_y();
+}
+inline void NeoRotation::clear_y() {
+  _impl_.y_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline float NeoRotation::_internal_y() const {
+  return _impl_.y_;
+}
+inline float NeoRotation::y() const {
+  // @@protoc_insertion_point(field_get:NeoRotation.y)
+  return _internal_y();
+}
+inline void NeoRotation::_internal_set_y(float value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.y_ = value;
+}
+inline void NeoRotation::set_y(float value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:NeoRotation.y)
+}
+
+// required float z = 4;
+inline bool NeoRotation::_internal_has_z() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool NeoRotation::has_z() const {
+  return _internal_has_z();
+}
+inline void NeoRotation::clear_z() {
+  _impl_.z_ = 0;
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline float NeoRotation::_internal_z() const {
+  return _impl_.z_;
+}
+inline float NeoRotation::z() const {
+  // @@protoc_insertion_point(field_get:NeoRotation.z)
+  return _internal_z();
+}
+inline void NeoRotation::_internal_set_z(float value) {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  _impl_.z_ = value;
+}
+inline void NeoRotation::set_z(float value) {
+  _internal_set_z(value);
+  // @@protoc_insertion_point(field_set:NeoRotation.z)
+}
+
+// -------------------------------------------------------------------
+
+// NeoMapPoint
+
+// required bytes uuid = 1;
+inline bool NeoMapPoint::_internal_has_uuid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool NeoMapPoint::has_uuid() const {
+  return _internal_has_uuid();
+}
+inline void NeoMapPoint::clear_uuid() {
+  _impl_.uuid_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& NeoMapPoint::uuid() const {
+  // @@protoc_insertion_point(field_get:NeoMapPoint.uuid)
+  return _internal_uuid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void NeoMapPoint::set_uuid(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.uuid_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:NeoMapPoint.uuid)
+}
+inline std::string* NeoMapPoint::mutable_uuid() {
+  std::string* _s = _internal_mutable_uuid();
+  // @@protoc_insertion_point(field_mutable:NeoMapPoint.uuid)
+  return _s;
+}
+inline const std::string& NeoMapPoint::_internal_uuid() const {
+  return _impl_.uuid_.Get();
+}
+inline void NeoMapPoint::_internal_set_uuid(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.uuid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* NeoMapPoint::_internal_mutable_uuid() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.uuid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* NeoMapPoint::release_uuid() {
+  // @@protoc_insertion_point(field_release:NeoMapPoint.uuid)
+  if (!_internal_has_uuid()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.uuid_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.uuid_.IsDefault()) {
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void NeoMapPoint::set_allocated_uuid(std::string* uuid) {
+  if (uuid != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.uuid_.SetAllocated(uuid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.uuid_.IsDefault()) {
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:NeoMapPoint.uuid)
+}
+
+// required bytes desc = 2;
+inline bool NeoMapPoint::_internal_has_desc() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool NeoMapPoint::has_desc() const {
+  return _internal_has_desc();
+}
+inline void NeoMapPoint::clear_desc() {
+  _impl_.desc_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& NeoMapPoint::desc() const {
+  // @@protoc_insertion_point(field_get:NeoMapPoint.desc)
+  return _internal_desc();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void NeoMapPoint::set_desc(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.desc_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:NeoMapPoint.desc)
+}
+inline std::string* NeoMapPoint::mutable_desc() {
+  std::string* _s = _internal_mutable_desc();
+  // @@protoc_insertion_point(field_mutable:NeoMapPoint.desc)
+  return _s;
+}
+inline const std::string& NeoMapPoint::_internal_desc() const {
+  return _impl_.desc_.Get();
+}
+inline void NeoMapPoint::_internal_set_desc(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.desc_.Set(value, GetArenaForAllocation());
+}
+inline std::string* NeoMapPoint::_internal_mutable_desc() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.desc_.Mutable(GetArenaForAllocation());
+}
+inline std::string* NeoMapPoint::release_desc() {
+  // @@protoc_insertion_point(field_release:NeoMapPoint.desc)
+  if (!_internal_has_desc()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.desc_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.desc_.IsDefault()) {
+    _impl_.desc_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void NeoMapPoint::set_allocated_desc(std::string* desc) {
+  if (desc != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.desc_.SetAllocated(desc, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.desc_.IsDefault()) {
+    _impl_.desc_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:NeoMapPoint.desc)
+}
+
+// required .NeoScale scale = 3;
+inline bool NeoMapPoint::_internal_has_scale() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.scale_ != nullptr);
+  return value;
+}
+inline bool NeoMapPoint::has_scale() const {
+  return _internal_has_scale();
+}
+inline void NeoMapPoint::clear_scale() {
+  if (_impl_.scale_ != nullptr) _impl_.scale_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const ::NeoScale& NeoMapPoint::_internal_scale() const {
+  const ::NeoScale* p = _impl_.scale_;
+  return p != nullptr ? *p : reinterpret_cast<const ::NeoScale&>(
+      ::_NeoScale_default_instance_);
+}
+inline const ::NeoScale& NeoMapPoint::scale() const {
+  // @@protoc_insertion_point(field_get:NeoMapPoint.scale)
+  return _internal_scale();
+}
+inline void NeoMapPoint::unsafe_arena_set_allocated_scale(
+    ::NeoScale* scale) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.scale_);
+  }
+  _impl_.scale_ = scale;
+  if (scale) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NeoMapPoint.scale)
+}
+inline ::NeoScale* NeoMapPoint::release_scale() {
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::NeoScale* temp = _impl_.scale_;
+  _impl_.scale_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::NeoScale* NeoMapPoint::unsafe_arena_release_scale() {
+  // @@protoc_insertion_point(field_release:NeoMapPoint.scale)
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  ::NeoScale* temp = _impl_.scale_;
+  _impl_.scale_ = nullptr;
+  return temp;
+}
+inline ::NeoScale* NeoMapPoint::_internal_mutable_scale() {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  if (_impl_.scale_ == nullptr) {
+    auto* p = CreateMaybeMessage<::NeoScale>(GetArenaForAllocation());
+    _impl_.scale_ = p;
+  }
+  return _impl_.scale_;
+}
+inline ::NeoScale* NeoMapPoint::mutable_scale() {
+  ::NeoScale* _msg = _internal_mutable_scale();
+  // @@protoc_insertion_point(field_mutable:NeoMapPoint.scale)
+  return _msg;
+}
+inline void NeoMapPoint::set_allocated_scale(::NeoScale* scale) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.scale_;
+  }
+  if (scale) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(scale);
+    if (message_arena != submessage_arena) {
+      scale = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, scale, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.scale_ = scale;
+  // @@protoc_insertion_point(field_set_allocated:NeoMapPoint.scale)
+}
+
+// required .NeoPose pose = 4;
+inline bool NeoMapPoint::_internal_has_pose() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.pose_ != nullptr);
+  return value;
+}
+inline bool NeoMapPoint::has_pose() const {
+  return _internal_has_pose();
+}
+inline void NeoMapPoint::clear_pose() {
+  if (_impl_.pose_ != nullptr) _impl_.pose_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline const ::NeoPose& NeoMapPoint::_internal_pose() const {
+  const ::NeoPose* p = _impl_.pose_;
+  return p != nullptr ? *p : reinterpret_cast<const ::NeoPose&>(
+      ::_NeoPose_default_instance_);
+}
+inline const ::NeoPose& NeoMapPoint::pose() const {
+  // @@protoc_insertion_point(field_get:NeoMapPoint.pose)
+  return _internal_pose();
+}
+inline void NeoMapPoint::unsafe_arena_set_allocated_pose(
+    ::NeoPose* pose) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.pose_);
+  }
+  _impl_.pose_ = pose;
+  if (pose) {
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NeoMapPoint.pose)
+}
+inline ::NeoPose* NeoMapPoint::release_pose() {
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  ::NeoPose* temp = _impl_.pose_;
+  _impl_.pose_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::NeoPose* NeoMapPoint::unsafe_arena_release_pose() {
+  // @@protoc_insertion_point(field_release:NeoMapPoint.pose)
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  ::NeoPose* temp = _impl_.pose_;
+  _impl_.pose_ = nullptr;
+  return temp;
+}
+inline ::NeoPose* NeoMapPoint::_internal_mutable_pose() {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  if (_impl_.pose_ == nullptr) {
+    auto* p = CreateMaybeMessage<::NeoPose>(GetArenaForAllocation());
+    _impl_.pose_ = p;
+  }
+  return _impl_.pose_;
+}
+inline ::NeoPose* NeoMapPoint::mutable_pose() {
+  ::NeoPose* _msg = _internal_mutable_pose();
+  // @@protoc_insertion_point(field_mutable:NeoMapPoint.pose)
+  return _msg;
+}
+inline void NeoMapPoint::set_allocated_pose(::NeoPose* pose) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.pose_;
+  }
+  if (pose) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(pose);
+    if (message_arena != submessage_arena) {
+      pose = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, pose, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  _impl_.pose_ = pose;
+  // @@protoc_insertion_point(field_set_allocated:NeoMapPoint.pose)
+}
+
+// repeated bytes observations = 5;
+inline int NeoMapPoint::_internal_observations_size() const {
+  return _impl_.observations_.size();
+}
+inline int NeoMapPoint::observations_size() const {
+  return _internal_observations_size();
+}
+inline void NeoMapPoint::clear_observations() {
+  _impl_.observations_.Clear();
+}
+inline std::string* NeoMapPoint::add_observations() {
+  std::string* _s = _internal_add_observations();
+  // @@protoc_insertion_point(field_add_mutable:NeoMapPoint.observations)
+  return _s;
+}
+inline const std::string& NeoMapPoint::_internal_observations(int index) const {
+  return _impl_.observations_.Get(index);
+}
+inline const std::string& NeoMapPoint::observations(int index) const {
+  // @@protoc_insertion_point(field_get:NeoMapPoint.observations)
+  return _internal_observations(index);
+}
+inline std::string* NeoMapPoint::mutable_observations(int index) {
+  // @@protoc_insertion_point(field_mutable:NeoMapPoint.observations)
+  return _impl_.observations_.Mutable(index);
+}
+inline void NeoMapPoint::set_observations(int index, const std::string& value) {
+  _impl_.observations_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:NeoMapPoint.observations)
+}
+inline void NeoMapPoint::set_observations(int index, std::string&& value) {
+  _impl_.observations_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:NeoMapPoint.observations)
+}
+inline void NeoMapPoint::set_observations(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.observations_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:NeoMapPoint.observations)
+}
+inline void NeoMapPoint::set_observations(int index, const void* value, size_t size) {
+  _impl_.observations_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:NeoMapPoint.observations)
+}
+inline std::string* NeoMapPoint::_internal_add_observations() {
+  return _impl_.observations_.Add();
+}
+inline void NeoMapPoint::add_observations(const std::string& value) {
+  _impl_.observations_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:NeoMapPoint.observations)
+}
+inline void NeoMapPoint::add_observations(std::string&& value) {
+  _impl_.observations_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:NeoMapPoint.observations)
+}
+inline void NeoMapPoint::add_observations(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.observations_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:NeoMapPoint.observations)
+}
+inline void NeoMapPoint::add_observations(const void* value, size_t size) {
+  _impl_.observations_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:NeoMapPoint.observations)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+NeoMapPoint::observations() const {
+  // @@protoc_insertion_point(field_list:NeoMapPoint.observations)
+  return _impl_.observations_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+NeoMapPoint::mutable_observations() {
+  // @@protoc_insertion_point(field_mutable_list:NeoMapPoint.observations)
+  return &_impl_.observations_;
+}
+
+// required int64 updated_at = 6;
+inline bool NeoMapPoint::_internal_has_updated_at() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool NeoMapPoint::has_updated_at() const {
+  return _internal_has_updated_at();
+}
+inline void NeoMapPoint::clear_updated_at() {
+  _impl_.updated_at_ = int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline int64_t NeoMapPoint::_internal_updated_at() const {
+  return _impl_.updated_at_;
+}
+inline int64_t NeoMapPoint::updated_at() const {
+  // @@protoc_insertion_point(field_get:NeoMapPoint.updated_at)
+  return _internal_updated_at();
+}
+inline void NeoMapPoint::_internal_set_updated_at(int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_.updated_at_ = value;
+}
+inline void NeoMapPoint::set_updated_at(int64_t value) {
+  _internal_set_updated_at(value);
+  // @@protoc_insertion_point(field_set:NeoMapPoint.updated_at)
+}
+
+// required int64 created_at = 7;
+inline bool NeoMapPoint::_internal_has_created_at() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  return value;
+}
+inline bool NeoMapPoint::has_created_at() const {
+  return _internal_has_created_at();
+}
+inline void NeoMapPoint::clear_created_at() {
+  _impl_.created_at_ = int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline int64_t NeoMapPoint::_internal_created_at() const {
+  return _impl_.created_at_;
+}
+inline int64_t NeoMapPoint::created_at() const {
+  // @@protoc_insertion_point(field_get:NeoMapPoint.created_at)
+  return _internal_created_at();
+}
+inline void NeoMapPoint::_internal_set_created_at(int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  _impl_.created_at_ = value;
+}
+inline void NeoMapPoint::set_created_at(int64_t value) {
+  _internal_set_created_at(value);
+  // @@protoc_insertion_point(field_set:NeoMapPoint.created_at)
+}
+
+// -------------------------------------------------------------------
+
+// NeoKFMeasurement
+
+// required bytes uuid = 1;
+inline bool NeoKFMeasurement::_internal_has_uuid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool NeoKFMeasurement::has_uuid() const {
+  return _internal_has_uuid();
+}
+inline void NeoKFMeasurement::clear_uuid() {
+  _impl_.uuid_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& NeoKFMeasurement::uuid() const {
+  // @@protoc_insertion_point(field_get:NeoKFMeasurement.uuid)
+  return _internal_uuid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void NeoKFMeasurement::set_uuid(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.uuid_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:NeoKFMeasurement.uuid)
+}
+inline std::string* NeoKFMeasurement::mutable_uuid() {
+  std::string* _s = _internal_mutable_uuid();
+  // @@protoc_insertion_point(field_mutable:NeoKFMeasurement.uuid)
+  return _s;
+}
+inline const std::string& NeoKFMeasurement::_internal_uuid() const {
+  return _impl_.uuid_.Get();
+}
+inline void NeoKFMeasurement::_internal_set_uuid(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.uuid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* NeoKFMeasurement::_internal_mutable_uuid() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.uuid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* NeoKFMeasurement::release_uuid() {
+  // @@protoc_insertion_point(field_release:NeoKFMeasurement.uuid)
+  if (!_internal_has_uuid()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.uuid_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.uuid_.IsDefault()) {
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void NeoKFMeasurement::set_allocated_uuid(std::string* uuid) {
+  if (uuid != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.uuid_.SetAllocated(uuid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.uuid_.IsDefault()) {
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:NeoKFMeasurement.uuid)
+}
+
+// required .NeoPose pose = 2;
+inline bool NeoKFMeasurement::_internal_has_pose() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.pose_ != nullptr);
+  return value;
+}
+inline bool NeoKFMeasurement::has_pose() const {
+  return _internal_has_pose();
+}
+inline void NeoKFMeasurement::clear_pose() {
+  if (_impl_.pose_ != nullptr) _impl_.pose_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const ::NeoPose& NeoKFMeasurement::_internal_pose() const {
+  const ::NeoPose* p = _impl_.pose_;
+  return p != nullptr ? *p : reinterpret_cast<const ::NeoPose&>(
+      ::_NeoPose_default_instance_);
+}
+inline const ::NeoPose& NeoKFMeasurement::pose() const {
+  // @@protoc_insertion_point(field_get:NeoKFMeasurement.pose)
+  return _internal_pose();
+}
+inline void NeoKFMeasurement::unsafe_arena_set_allocated_pose(
+    ::NeoPose* pose) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.pose_);
+  }
+  _impl_.pose_ = pose;
+  if (pose) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NeoKFMeasurement.pose)
+}
+inline ::NeoPose* NeoKFMeasurement::release_pose() {
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::NeoPose* temp = _impl_.pose_;
+  _impl_.pose_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::NeoPose* NeoKFMeasurement::unsafe_arena_release_pose() {
+  // @@protoc_insertion_point(field_release:NeoKFMeasurement.pose)
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  ::NeoPose* temp = _impl_.pose_;
+  _impl_.pose_ = nullptr;
+  return temp;
+}
+inline ::NeoPose* NeoKFMeasurement::_internal_mutable_pose() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  if (_impl_.pose_ == nullptr) {
+    auto* p = CreateMaybeMessage<::NeoPose>(GetArenaForAllocation());
+    _impl_.pose_ = p;
+  }
+  return _impl_.pose_;
+}
+inline ::NeoPose* NeoKFMeasurement::mutable_pose() {
+  ::NeoPose* _msg = _internal_mutable_pose();
+  // @@protoc_insertion_point(field_mutable:NeoKFMeasurement.pose)
+  return _msg;
+}
+inline void NeoKFMeasurement::set_allocated_pose(::NeoPose* pose) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.pose_;
+  }
+  if (pose) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(pose);
+    if (message_arena != submessage_arena) {
+      pose = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, pose, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.pose_ = pose;
+  // @@protoc_insertion_point(field_set_allocated:NeoKFMeasurement.pose)
+}
+
+// -------------------------------------------------------------------
+
+// NeoKeyFrame
+
+// required bytes uuid = 1;
+inline bool NeoKeyFrame::_internal_has_uuid() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool NeoKeyFrame::has_uuid() const {
+  return _internal_has_uuid();
+}
+inline void NeoKeyFrame::clear_uuid() {
+  _impl_.uuid_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const std::string& NeoKeyFrame::uuid() const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.uuid)
+  return _internal_uuid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void NeoKeyFrame::set_uuid(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000001u;
+ _impl_.uuid_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:NeoKeyFrame.uuid)
+}
+inline std::string* NeoKeyFrame::mutable_uuid() {
+  std::string* _s = _internal_mutable_uuid();
+  // @@protoc_insertion_point(field_mutable:NeoKeyFrame.uuid)
+  return _s;
+}
+inline const std::string& NeoKeyFrame::_internal_uuid() const {
+  return _impl_.uuid_.Get();
+}
+inline void NeoKeyFrame::_internal_set_uuid(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  _impl_.uuid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* NeoKeyFrame::_internal_mutable_uuid() {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  return _impl_.uuid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* NeoKeyFrame::release_uuid() {
+  // @@protoc_insertion_point(field_release:NeoKeyFrame.uuid)
+  if (!_internal_has_uuid()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  auto* p = _impl_.uuid_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.uuid_.IsDefault()) {
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void NeoKeyFrame::set_allocated_uuid(std::string* uuid) {
+  if (uuid != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  _impl_.uuid_.SetAllocated(uuid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.uuid_.IsDefault()) {
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:NeoKeyFrame.uuid)
+}
+
+// required .NeoPose pose_rel = 2;
+inline bool NeoKeyFrame::_internal_has_pose_rel() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.pose_rel_ != nullptr);
+  return value;
+}
+inline bool NeoKeyFrame::has_pose_rel() const {
+  return _internal_has_pose_rel();
+}
+inline void NeoKeyFrame::clear_pose_rel() {
+  if (_impl_.pose_rel_ != nullptr) _impl_.pose_rel_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000008u;
+}
+inline const ::NeoPose& NeoKeyFrame::_internal_pose_rel() const {
+  const ::NeoPose* p = _impl_.pose_rel_;
+  return p != nullptr ? *p : reinterpret_cast<const ::NeoPose&>(
+      ::_NeoPose_default_instance_);
+}
+inline const ::NeoPose& NeoKeyFrame::pose_rel() const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.pose_rel)
+  return _internal_pose_rel();
+}
+inline void NeoKeyFrame::unsafe_arena_set_allocated_pose_rel(
+    ::NeoPose* pose_rel) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.pose_rel_);
+  }
+  _impl_.pose_rel_ = pose_rel;
+  if (pose_rel) {
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NeoKeyFrame.pose_rel)
+}
+inline ::NeoPose* NeoKeyFrame::release_pose_rel() {
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  ::NeoPose* temp = _impl_.pose_rel_;
+  _impl_.pose_rel_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::NeoPose* NeoKeyFrame::unsafe_arena_release_pose_rel() {
+  // @@protoc_insertion_point(field_release:NeoKeyFrame.pose_rel)
+  _impl_._has_bits_[0] &= ~0x00000008u;
+  ::NeoPose* temp = _impl_.pose_rel_;
+  _impl_.pose_rel_ = nullptr;
+  return temp;
+}
+inline ::NeoPose* NeoKeyFrame::_internal_mutable_pose_rel() {
+  _impl_._has_bits_[0] |= 0x00000008u;
+  if (_impl_.pose_rel_ == nullptr) {
+    auto* p = CreateMaybeMessage<::NeoPose>(GetArenaForAllocation());
+    _impl_.pose_rel_ = p;
+  }
+  return _impl_.pose_rel_;
+}
+inline ::NeoPose* NeoKeyFrame::mutable_pose_rel() {
+  ::NeoPose* _msg = _internal_mutable_pose_rel();
+  // @@protoc_insertion_point(field_mutable:NeoKeyFrame.pose_rel)
+  return _msg;
+}
+inline void NeoKeyFrame::set_allocated_pose_rel(::NeoPose* pose_rel) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.pose_rel_;
+  }
+  if (pose_rel) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(pose_rel);
+    if (message_arena != submessage_arena) {
+      pose_rel = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, pose_rel, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000008u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000008u;
+  }
+  _impl_.pose_rel_ = pose_rel;
+  // @@protoc_insertion_point(field_set_allocated:NeoKeyFrame.pose_rel)
+}
+
+// required .NeoRotation rotation_rel = 3;
+inline bool NeoKeyFrame::_internal_has_rotation_rel() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.rotation_rel_ != nullptr);
+  return value;
+}
+inline bool NeoKeyFrame::has_rotation_rel() const {
+  return _internal_has_rotation_rel();
+}
+inline void NeoKeyFrame::clear_rotation_rel() {
+  if (_impl_.rotation_rel_ != nullptr) _impl_.rotation_rel_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000010u;
+}
+inline const ::NeoRotation& NeoKeyFrame::_internal_rotation_rel() const {
+  const ::NeoRotation* p = _impl_.rotation_rel_;
+  return p != nullptr ? *p : reinterpret_cast<const ::NeoRotation&>(
+      ::_NeoRotation_default_instance_);
+}
+inline const ::NeoRotation& NeoKeyFrame::rotation_rel() const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.rotation_rel)
+  return _internal_rotation_rel();
+}
+inline void NeoKeyFrame::unsafe_arena_set_allocated_rotation_rel(
+    ::NeoRotation* rotation_rel) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.rotation_rel_);
+  }
+  _impl_.rotation_rel_ = rotation_rel;
+  if (rotation_rel) {
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NeoKeyFrame.rotation_rel)
+}
+inline ::NeoRotation* NeoKeyFrame::release_rotation_rel() {
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  ::NeoRotation* temp = _impl_.rotation_rel_;
+  _impl_.rotation_rel_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::NeoRotation* NeoKeyFrame::unsafe_arena_release_rotation_rel() {
+  // @@protoc_insertion_point(field_release:NeoKeyFrame.rotation_rel)
+  _impl_._has_bits_[0] &= ~0x00000010u;
+  ::NeoRotation* temp = _impl_.rotation_rel_;
+  _impl_.rotation_rel_ = nullptr;
+  return temp;
+}
+inline ::NeoRotation* NeoKeyFrame::_internal_mutable_rotation_rel() {
+  _impl_._has_bits_[0] |= 0x00000010u;
+  if (_impl_.rotation_rel_ == nullptr) {
+    auto* p = CreateMaybeMessage<::NeoRotation>(GetArenaForAllocation());
+    _impl_.rotation_rel_ = p;
+  }
+  return _impl_.rotation_rel_;
+}
+inline ::NeoRotation* NeoKeyFrame::mutable_rotation_rel() {
+  ::NeoRotation* _msg = _internal_mutable_rotation_rel();
+  // @@protoc_insertion_point(field_mutable:NeoKeyFrame.rotation_rel)
+  return _msg;
+}
+inline void NeoKeyFrame::set_allocated_rotation_rel(::NeoRotation* rotation_rel) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.rotation_rel_;
+  }
+  if (rotation_rel) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(rotation_rel);
+    if (message_arena != submessage_arena) {
+      rotation_rel = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, rotation_rel, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000010u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000010u;
+  }
+  _impl_.rotation_rel_ = rotation_rel;
+  // @@protoc_insertion_point(field_set_allocated:NeoKeyFrame.rotation_rel)
+}
+
+// required .NeoPose pose_abs = 4;
+inline bool NeoKeyFrame::_internal_has_pose_abs() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.pose_abs_ != nullptr);
+  return value;
+}
+inline bool NeoKeyFrame::has_pose_abs() const {
+  return _internal_has_pose_abs();
+}
+inline void NeoKeyFrame::clear_pose_abs() {
+  if (_impl_.pose_abs_ != nullptr) _impl_.pose_abs_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000020u;
+}
+inline const ::NeoPose& NeoKeyFrame::_internal_pose_abs() const {
+  const ::NeoPose* p = _impl_.pose_abs_;
+  return p != nullptr ? *p : reinterpret_cast<const ::NeoPose&>(
+      ::_NeoPose_default_instance_);
+}
+inline const ::NeoPose& NeoKeyFrame::pose_abs() const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.pose_abs)
+  return _internal_pose_abs();
+}
+inline void NeoKeyFrame::unsafe_arena_set_allocated_pose_abs(
+    ::NeoPose* pose_abs) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.pose_abs_);
+  }
+  _impl_.pose_abs_ = pose_abs;
+  if (pose_abs) {
+    _impl_._has_bits_[0] |= 0x00000020u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000020u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NeoKeyFrame.pose_abs)
+}
+inline ::NeoPose* NeoKeyFrame::release_pose_abs() {
+  _impl_._has_bits_[0] &= ~0x00000020u;
+  ::NeoPose* temp = _impl_.pose_abs_;
+  _impl_.pose_abs_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::NeoPose* NeoKeyFrame::unsafe_arena_release_pose_abs() {
+  // @@protoc_insertion_point(field_release:NeoKeyFrame.pose_abs)
+  _impl_._has_bits_[0] &= ~0x00000020u;
+  ::NeoPose* temp = _impl_.pose_abs_;
+  _impl_.pose_abs_ = nullptr;
+  return temp;
+}
+inline ::NeoPose* NeoKeyFrame::_internal_mutable_pose_abs() {
+  _impl_._has_bits_[0] |= 0x00000020u;
+  if (_impl_.pose_abs_ == nullptr) {
+    auto* p = CreateMaybeMessage<::NeoPose>(GetArenaForAllocation());
+    _impl_.pose_abs_ = p;
+  }
+  return _impl_.pose_abs_;
+}
+inline ::NeoPose* NeoKeyFrame::mutable_pose_abs() {
+  ::NeoPose* _msg = _internal_mutable_pose_abs();
+  // @@protoc_insertion_point(field_mutable:NeoKeyFrame.pose_abs)
+  return _msg;
+}
+inline void NeoKeyFrame::set_allocated_pose_abs(::NeoPose* pose_abs) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.pose_abs_;
+  }
+  if (pose_abs) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(pose_abs);
+    if (message_arena != submessage_arena) {
+      pose_abs = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, pose_abs, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000020u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000020u;
+  }
+  _impl_.pose_abs_ = pose_abs;
+  // @@protoc_insertion_point(field_set_allocated:NeoKeyFrame.pose_abs)
+}
+
+// required .NeoRotation rotation_abs = 5;
+inline bool NeoKeyFrame::_internal_has_rotation_abs() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000040u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.rotation_abs_ != nullptr);
+  return value;
+}
+inline bool NeoKeyFrame::has_rotation_abs() const {
+  return _internal_has_rotation_abs();
+}
+inline void NeoKeyFrame::clear_rotation_abs() {
+  if (_impl_.rotation_abs_ != nullptr) _impl_.rotation_abs_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000040u;
+}
+inline const ::NeoRotation& NeoKeyFrame::_internal_rotation_abs() const {
+  const ::NeoRotation* p = _impl_.rotation_abs_;
+  return p != nullptr ? *p : reinterpret_cast<const ::NeoRotation&>(
+      ::_NeoRotation_default_instance_);
+}
+inline const ::NeoRotation& NeoKeyFrame::rotation_abs() const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.rotation_abs)
+  return _internal_rotation_abs();
+}
+inline void NeoKeyFrame::unsafe_arena_set_allocated_rotation_abs(
+    ::NeoRotation* rotation_abs) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.rotation_abs_);
+  }
+  _impl_.rotation_abs_ = rotation_abs;
+  if (rotation_abs) {
+    _impl_._has_bits_[0] |= 0x00000040u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000040u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:NeoKeyFrame.rotation_abs)
+}
+inline ::NeoRotation* NeoKeyFrame::release_rotation_abs() {
+  _impl_._has_bits_[0] &= ~0x00000040u;
+  ::NeoRotation* temp = _impl_.rotation_abs_;
+  _impl_.rotation_abs_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::NeoRotation* NeoKeyFrame::unsafe_arena_release_rotation_abs() {
+  // @@protoc_insertion_point(field_release:NeoKeyFrame.rotation_abs)
+  _impl_._has_bits_[0] &= ~0x00000040u;
+  ::NeoRotation* temp = _impl_.rotation_abs_;
+  _impl_.rotation_abs_ = nullptr;
+  return temp;
+}
+inline ::NeoRotation* NeoKeyFrame::_internal_mutable_rotation_abs() {
+  _impl_._has_bits_[0] |= 0x00000040u;
+  if (_impl_.rotation_abs_ == nullptr) {
+    auto* p = CreateMaybeMessage<::NeoRotation>(GetArenaForAllocation());
+    _impl_.rotation_abs_ = p;
+  }
+  return _impl_.rotation_abs_;
+}
+inline ::NeoRotation* NeoKeyFrame::mutable_rotation_abs() {
+  ::NeoRotation* _msg = _internal_mutable_rotation_abs();
+  // @@protoc_insertion_point(field_mutable:NeoKeyFrame.rotation_abs)
+  return _msg;
+}
+inline void NeoKeyFrame::set_allocated_rotation_abs(::NeoRotation* rotation_abs) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.rotation_abs_;
+  }
+  if (rotation_abs) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(rotation_abs);
+    if (message_arena != submessage_arena) {
+      rotation_abs = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, rotation_abs, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000040u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000040u;
+  }
+  _impl_.rotation_abs_ = rotation_abs;
+  // @@protoc_insertion_point(field_set_allocated:NeoKeyFrame.rotation_abs)
+}
+
+// required bytes pre_kf = 6;
+inline bool NeoKeyFrame::_internal_has_pre_kf() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+  return value;
+}
+inline bool NeoKeyFrame::has_pre_kf() const {
+  return _internal_has_pre_kf();
+}
+inline void NeoKeyFrame::clear_pre_kf() {
+  _impl_.pre_kf_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000002u;
+}
+inline const std::string& NeoKeyFrame::pre_kf() const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.pre_kf)
+  return _internal_pre_kf();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void NeoKeyFrame::set_pre_kf(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000002u;
+ _impl_.pre_kf_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:NeoKeyFrame.pre_kf)
+}
+inline std::string* NeoKeyFrame::mutable_pre_kf() {
+  std::string* _s = _internal_mutable_pre_kf();
+  // @@protoc_insertion_point(field_mutable:NeoKeyFrame.pre_kf)
+  return _s;
+}
+inline const std::string& NeoKeyFrame::_internal_pre_kf() const {
+  return _impl_.pre_kf_.Get();
+}
+inline void NeoKeyFrame::_internal_set_pre_kf(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  _impl_.pre_kf_.Set(value, GetArenaForAllocation());
+}
+inline std::string* NeoKeyFrame::_internal_mutable_pre_kf() {
+  _impl_._has_bits_[0] |= 0x00000002u;
+  return _impl_.pre_kf_.Mutable(GetArenaForAllocation());
+}
+inline std::string* NeoKeyFrame::release_pre_kf() {
+  // @@protoc_insertion_point(field_release:NeoKeyFrame.pre_kf)
+  if (!_internal_has_pre_kf()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000002u;
+  auto* p = _impl_.pre_kf_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.pre_kf_.IsDefault()) {
+    _impl_.pre_kf_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void NeoKeyFrame::set_allocated_pre_kf(std::string* pre_kf) {
+  if (pre_kf != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000002u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  _impl_.pre_kf_.SetAllocated(pre_kf, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.pre_kf_.IsDefault()) {
+    _impl_.pre_kf_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:NeoKeyFrame.pre_kf)
+}
+
+// required bytes next_kf = 7;
+inline bool NeoKeyFrame::_internal_has_next_kf() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool NeoKeyFrame::has_next_kf() const {
+  return _internal_has_next_kf();
+}
+inline void NeoKeyFrame::clear_next_kf() {
+  _impl_.next_kf_.ClearToEmpty();
+  _impl_._has_bits_[0] &= ~0x00000004u;
+}
+inline const std::string& NeoKeyFrame::next_kf() const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.next_kf)
+  return _internal_next_kf();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void NeoKeyFrame::set_next_kf(ArgT0&& arg0, ArgT... args) {
+ _impl_._has_bits_[0] |= 0x00000004u;
+ _impl_.next_kf_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:NeoKeyFrame.next_kf)
+}
+inline std::string* NeoKeyFrame::mutable_next_kf() {
+  std::string* _s = _internal_mutable_next_kf();
+  // @@protoc_insertion_point(field_mutable:NeoKeyFrame.next_kf)
+  return _s;
+}
+inline const std::string& NeoKeyFrame::_internal_next_kf() const {
+  return _impl_.next_kf_.Get();
+}
+inline void NeoKeyFrame::_internal_set_next_kf(const std::string& value) {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  _impl_.next_kf_.Set(value, GetArenaForAllocation());
+}
+inline std::string* NeoKeyFrame::_internal_mutable_next_kf() {
+  _impl_._has_bits_[0] |= 0x00000004u;
+  return _impl_.next_kf_.Mutable(GetArenaForAllocation());
+}
+inline std::string* NeoKeyFrame::release_next_kf() {
+  // @@protoc_insertion_point(field_release:NeoKeyFrame.next_kf)
+  if (!_internal_has_next_kf()) {
+    return nullptr;
+  }
+  _impl_._has_bits_[0] &= ~0x00000004u;
+  auto* p = _impl_.next_kf_.Release();
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.next_kf_.IsDefault()) {
+    _impl_.next_kf_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  return p;
+}
+inline void NeoKeyFrame::set_allocated_next_kf(std::string* next_kf) {
+  if (next_kf != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000004u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000004u;
+  }
+  _impl_.next_kf_.SetAllocated(next_kf, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.next_kf_.IsDefault()) {
+    _impl_.next_kf_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:NeoKeyFrame.next_kf)
+}
+
+// repeated .NeoKFMeasurement measurement = 8;
+inline int NeoKeyFrame::_internal_measurement_size() const {
+  return _impl_.measurement_.size();
+}
+inline int NeoKeyFrame::measurement_size() const {
+  return _internal_measurement_size();
+}
+inline void NeoKeyFrame::clear_measurement() {
+  _impl_.measurement_.Clear();
+}
+inline ::NeoKFMeasurement* NeoKeyFrame::mutable_measurement(int index) {
+  // @@protoc_insertion_point(field_mutable:NeoKeyFrame.measurement)
+  return _impl_.measurement_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKFMeasurement >*
+NeoKeyFrame::mutable_measurement() {
+  // @@protoc_insertion_point(field_mutable_list:NeoKeyFrame.measurement)
+  return &_impl_.measurement_;
+}
+inline const ::NeoKFMeasurement& NeoKeyFrame::_internal_measurement(int index) const {
+  return _impl_.measurement_.Get(index);
+}
+inline const ::NeoKFMeasurement& NeoKeyFrame::measurement(int index) const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.measurement)
+  return _internal_measurement(index);
+}
+inline ::NeoKFMeasurement* NeoKeyFrame::_internal_add_measurement() {
+  return _impl_.measurement_.Add();
+}
+inline ::NeoKFMeasurement* NeoKeyFrame::add_measurement() {
+  ::NeoKFMeasurement* _add = _internal_add_measurement();
+  // @@protoc_insertion_point(field_add:NeoKeyFrame.measurement)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKFMeasurement >&
+NeoKeyFrame::measurement() const {
+  // @@protoc_insertion_point(field_list:NeoKeyFrame.measurement)
+  return _impl_.measurement_;
+}
+
+// required int64 updated_at = 9;
+inline bool NeoKeyFrame::_internal_has_updated_at() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
+  return value;
+}
+inline bool NeoKeyFrame::has_updated_at() const {
+  return _internal_has_updated_at();
+}
+inline void NeoKeyFrame::clear_updated_at() {
+  _impl_.updated_at_ = int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000080u;
+}
+inline int64_t NeoKeyFrame::_internal_updated_at() const {
+  return _impl_.updated_at_;
+}
+inline int64_t NeoKeyFrame::updated_at() const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.updated_at)
+  return _internal_updated_at();
+}
+inline void NeoKeyFrame::_internal_set_updated_at(int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000080u;
+  _impl_.updated_at_ = value;
+}
+inline void NeoKeyFrame::set_updated_at(int64_t value) {
+  _internal_set_updated_at(value);
+  // @@protoc_insertion_point(field_set:NeoKeyFrame.updated_at)
+}
+
+// required int64 created_at = 10;
+inline bool NeoKeyFrame::_internal_has_created_at() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000100u) != 0;
+  return value;
+}
+inline bool NeoKeyFrame::has_created_at() const {
+  return _internal_has_created_at();
+}
+inline void NeoKeyFrame::clear_created_at() {
+  _impl_.created_at_ = int64_t{0};
+  _impl_._has_bits_[0] &= ~0x00000100u;
+}
+inline int64_t NeoKeyFrame::_internal_created_at() const {
+  return _impl_.created_at_;
+}
+inline int64_t NeoKeyFrame::created_at() const {
+  // @@protoc_insertion_point(field_get:NeoKeyFrame.created_at)
+  return _internal_created_at();
+}
+inline void NeoKeyFrame::_internal_set_created_at(int64_t value) {
+  _impl_._has_bits_[0] |= 0x00000100u;
+  _impl_.created_at_ = value;
+}
+inline void NeoKeyFrame::set_created_at(int64_t value) {
+  _internal_set_created_at(value);
+  // @@protoc_insertion_point(field_set:NeoKeyFrame.created_at)
+}
+
+// -------------------------------------------------------------------
+
+// NeoMap
+
+// repeated .NeoMapPoint mps = 1;
+inline int NeoMap::_internal_mps_size() const {
+  return _impl_.mps_.size();
+}
+inline int NeoMap::mps_size() const {
+  return _internal_mps_size();
+}
+inline void NeoMap::clear_mps() {
+  _impl_.mps_.Clear();
+}
+inline ::NeoMapPoint* NeoMap::mutable_mps(int index) {
+  // @@protoc_insertion_point(field_mutable:NeoMap.mps)
+  return _impl_.mps_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoMapPoint >*
+NeoMap::mutable_mps() {
+  // @@protoc_insertion_point(field_mutable_list:NeoMap.mps)
+  return &_impl_.mps_;
+}
+inline const ::NeoMapPoint& NeoMap::_internal_mps(int index) const {
+  return _impl_.mps_.Get(index);
+}
+inline const ::NeoMapPoint& NeoMap::mps(int index) const {
+  // @@protoc_insertion_point(field_get:NeoMap.mps)
+  return _internal_mps(index);
+}
+inline ::NeoMapPoint* NeoMap::_internal_add_mps() {
+  return _impl_.mps_.Add();
+}
+inline ::NeoMapPoint* NeoMap::add_mps() {
+  ::NeoMapPoint* _add = _internal_add_mps();
+  // @@protoc_insertion_point(field_add:NeoMap.mps)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoMapPoint >&
+NeoMap::mps() const {
+  // @@protoc_insertion_point(field_list:NeoMap.mps)
+  return _impl_.mps_;
+}
+
+// repeated .NeoKeyFrame kfs = 2;
+inline int NeoMap::_internal_kfs_size() const {
+  return _impl_.kfs_.size();
+}
+inline int NeoMap::kfs_size() const {
+  return _internal_kfs_size();
+}
+inline void NeoMap::clear_kfs() {
+  _impl_.kfs_.Clear();
+}
+inline ::NeoKeyFrame* NeoMap::mutable_kfs(int index) {
+  // @@protoc_insertion_point(field_mutable:NeoMap.kfs)
+  return _impl_.kfs_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKeyFrame >*
+NeoMap::mutable_kfs() {
+  // @@protoc_insertion_point(field_mutable_list:NeoMap.kfs)
+  return &_impl_.kfs_;
+}
+inline const ::NeoKeyFrame& NeoMap::_internal_kfs(int index) const {
+  return _impl_.kfs_.Get(index);
+}
+inline const ::NeoKeyFrame& NeoMap::kfs(int index) const {
+  // @@protoc_insertion_point(field_get:NeoMap.kfs)
+  return _internal_kfs(index);
+}
+inline ::NeoKeyFrame* NeoMap::_internal_add_kfs() {
+  return _impl_.kfs_.Add();
+}
+inline ::NeoKeyFrame* NeoMap::add_kfs() {
+  ::NeoKeyFrame* _add = _internal_add_kfs();
+  // @@protoc_insertion_point(field_add:NeoMap.kfs)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::NeoKeyFrame >&
+NeoMap::kfs() const {
+  // @@protoc_insertion_point(field_list:NeoMap.kfs)
+  return _impl_.kfs_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

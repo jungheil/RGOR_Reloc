@@ -48,7 +48,7 @@ static NeoMap::Ptr map_to_neo_map(Map::Ptr map) {
 
     // 添加关键帧
     neo_map->AddKeyFrame(kf->get_uuid(), kf->get_r_cw(), kf->get_t_cw(),
-                         kf->get_r_cw(), kf->get_t_cw(), measurements, nullptr);
+                         kf->get_r_cw(), kf->get_t_cw(), measurements);
   }
 
   // 第二遍设置关键帧的父子关系
@@ -66,10 +66,9 @@ static NeoMap::Ptr map_to_neo_map(Map::Ptr map) {
       std::cout << "add Pre & Next KF failed." << std::endl;
     }
     if (parent && !parent->get_bad()) {
+      neo_kf->set_pre_kf(parent->get_uuid());
       auto neo_parent = neo_map->GetKFByUUID(parent->get_uuid());
       if (neo_parent) {
-        neo_kf->set_pre_kf(neo_parent);
-
         Eigen::Quaternionf qp(parent->get_r_cw());
         Eigen::Quaternionf ql(kf->get_r_cw());
         Eigen::Quaternionf q = qp.conjugate() * ql;
@@ -83,10 +82,7 @@ static NeoMap::Ptr map_to_neo_map(Map::Ptr map) {
     }
 
     if (child && !child->get_bad()) {
-      auto neo_child = neo_map->GetKFByUUID(child->get_uuid());
-      if (neo_child) {
-        neo_kf->set_next_kf(neo_child);
-      }
+      neo_kf->set_next_kf(child->get_uuid());
     }
   }
 

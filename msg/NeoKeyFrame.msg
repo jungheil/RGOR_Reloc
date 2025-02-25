@@ -1,0 +1,10 @@
+string uuid
+NeoPose pose_rel
+NeoRotation rotation_rel
+NeoPose pose_abs
+NeoRotation rotation_abs
+string pre_kf
+string next_kf
+NeoKFMeasurement[] measurement
+int64 updated_at
+int64 created_at

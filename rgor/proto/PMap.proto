@@ -22,3 +22,56 @@ message PMapPoint{
 message PMap{
   repeated PMapPoint points = 1;
 }
+
+
+message NeoScale{
+  required float s = 1;
+  required float l = 2;
+}
+
+message NeoPose{
+  required float x = 1;
+  required float y = 2;
+  required float z = 3;
+}
+
+message NeoRotation{
+  required float w = 1;
+  required float x = 2;
+  required float y = 3;
+  required float z = 4;
+}
+
+
+message NeoMapPoint{
+  required bytes uuid = 1;
+  required bytes desc = 2;
+  required NeoScale scale = 3;
+  required NeoPose pose = 4;
+  repeated bytes  observations = 5;
+  required int64 updated_at = 6;
+  required int64 created_at = 7;
+}
+
+message NeoKFMeasurement{
+  required bytes uuid = 1;
+  required NeoPose pose = 2;
+}
+
+message NeoKeyFrame{
+  required bytes uuid = 1;
+  required NeoPose pose_rel = 2;
+  required NeoRotation rotation_rel = 3;
+  required NeoPose pose_abs = 4;
+  required NeoRotation rotation_abs = 5;
+  required bytes pre_kf = 6;
+  required bytes next_kf = 7;
+  repeated NeoKFMeasurement measurement = 8;
+  required int64 updated_at = 9;
+  required int64 created_at = 10;
+}
+
+message NeoMap{
+  repeated NeoMapPoint mps = 1;
+  repeated NeoKeyFrame kfs = 2;
+}

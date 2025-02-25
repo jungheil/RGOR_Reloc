@@ -93,7 +93,127 @@ struct PMapDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PMapDefaultTypeInternal _PMap_default_instance_;
-static ::_pb::Metadata file_level_metadata_PMap_2eproto[5];
+PROTOBUF_CONSTEXPR NeoScale::NeoScale(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.s_)*/0
+  , /*decltype(_impl_.l_)*/0} {}
+struct NeoScaleDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NeoScaleDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NeoScaleDefaultTypeInternal() {}
+  union {
+    NeoScale _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NeoScaleDefaultTypeInternal _NeoScale_default_instance_;
+PROTOBUF_CONSTEXPR NeoPose::NeoPose(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.x_)*/0
+  , /*decltype(_impl_.y_)*/0
+  , /*decltype(_impl_.z_)*/0} {}
+struct NeoPoseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NeoPoseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NeoPoseDefaultTypeInternal() {}
+  union {
+    NeoPose _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NeoPoseDefaultTypeInternal _NeoPose_default_instance_;
+PROTOBUF_CONSTEXPR NeoRotation::NeoRotation(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.w_)*/0
+  , /*decltype(_impl_.x_)*/0
+  , /*decltype(_impl_.y_)*/0
+  , /*decltype(_impl_.z_)*/0} {}
+struct NeoRotationDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NeoRotationDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NeoRotationDefaultTypeInternal() {}
+  union {
+    NeoRotation _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NeoRotationDefaultTypeInternal _NeoRotation_default_instance_;
+PROTOBUF_CONSTEXPR NeoMapPoint::NeoMapPoint(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.observations_)*/{}
+  , /*decltype(_impl_.uuid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.desc_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.scale_)*/nullptr
+  , /*decltype(_impl_.pose_)*/nullptr
+  , /*decltype(_impl_.updated_at_)*/int64_t{0}
+  , /*decltype(_impl_.created_at_)*/int64_t{0}} {}
+struct NeoMapPointDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NeoMapPointDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NeoMapPointDefaultTypeInternal() {}
+  union {
+    NeoMapPoint _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NeoMapPointDefaultTypeInternal _NeoMapPoint_default_instance_;
+PROTOBUF_CONSTEXPR NeoKFMeasurement::NeoKFMeasurement(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.uuid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.pose_)*/nullptr} {}
+struct NeoKFMeasurementDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NeoKFMeasurementDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NeoKFMeasurementDefaultTypeInternal() {}
+  union {
+    NeoKFMeasurement _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NeoKFMeasurementDefaultTypeInternal _NeoKFMeasurement_default_instance_;
+PROTOBUF_CONSTEXPR NeoKeyFrame::NeoKeyFrame(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_._has_bits_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}
+  , /*decltype(_impl_.measurement_)*/{}
+  , /*decltype(_impl_.uuid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.pre_kf_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.next_kf_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.pose_rel_)*/nullptr
+  , /*decltype(_impl_.rotation_rel_)*/nullptr
+  , /*decltype(_impl_.pose_abs_)*/nullptr
+  , /*decltype(_impl_.rotation_abs_)*/nullptr
+  , /*decltype(_impl_.updated_at_)*/int64_t{0}
+  , /*decltype(_impl_.created_at_)*/int64_t{0}} {}
+struct NeoKeyFrameDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NeoKeyFrameDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NeoKeyFrameDefaultTypeInternal() {}
+  union {
+    NeoKeyFrame _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NeoKeyFrameDefaultTypeInternal _NeoKeyFrame_default_instance_;
+PROTOBUF_CONSTEXPR NeoMap::NeoMap(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.mps_)*/{}
+  , /*decltype(_impl_.kfs_)*/{}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct NeoMapDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR NeoMapDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~NeoMapDefaultTypeInternal() {}
+  union {
+    NeoMap _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NeoMapDefaultTypeInternal _NeoMap_default_instance_;
+static ::_pb::Metadata file_level_metadata_PMap_2eproto[12];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_PMap_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_PMap_2eproto = nullptr;
 
@@ -146,6 +266,106 @@ const uint32_t TableStruct_PMap_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::PMap, _impl_.points_),
+  PROTOBUF_FIELD_OFFSET(::NeoScale, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::NeoScale, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::NeoScale, _impl_.s_),
+  PROTOBUF_FIELD_OFFSET(::NeoScale, _impl_.l_),
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::NeoPose, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::NeoPose, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::NeoPose, _impl_.x_),
+  PROTOBUF_FIELD_OFFSET(::NeoPose, _impl_.y_),
+  PROTOBUF_FIELD_OFFSET(::NeoPose, _impl_.z_),
+  0,
+  1,
+  2,
+  PROTOBUF_FIELD_OFFSET(::NeoRotation, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::NeoRotation, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::NeoRotation, _impl_.w_),
+  PROTOBUF_FIELD_OFFSET(::NeoRotation, _impl_.x_),
+  PROTOBUF_FIELD_OFFSET(::NeoRotation, _impl_.y_),
+  PROTOBUF_FIELD_OFFSET(::NeoRotation, _impl_.z_),
+  0,
+  1,
+  2,
+  3,
+  PROTOBUF_FIELD_OFFSET(::NeoMapPoint, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::NeoMapPoint, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::NeoMapPoint, _impl_.uuid_),
+  PROTOBUF_FIELD_OFFSET(::NeoMapPoint, _impl_.desc_),
+  PROTOBUF_FIELD_OFFSET(::NeoMapPoint, _impl_.scale_),
+  PROTOBUF_FIELD_OFFSET(::NeoMapPoint, _impl_.pose_),
+  PROTOBUF_FIELD_OFFSET(::NeoMapPoint, _impl_.observations_),
+  PROTOBUF_FIELD_OFFSET(::NeoMapPoint, _impl_.updated_at_),
+  PROTOBUF_FIELD_OFFSET(::NeoMapPoint, _impl_.created_at_),
+  0,
+  1,
+  2,
+  3,
+  ~0u,
+  4,
+  5,
+  PROTOBUF_FIELD_OFFSET(::NeoKFMeasurement, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::NeoKFMeasurement, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::NeoKFMeasurement, _impl_.uuid_),
+  PROTOBUF_FIELD_OFFSET(::NeoKFMeasurement, _impl_.pose_),
+  0,
+  1,
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_._has_bits_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.uuid_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.pose_rel_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.rotation_rel_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.pose_abs_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.rotation_abs_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.pre_kf_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.next_kf_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.measurement_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.updated_at_),
+  PROTOBUF_FIELD_OFFSET(::NeoKeyFrame, _impl_.created_at_),
+  0,
+  3,
+  4,
+  5,
+  6,
+  1,
+  2,
+  ~0u,
+  7,
+  8,
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::NeoMap, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::NeoMap, _impl_.mps_),
+  PROTOBUF_FIELD_OFFSET(::NeoMap, _impl_.kfs_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::PMPDescriptor)},
@@ -153,6 +373,13 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 19, 27, -1, sizeof(::PMPScale)},
   { 29, 38, -1, sizeof(::PMapPoint)},
   { 41, -1, -1, sizeof(::PMap)},
+  { 48, 56, -1, sizeof(::NeoScale)},
+  { 58, 67, -1, sizeof(::NeoPose)},
+  { 70, 80, -1, sizeof(::NeoRotation)},
+  { 84, 97, -1, sizeof(::NeoMapPoint)},
+  { 104, 112, -1, sizeof(::NeoKFMeasurement)},
+  { 114, 130, -1, sizeof(::NeoKeyFrame)},
+  { 140, -1, -1, sizeof(::NeoMap)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -161,6 +388,13 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::_PMPScale_default_instance_._instance,
   &::_PMapPoint_default_instance_._instance,
   &::_PMap_default_instance_._instance,
+  &::_NeoScale_default_instance_._instance,
+  &::_NeoPose_default_instance_._instance,
+  &::_NeoRotation_default_instance_._instance,
+  &::_NeoMapPoint_default_instance_._instance,
+  &::_NeoKFMeasurement_default_instance_._instance,
+  &::_NeoKeyFrame_default_instance_._instance,
+  &::_NeoMap_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_PMap_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -170,13 +404,30 @@ const char descriptor_table_protodef_PMap_2eproto[] PROTOBUF_SECTION_VARIABLE(pr
   "\002\"[\n\tPMapPoint\022\026\n\004pose\030\001 \002(\0132\010.PMPPose\022\030"
   "\n\005scale\030\002 \002(\0132\t.PMPScale\022\034\n\004desc\030\003 \002(\0132\016"
   ".PMPDescriptor\"\"\n\004PMap\022\032\n\006points\030\001 \003(\0132\n"
-  ".PMapPoint"
+  ".PMapPoint\" \n\010NeoScale\022\t\n\001s\030\001 \002(\002\022\t\n\001l\030\002"
+  " \002(\002\"*\n\007NeoPose\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022\t\n"
+  "\001z\030\003 \002(\002\"9\n\013NeoRotation\022\t\n\001w\030\001 \002(\002\022\t\n\001x\030"
+  "\002 \002(\002\022\t\n\001y\030\003 \002(\002\022\t\n\001z\030\004 \002(\002\"\231\001\n\013NeoMapPo"
+  "int\022\014\n\004uuid\030\001 \002(\014\022\014\n\004desc\030\002 \002(\014\022\030\n\005scale"
+  "\030\003 \002(\0132\t.NeoScale\022\026\n\004pose\030\004 \002(\0132\010.NeoPos"
+  "e\022\024\n\014observations\030\005 \003(\014\022\022\n\nupdated_at\030\006 "
+  "\002(\003\022\022\n\ncreated_at\030\007 \002(\003\"8\n\020NeoKFMeasurem"
+  "ent\022\014\n\004uuid\030\001 \002(\014\022\026\n\004pose\030\002 \002(\0132\010.NeoPos"
+  "e\"\214\002\n\013NeoKeyFrame\022\014\n\004uuid\030\001 \002(\014\022\032\n\010pose_"
+  "rel\030\002 \002(\0132\010.NeoPose\022\"\n\014rotation_rel\030\003 \002("
+  "\0132\014.NeoRotation\022\032\n\010pose_abs\030\004 \002(\0132\010.NeoP"
+  "ose\022\"\n\014rotation_abs\030\005 \002(\0132\014.NeoRotation\022"
+  "\016\n\006pre_kf\030\006 \002(\014\022\017\n\007next_kf\030\007 \002(\014\022&\n\013meas"
+  "urement\030\010 \003(\0132\021.NeoKFMeasurement\022\022\n\nupda"
+  "ted_at\030\t \002(\003\022\022\n\ncreated_at\030\n \002(\003\">\n\006NeoM"
+  "ap\022\031\n\003mps\030\001 \003(\0132\014.NeoMapPoint\022\031\n\003kfs\030\002 \003"
+  "(\0132\014.NeoKeyFrame"
   ;
 static ::_pbi::once_flag descriptor_table_PMap_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_PMap_2eproto = {
-    false, false, 250, descriptor_table_protodef_PMap_2eproto,
+    false, false, 936, descriptor_table_protodef_PMap_2eproto,
     "PMap.proto",
-    &descriptor_table_PMap_2eproto_once, nullptr, 0, 5,
+    &descriptor_table_PMap_2eproto_once, nullptr, 0, 12,
     schemas, file_default_instances, TableStruct_PMap_2eproto::offsets,
     file_level_metadata_PMap_2eproto, file_level_enum_descriptors_PMap_2eproto,
     file_level_service_descriptors_PMap_2eproto,
@@ -1440,6 +1691,2543 @@ void PMap::InternalSwap(PMap* other) {
       file_level_metadata_PMap_2eproto[4]);
 }
 
+// ===================================================================
+
+class NeoScale::_Internal {
+ public:
+  using HasBits = decltype(std::declval<NeoScale>()._impl_._has_bits_);
+  static void set_has_s(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_l(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000003) ^ 0x00000003) != 0;
+  }
+};
+
+NeoScale::NeoScale(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:NeoScale)
+}
+NeoScale::NeoScale(const NeoScale& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NeoScale* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.s_){}
+    , decltype(_impl_.l_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.s_, &from._impl_.s_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.l_) -
+    reinterpret_cast<char*>(&_impl_.s_)) + sizeof(_impl_.l_));
+  // @@protoc_insertion_point(copy_constructor:NeoScale)
+}
+
+inline void NeoScale::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.s_){0}
+    , decltype(_impl_.l_){0}
+  };
+}
+
+NeoScale::~NeoScale() {
+  // @@protoc_insertion_point(destructor:NeoScale)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void NeoScale::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void NeoScale::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void NeoScale::Clear() {
+// @@protoc_insertion_point(message_clear_start:NeoScale)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    ::memset(&_impl_.s_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.l_) -
+        reinterpret_cast<char*>(&_impl_.s_)) + sizeof(_impl_.l_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* NeoScale::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required float s = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+          _Internal::set_has_s(&has_bits);
+          _impl_.s_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // required float l = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _Internal::set_has_l(&has_bits);
+          _impl_.l_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* NeoScale::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NeoScale)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // required float s = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(1, this->_internal_s(), target);
+  }
+
+  // required float l = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_l(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NeoScale)
+  return target;
+}
+
+size_t NeoScale::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:NeoScale)
+  size_t total_size = 0;
+
+  if (_internal_has_s()) {
+    // required float s = 1;
+    total_size += 1 + 4;
+  }
+
+  if (_internal_has_l()) {
+    // required float l = 2;
+    total_size += 1 + 4;
+  }
+
+  return total_size;
+}
+size_t NeoScale::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NeoScale)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required float s = 1;
+    total_size += 1 + 4;
+
+    // required float l = 2;
+    total_size += 1 + 4;
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NeoScale::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    NeoScale::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NeoScale::GetClassData() const { return &_class_data_; }
+
+
+void NeoScale::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<NeoScale*>(&to_msg);
+  auto& from = static_cast<const NeoScale&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:NeoScale)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_impl_.s_ = from._impl_.s_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_impl_.l_ = from._impl_.l_;
+    }
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void NeoScale::CopyFrom(const NeoScale& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NeoScale)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NeoScale::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  return true;
+}
+
+void NeoScale::InternalSwap(NeoScale* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NeoScale, _impl_.l_)
+      + sizeof(NeoScale::_impl_.l_)
+      - PROTOBUF_FIELD_OFFSET(NeoScale, _impl_.s_)>(
+          reinterpret_cast<char*>(&_impl_.s_),
+          reinterpret_cast<char*>(&other->_impl_.s_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NeoScale::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_PMap_2eproto_getter, &descriptor_table_PMap_2eproto_once,
+      file_level_metadata_PMap_2eproto[5]);
+}
+
+// ===================================================================
+
+class NeoPose::_Internal {
+ public:
+  using HasBits = decltype(std::declval<NeoPose>()._impl_._has_bits_);
+  static void set_has_x(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_y(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_z(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000007) ^ 0x00000007) != 0;
+  }
+};
+
+NeoPose::NeoPose(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:NeoPose)
+}
+NeoPose::NeoPose(const NeoPose& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NeoPose* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.x_){}
+    , decltype(_impl_.y_){}
+    , decltype(_impl_.z_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.x_, &from._impl_.x_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.z_) -
+    reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.z_));
+  // @@protoc_insertion_point(copy_constructor:NeoPose)
+}
+
+inline void NeoPose::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.x_){0}
+    , decltype(_impl_.y_){0}
+    , decltype(_impl_.z_){0}
+  };
+}
+
+NeoPose::~NeoPose() {
+  // @@protoc_insertion_point(destructor:NeoPose)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void NeoPose::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void NeoPose::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void NeoPose::Clear() {
+// @@protoc_insertion_point(message_clear_start:NeoPose)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000007u) {
+    ::memset(&_impl_.x_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.z_) -
+        reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.z_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* NeoPose::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required float x = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+          _Internal::set_has_x(&has_bits);
+          _impl_.x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // required float y = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _Internal::set_has_y(&has_bits);
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // required float z = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          _Internal::set_has_z(&has_bits);
+          _impl_.z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* NeoPose::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NeoPose)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // required float x = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(1, this->_internal_x(), target);
+  }
+
+  // required float y = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_y(), target);
+  }
+
+  // required float z = 3;
+  if (cached_has_bits & 0x00000004u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NeoPose)
+  return target;
+}
+
+size_t NeoPose::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:NeoPose)
+  size_t total_size = 0;
+
+  if (_internal_has_x()) {
+    // required float x = 1;
+    total_size += 1 + 4;
+  }
+
+  if (_internal_has_y()) {
+    // required float y = 2;
+    total_size += 1 + 4;
+  }
+
+  if (_internal_has_z()) {
+    // required float z = 3;
+    total_size += 1 + 4;
+  }
+
+  return total_size;
+}
+size_t NeoPose::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NeoPose)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+    // required float x = 1;
+    total_size += 1 + 4;
+
+    // required float y = 2;
+    total_size += 1 + 4;
+
+    // required float z = 3;
+    total_size += 1 + 4;
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NeoPose::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    NeoPose::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NeoPose::GetClassData() const { return &_class_data_; }
+
+
+void NeoPose::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<NeoPose*>(&to_msg);
+  auto& from = static_cast<const NeoPose&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:NeoPose)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000007u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_impl_.x_ = from._impl_.x_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_impl_.y_ = from._impl_.y_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_impl_.z_ = from._impl_.z_;
+    }
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void NeoPose::CopyFrom(const NeoPose& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NeoPose)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NeoPose::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  return true;
+}
+
+void NeoPose::InternalSwap(NeoPose* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NeoPose, _impl_.z_)
+      + sizeof(NeoPose::_impl_.z_)
+      - PROTOBUF_FIELD_OFFSET(NeoPose, _impl_.x_)>(
+          reinterpret_cast<char*>(&_impl_.x_),
+          reinterpret_cast<char*>(&other->_impl_.x_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NeoPose::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_PMap_2eproto_getter, &descriptor_table_PMap_2eproto_once,
+      file_level_metadata_PMap_2eproto[6]);
+}
+
+// ===================================================================
+
+class NeoRotation::_Internal {
+ public:
+  using HasBits = decltype(std::declval<NeoRotation>()._impl_._has_bits_);
+  static void set_has_w(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_x(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_y(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_z(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x0000000f) ^ 0x0000000f) != 0;
+  }
+};
+
+NeoRotation::NeoRotation(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:NeoRotation)
+}
+NeoRotation::NeoRotation(const NeoRotation& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NeoRotation* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.w_){}
+    , decltype(_impl_.x_){}
+    , decltype(_impl_.y_){}
+    , decltype(_impl_.z_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.w_, &from._impl_.w_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.z_) -
+    reinterpret_cast<char*>(&_impl_.w_)) + sizeof(_impl_.z_));
+  // @@protoc_insertion_point(copy_constructor:NeoRotation)
+}
+
+inline void NeoRotation::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.w_){0}
+    , decltype(_impl_.x_){0}
+    , decltype(_impl_.y_){0}
+    , decltype(_impl_.z_){0}
+  };
+}
+
+NeoRotation::~NeoRotation() {
+  // @@protoc_insertion_point(destructor:NeoRotation)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void NeoRotation::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void NeoRotation::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void NeoRotation::Clear() {
+// @@protoc_insertion_point(message_clear_start:NeoRotation)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    ::memset(&_impl_.w_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.z_) -
+        reinterpret_cast<char*>(&_impl_.w_)) + sizeof(_impl_.z_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* NeoRotation::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required float w = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 13)) {
+          _Internal::set_has_w(&has_bits);
+          _impl_.w_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // required float x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 21)) {
+          _Internal::set_has_x(&has_bits);
+          _impl_.x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // required float y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 29)) {
+          _Internal::set_has_y(&has_bits);
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      // required float z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 37)) {
+          _Internal::set_has_z(&has_bits);
+          _impl_.z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
+          ptr += sizeof(float);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* NeoRotation::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NeoRotation)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // required float w = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(1, this->_internal_w(), target);
+  }
+
+  // required float x = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(2, this->_internal_x(), target);
+  }
+
+  // required float y = 3;
+  if (cached_has_bits & 0x00000004u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(3, this->_internal_y(), target);
+  }
+
+  // required float z = 4;
+  if (cached_has_bits & 0x00000008u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(4, this->_internal_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NeoRotation)
+  return target;
+}
+
+size_t NeoRotation::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:NeoRotation)
+  size_t total_size = 0;
+
+  if (_internal_has_w()) {
+    // required float w = 1;
+    total_size += 1 + 4;
+  }
+
+  if (_internal_has_x()) {
+    // required float x = 2;
+    total_size += 1 + 4;
+  }
+
+  if (_internal_has_y()) {
+    // required float y = 3;
+    total_size += 1 + 4;
+  }
+
+  if (_internal_has_z()) {
+    // required float z = 4;
+    total_size += 1 + 4;
+  }
+
+  return total_size;
+}
+size_t NeoRotation::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NeoRotation)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+    // required float w = 1;
+    total_size += 1 + 4;
+
+    // required float x = 2;
+    total_size += 1 + 4;
+
+    // required float y = 3;
+    total_size += 1 + 4;
+
+    // required float z = 4;
+    total_size += 1 + 4;
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NeoRotation::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    NeoRotation::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NeoRotation::GetClassData() const { return &_class_data_; }
+
+
+void NeoRotation::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<NeoRotation*>(&to_msg);
+  auto& from = static_cast<const NeoRotation&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:NeoRotation)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_impl_.w_ = from._impl_.w_;
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_impl_.x_ = from._impl_.x_;
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_impl_.y_ = from._impl_.y_;
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _this->_impl_.z_ = from._impl_.z_;
+    }
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void NeoRotation::CopyFrom(const NeoRotation& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NeoRotation)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NeoRotation::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  return true;
+}
+
+void NeoRotation::InternalSwap(NeoRotation* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NeoRotation, _impl_.z_)
+      + sizeof(NeoRotation::_impl_.z_)
+      - PROTOBUF_FIELD_OFFSET(NeoRotation, _impl_.w_)>(
+          reinterpret_cast<char*>(&_impl_.w_),
+          reinterpret_cast<char*>(&other->_impl_.w_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NeoRotation::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_PMap_2eproto_getter, &descriptor_table_PMap_2eproto_once,
+      file_level_metadata_PMap_2eproto[7]);
+}
+
+// ===================================================================
+
+class NeoMapPoint::_Internal {
+ public:
+  using HasBits = decltype(std::declval<NeoMapPoint>()._impl_._has_bits_);
+  static void set_has_uuid(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static void set_has_desc(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static const ::NeoScale& scale(const NeoMapPoint* msg);
+  static void set_has_scale(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static const ::NeoPose& pose(const NeoMapPoint* msg);
+  static void set_has_pose(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static void set_has_updated_at(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static void set_has_created_at(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x0000003f) ^ 0x0000003f) != 0;
+  }
+};
+
+const ::NeoScale&
+NeoMapPoint::_Internal::scale(const NeoMapPoint* msg) {
+  return *msg->_impl_.scale_;
+}
+const ::NeoPose&
+NeoMapPoint::_Internal::pose(const NeoMapPoint* msg) {
+  return *msg->_impl_.pose_;
+}
+NeoMapPoint::NeoMapPoint(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:NeoMapPoint)
+}
+NeoMapPoint::NeoMapPoint(const NeoMapPoint& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NeoMapPoint* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.observations_){from._impl_.observations_}
+    , decltype(_impl_.uuid_){}
+    , decltype(_impl_.desc_){}
+    , decltype(_impl_.scale_){nullptr}
+    , decltype(_impl_.pose_){nullptr}
+    , decltype(_impl_.updated_at_){}
+    , decltype(_impl_.created_at_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.uuid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_uuid()) {
+    _this->_impl_.uuid_.Set(from._internal_uuid(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.desc_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.desc_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_desc()) {
+    _this->_impl_.desc_.Set(from._internal_desc(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_scale()) {
+    _this->_impl_.scale_ = new ::NeoScale(*from._impl_.scale_);
+  }
+  if (from._internal_has_pose()) {
+    _this->_impl_.pose_ = new ::NeoPose(*from._impl_.pose_);
+  }
+  ::memcpy(&_impl_.updated_at_, &from._impl_.updated_at_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.created_at_) -
+    reinterpret_cast<char*>(&_impl_.updated_at_)) + sizeof(_impl_.created_at_));
+  // @@protoc_insertion_point(copy_constructor:NeoMapPoint)
+}
+
+inline void NeoMapPoint::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.observations_){arena}
+    , decltype(_impl_.uuid_){}
+    , decltype(_impl_.desc_){}
+    , decltype(_impl_.scale_){nullptr}
+    , decltype(_impl_.pose_){nullptr}
+    , decltype(_impl_.updated_at_){int64_t{0}}
+    , decltype(_impl_.created_at_){int64_t{0}}
+  };
+  _impl_.uuid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.desc_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.desc_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+NeoMapPoint::~NeoMapPoint() {
+  // @@protoc_insertion_point(destructor:NeoMapPoint)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void NeoMapPoint::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.observations_.~RepeatedPtrField();
+  _impl_.uuid_.Destroy();
+  _impl_.desc_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.scale_;
+  if (this != internal_default_instance()) delete _impl_.pose_;
+}
+
+void NeoMapPoint::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void NeoMapPoint::Clear() {
+// @@protoc_insertion_point(message_clear_start:NeoMapPoint)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.observations_.Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000000fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.uuid_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _impl_.desc_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      GOOGLE_DCHECK(_impl_.scale_ != nullptr);
+      _impl_.scale_->Clear();
+    }
+    if (cached_has_bits & 0x00000008u) {
+      GOOGLE_DCHECK(_impl_.pose_ != nullptr);
+      _impl_.pose_->Clear();
+    }
+  }
+  if (cached_has_bits & 0x00000030u) {
+    ::memset(&_impl_.updated_at_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.created_at_) -
+        reinterpret_cast<char*>(&_impl_.updated_at_)) + sizeof(_impl_.created_at_));
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* NeoMapPoint::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required bytes uuid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_uuid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required bytes desc = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_desc();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required .NeoScale scale = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_scale(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required .NeoPose pose = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pose(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated bytes observations = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_observations();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // required int64 updated_at = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 48)) {
+          _Internal::set_has_updated_at(&has_bits);
+          _impl_.updated_at_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required int64 created_at = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 56)) {
+          _Internal::set_has_created_at(&has_bits);
+          _impl_.created_at_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* NeoMapPoint::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NeoMapPoint)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // required bytes uuid = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->WriteBytesMaybeAliased(
+        1, this->_internal_uuid(), target);
+  }
+
+  // required bytes desc = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->WriteBytesMaybeAliased(
+        2, this->_internal_desc(), target);
+  }
+
+  // required .NeoScale scale = 3;
+  if (cached_has_bits & 0x00000004u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::scale(this),
+        _Internal::scale(this).GetCachedSize(), target, stream);
+  }
+
+  // required .NeoPose pose = 4;
+  if (cached_has_bits & 0x00000008u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, _Internal::pose(this),
+        _Internal::pose(this).GetCachedSize(), target, stream);
+  }
+
+  // repeated bytes observations = 5;
+  for (int i = 0, n = this->_internal_observations_size(); i < n; i++) {
+    const auto& s = this->_internal_observations(i);
+    target = stream->WriteBytes(5, s, target);
+  }
+
+  // required int64 updated_at = 6;
+  if (cached_has_bits & 0x00000010u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(6, this->_internal_updated_at(), target);
+  }
+
+  // required int64 created_at = 7;
+  if (cached_has_bits & 0x00000020u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(7, this->_internal_created_at(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NeoMapPoint)
+  return target;
+}
+
+size_t NeoMapPoint::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:NeoMapPoint)
+  size_t total_size = 0;
+
+  if (_internal_has_uuid()) {
+    // required bytes uuid = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_uuid());
+  }
+
+  if (_internal_has_desc()) {
+    // required bytes desc = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_desc());
+  }
+
+  if (_internal_has_scale()) {
+    // required .NeoScale scale = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.scale_);
+  }
+
+  if (_internal_has_pose()) {
+    // required .NeoPose pose = 4;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pose_);
+  }
+
+  if (_internal_has_updated_at()) {
+    // required int64 updated_at = 6;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_updated_at());
+  }
+
+  if (_internal_has_created_at()) {
+    // required int64 created_at = 7;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_created_at());
+  }
+
+  return total_size;
+}
+size_t NeoMapPoint::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NeoMapPoint)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x0000003f) ^ 0x0000003f) == 0) {  // All required fields are present.
+    // required bytes uuid = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_uuid());
+
+    // required bytes desc = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_desc());
+
+    // required .NeoScale scale = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.scale_);
+
+    // required .NeoPose pose = 4;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pose_);
+
+    // required int64 updated_at = 6;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_updated_at());
+
+    // required int64 created_at = 7;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_created_at());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated bytes observations = 5;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.observations_.size());
+  for (int i = 0, n = _impl_.observations_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+      _impl_.observations_.Get(i));
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NeoMapPoint::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    NeoMapPoint::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NeoMapPoint::GetClassData() const { return &_class_data_; }
+
+
+void NeoMapPoint::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<NeoMapPoint*>(&to_msg);
+  auto& from = static_cast<const NeoMapPoint&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:NeoMapPoint)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.observations_.MergeFrom(from._impl_.observations_);
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000003fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_uuid(from._internal_uuid());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_desc(from._internal_desc());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_internal_mutable_scale()->::NeoScale::MergeFrom(
+          from._internal_scale());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _this->_internal_mutable_pose()->::NeoPose::MergeFrom(
+          from._internal_pose());
+    }
+    if (cached_has_bits & 0x00000010u) {
+      _this->_impl_.updated_at_ = from._impl_.updated_at_;
+    }
+    if (cached_has_bits & 0x00000020u) {
+      _this->_impl_.created_at_ = from._impl_.created_at_;
+    }
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void NeoMapPoint::CopyFrom(const NeoMapPoint& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NeoMapPoint)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NeoMapPoint::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  if (_internal_has_scale()) {
+    if (!_impl_.scale_->IsInitialized()) return false;
+  }
+  if (_internal_has_pose()) {
+    if (!_impl_.pose_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void NeoMapPoint::InternalSwap(NeoMapPoint* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.observations_.InternalSwap(&other->_impl_.observations_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.uuid_, lhs_arena,
+      &other->_impl_.uuid_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.desc_, lhs_arena,
+      &other->_impl_.desc_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NeoMapPoint, _impl_.created_at_)
+      + sizeof(NeoMapPoint::_impl_.created_at_)
+      - PROTOBUF_FIELD_OFFSET(NeoMapPoint, _impl_.scale_)>(
+          reinterpret_cast<char*>(&_impl_.scale_),
+          reinterpret_cast<char*>(&other->_impl_.scale_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NeoMapPoint::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_PMap_2eproto_getter, &descriptor_table_PMap_2eproto_once,
+      file_level_metadata_PMap_2eproto[8]);
+}
+
+// ===================================================================
+
+class NeoKFMeasurement::_Internal {
+ public:
+  using HasBits = decltype(std::declval<NeoKFMeasurement>()._impl_._has_bits_);
+  static void set_has_uuid(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::NeoPose& pose(const NeoKFMeasurement* msg);
+  static void set_has_pose(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x00000003) ^ 0x00000003) != 0;
+  }
+};
+
+const ::NeoPose&
+NeoKFMeasurement::_Internal::pose(const NeoKFMeasurement* msg) {
+  return *msg->_impl_.pose_;
+}
+NeoKFMeasurement::NeoKFMeasurement(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:NeoKFMeasurement)
+}
+NeoKFMeasurement::NeoKFMeasurement(const NeoKFMeasurement& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NeoKFMeasurement* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.uuid_){}
+    , decltype(_impl_.pose_){nullptr}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.uuid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_uuid()) {
+    _this->_impl_.uuid_.Set(from._internal_uuid(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_pose()) {
+    _this->_impl_.pose_ = new ::NeoPose(*from._impl_.pose_);
+  }
+  // @@protoc_insertion_point(copy_constructor:NeoKFMeasurement)
+}
+
+inline void NeoKFMeasurement::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.uuid_){}
+    , decltype(_impl_.pose_){nullptr}
+  };
+  _impl_.uuid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+NeoKFMeasurement::~NeoKFMeasurement() {
+  // @@protoc_insertion_point(destructor:NeoKFMeasurement)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void NeoKFMeasurement::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.uuid_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.pose_;
+}
+
+void NeoKFMeasurement::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void NeoKFMeasurement::Clear() {
+// @@protoc_insertion_point(message_clear_start:NeoKFMeasurement)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.uuid_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      GOOGLE_DCHECK(_impl_.pose_ != nullptr);
+      _impl_.pose_->Clear();
+    }
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* NeoKFMeasurement::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required bytes uuid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_uuid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required .NeoPose pose = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pose(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* NeoKFMeasurement::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NeoKFMeasurement)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // required bytes uuid = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->WriteBytesMaybeAliased(
+        1, this->_internal_uuid(), target);
+  }
+
+  // required .NeoPose pose = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::pose(this),
+        _Internal::pose(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NeoKFMeasurement)
+  return target;
+}
+
+size_t NeoKFMeasurement::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:NeoKFMeasurement)
+  size_t total_size = 0;
+
+  if (_internal_has_uuid()) {
+    // required bytes uuid = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_uuid());
+  }
+
+  if (_internal_has_pose()) {
+    // required .NeoPose pose = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pose_);
+  }
+
+  return total_size;
+}
+size_t NeoKFMeasurement::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NeoKFMeasurement)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required bytes uuid = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_uuid());
+
+    // required .NeoPose pose = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pose_);
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NeoKFMeasurement::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    NeoKFMeasurement::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NeoKFMeasurement::GetClassData() const { return &_class_data_; }
+
+
+void NeoKFMeasurement::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<NeoKFMeasurement*>(&to_msg);
+  auto& from = static_cast<const NeoKFMeasurement&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:NeoKFMeasurement)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_uuid(from._internal_uuid());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_pose()->::NeoPose::MergeFrom(
+          from._internal_pose());
+    }
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void NeoKFMeasurement::CopyFrom(const NeoKFMeasurement& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NeoKFMeasurement)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NeoKFMeasurement::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  if (_internal_has_pose()) {
+    if (!_impl_.pose_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void NeoKFMeasurement::InternalSwap(NeoKFMeasurement* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.uuid_, lhs_arena,
+      &other->_impl_.uuid_, rhs_arena
+  );
+  swap(_impl_.pose_, other->_impl_.pose_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NeoKFMeasurement::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_PMap_2eproto_getter, &descriptor_table_PMap_2eproto_once,
+      file_level_metadata_PMap_2eproto[9]);
+}
+
+// ===================================================================
+
+class NeoKeyFrame::_Internal {
+ public:
+  using HasBits = decltype(std::declval<NeoKeyFrame>()._impl_._has_bits_);
+  static void set_has_uuid(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::NeoPose& pose_rel(const NeoKeyFrame* msg);
+  static void set_has_pose_rel(HasBits* has_bits) {
+    (*has_bits)[0] |= 8u;
+  }
+  static const ::NeoRotation& rotation_rel(const NeoKeyFrame* msg);
+  static void set_has_rotation_rel(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
+  }
+  static const ::NeoPose& pose_abs(const NeoKeyFrame* msg);
+  static void set_has_pose_abs(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
+  }
+  static const ::NeoRotation& rotation_abs(const NeoKeyFrame* msg);
+  static void set_has_rotation_abs(HasBits* has_bits) {
+    (*has_bits)[0] |= 64u;
+  }
+  static void set_has_pre_kf(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
+  static void set_has_next_kf(HasBits* has_bits) {
+    (*has_bits)[0] |= 4u;
+  }
+  static void set_has_updated_at(HasBits* has_bits) {
+    (*has_bits)[0] |= 128u;
+  }
+  static void set_has_created_at(HasBits* has_bits) {
+    (*has_bits)[0] |= 256u;
+  }
+  static bool MissingRequiredFields(const HasBits& has_bits) {
+    return ((has_bits[0] & 0x000001ff) ^ 0x000001ff) != 0;
+  }
+};
+
+const ::NeoPose&
+NeoKeyFrame::_Internal::pose_rel(const NeoKeyFrame* msg) {
+  return *msg->_impl_.pose_rel_;
+}
+const ::NeoRotation&
+NeoKeyFrame::_Internal::rotation_rel(const NeoKeyFrame* msg) {
+  return *msg->_impl_.rotation_rel_;
+}
+const ::NeoPose&
+NeoKeyFrame::_Internal::pose_abs(const NeoKeyFrame* msg) {
+  return *msg->_impl_.pose_abs_;
+}
+const ::NeoRotation&
+NeoKeyFrame::_Internal::rotation_abs(const NeoKeyFrame* msg) {
+  return *msg->_impl_.rotation_abs_;
+}
+NeoKeyFrame::NeoKeyFrame(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:NeoKeyFrame)
+}
+NeoKeyFrame::NeoKeyFrame(const NeoKeyFrame& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NeoKeyFrame* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.measurement_){from._impl_.measurement_}
+    , decltype(_impl_.uuid_){}
+    , decltype(_impl_.pre_kf_){}
+    , decltype(_impl_.next_kf_){}
+    , decltype(_impl_.pose_rel_){nullptr}
+    , decltype(_impl_.rotation_rel_){nullptr}
+    , decltype(_impl_.pose_abs_){nullptr}
+    , decltype(_impl_.rotation_abs_){nullptr}
+    , decltype(_impl_.updated_at_){}
+    , decltype(_impl_.created_at_){}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.uuid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_uuid()) {
+    _this->_impl_.uuid_.Set(from._internal_uuid(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.pre_kf_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.pre_kf_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_pre_kf()) {
+    _this->_impl_.pre_kf_.Set(from._internal_pre_kf(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.next_kf_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.next_kf_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (from._internal_has_next_kf()) {
+    _this->_impl_.next_kf_.Set(from._internal_next_kf(), 
+      _this->GetArenaForAllocation());
+  }
+  if (from._internal_has_pose_rel()) {
+    _this->_impl_.pose_rel_ = new ::NeoPose(*from._impl_.pose_rel_);
+  }
+  if (from._internal_has_rotation_rel()) {
+    _this->_impl_.rotation_rel_ = new ::NeoRotation(*from._impl_.rotation_rel_);
+  }
+  if (from._internal_has_pose_abs()) {
+    _this->_impl_.pose_abs_ = new ::NeoPose(*from._impl_.pose_abs_);
+  }
+  if (from._internal_has_rotation_abs()) {
+    _this->_impl_.rotation_abs_ = new ::NeoRotation(*from._impl_.rotation_abs_);
+  }
+  ::memcpy(&_impl_.updated_at_, &from._impl_.updated_at_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.created_at_) -
+    reinterpret_cast<char*>(&_impl_.updated_at_)) + sizeof(_impl_.created_at_));
+  // @@protoc_insertion_point(copy_constructor:NeoKeyFrame)
+}
+
+inline void NeoKeyFrame::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+    , decltype(_impl_.measurement_){arena}
+    , decltype(_impl_.uuid_){}
+    , decltype(_impl_.pre_kf_){}
+    , decltype(_impl_.next_kf_){}
+    , decltype(_impl_.pose_rel_){nullptr}
+    , decltype(_impl_.rotation_rel_){nullptr}
+    , decltype(_impl_.pose_abs_){nullptr}
+    , decltype(_impl_.rotation_abs_){nullptr}
+    , decltype(_impl_.updated_at_){int64_t{0}}
+    , decltype(_impl_.created_at_){int64_t{0}}
+  };
+  _impl_.uuid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.uuid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.pre_kf_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.pre_kf_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.next_kf_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.next_kf_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+NeoKeyFrame::~NeoKeyFrame() {
+  // @@protoc_insertion_point(destructor:NeoKeyFrame)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void NeoKeyFrame::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.measurement_.~RepeatedPtrField();
+  _impl_.uuid_.Destroy();
+  _impl_.pre_kf_.Destroy();
+  _impl_.next_kf_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.pose_rel_;
+  if (this != internal_default_instance()) delete _impl_.rotation_rel_;
+  if (this != internal_default_instance()) delete _impl_.pose_abs_;
+  if (this != internal_default_instance()) delete _impl_.rotation_abs_;
+}
+
+void NeoKeyFrame::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void NeoKeyFrame::Clear() {
+// @@protoc_insertion_point(message_clear_start:NeoKeyFrame)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.measurement_.Clear();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x0000007fu) {
+    if (cached_has_bits & 0x00000001u) {
+      _impl_.uuid_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _impl_.pre_kf_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _impl_.next_kf_.ClearNonDefaultToEmpty();
+    }
+    if (cached_has_bits & 0x00000008u) {
+      GOOGLE_DCHECK(_impl_.pose_rel_ != nullptr);
+      _impl_.pose_rel_->Clear();
+    }
+    if (cached_has_bits & 0x00000010u) {
+      GOOGLE_DCHECK(_impl_.rotation_rel_ != nullptr);
+      _impl_.rotation_rel_->Clear();
+    }
+    if (cached_has_bits & 0x00000020u) {
+      GOOGLE_DCHECK(_impl_.pose_abs_ != nullptr);
+      _impl_.pose_abs_->Clear();
+    }
+    if (cached_has_bits & 0x00000040u) {
+      GOOGLE_DCHECK(_impl_.rotation_abs_ != nullptr);
+      _impl_.rotation_abs_->Clear();
+    }
+  }
+  _impl_.updated_at_ = int64_t{0};
+  _impl_.created_at_ = int64_t{0};
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* NeoKeyFrame::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  _Internal::HasBits has_bits{};
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // required bytes uuid = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_uuid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required .NeoPose pose_rel = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pose_rel(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required .NeoRotation rotation_rel = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_rotation_rel(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required .NeoPose pose_abs = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_pose_abs(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required .NeoRotation rotation_abs = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_rotation_abs(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required bytes pre_kf = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 50)) {
+          auto str = _internal_mutable_pre_kf();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required bytes next_kf = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 58)) {
+          auto str = _internal_mutable_next_kf();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .NeoKFMeasurement measurement = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 66)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_measurement(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<66>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // required int64 updated_at = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
+          _Internal::set_has_updated_at(&has_bits);
+          _impl_.updated_at_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // required int64 created_at = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 80)) {
+          _Internal::set_has_created_at(&has_bits);
+          _impl_.created_at_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  _impl_._has_bits_.Or(has_bits);
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* NeoKeyFrame::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NeoKeyFrame)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _impl_._has_bits_[0];
+  // required bytes uuid = 1;
+  if (cached_has_bits & 0x00000001u) {
+    target = stream->WriteBytesMaybeAliased(
+        1, this->_internal_uuid(), target);
+  }
+
+  // required .NeoPose pose_rel = 2;
+  if (cached_has_bits & 0x00000008u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::pose_rel(this),
+        _Internal::pose_rel(this).GetCachedSize(), target, stream);
+  }
+
+  // required .NeoRotation rotation_rel = 3;
+  if (cached_has_bits & 0x00000010u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::rotation_rel(this),
+        _Internal::rotation_rel(this).GetCachedSize(), target, stream);
+  }
+
+  // required .NeoPose pose_abs = 4;
+  if (cached_has_bits & 0x00000020u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(4, _Internal::pose_abs(this),
+        _Internal::pose_abs(this).GetCachedSize(), target, stream);
+  }
+
+  // required .NeoRotation rotation_abs = 5;
+  if (cached_has_bits & 0x00000040u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(5, _Internal::rotation_abs(this),
+        _Internal::rotation_abs(this).GetCachedSize(), target, stream);
+  }
+
+  // required bytes pre_kf = 6;
+  if (cached_has_bits & 0x00000002u) {
+    target = stream->WriteBytesMaybeAliased(
+        6, this->_internal_pre_kf(), target);
+  }
+
+  // required bytes next_kf = 7;
+  if (cached_has_bits & 0x00000004u) {
+    target = stream->WriteBytesMaybeAliased(
+        7, this->_internal_next_kf(), target);
+  }
+
+  // repeated .NeoKFMeasurement measurement = 8;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_measurement_size()); i < n; i++) {
+    const auto& repfield = this->_internal_measurement(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(8, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // required int64 updated_at = 9;
+  if (cached_has_bits & 0x00000080u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(9, this->_internal_updated_at(), target);
+  }
+
+  // required int64 created_at = 10;
+  if (cached_has_bits & 0x00000100u) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt64ToArray(10, this->_internal_created_at(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NeoKeyFrame)
+  return target;
+}
+
+size_t NeoKeyFrame::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:NeoKeyFrame)
+  size_t total_size = 0;
+
+  if (_internal_has_uuid()) {
+    // required bytes uuid = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_uuid());
+  }
+
+  if (_internal_has_pre_kf()) {
+    // required bytes pre_kf = 6;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_pre_kf());
+  }
+
+  if (_internal_has_next_kf()) {
+    // required bytes next_kf = 7;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_next_kf());
+  }
+
+  if (_internal_has_pose_rel()) {
+    // required .NeoPose pose_rel = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pose_rel_);
+  }
+
+  if (_internal_has_rotation_rel()) {
+    // required .NeoRotation rotation_rel = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.rotation_rel_);
+  }
+
+  if (_internal_has_pose_abs()) {
+    // required .NeoPose pose_abs = 4;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pose_abs_);
+  }
+
+  if (_internal_has_rotation_abs()) {
+    // required .NeoRotation rotation_abs = 5;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.rotation_abs_);
+  }
+
+  if (_internal_has_updated_at()) {
+    // required int64 updated_at = 9;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_updated_at());
+  }
+
+  if (_internal_has_created_at()) {
+    // required int64 created_at = 10;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_created_at());
+  }
+
+  return total_size;
+}
+size_t NeoKeyFrame::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NeoKeyFrame)
+  size_t total_size = 0;
+
+  if (((_impl_._has_bits_[0] & 0x000001ff) ^ 0x000001ff) == 0) {  // All required fields are present.
+    // required bytes uuid = 1;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_uuid());
+
+    // required bytes pre_kf = 6;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_pre_kf());
+
+    // required bytes next_kf = 7;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+        this->_internal_next_kf());
+
+    // required .NeoPose pose_rel = 2;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pose_rel_);
+
+    // required .NeoRotation rotation_rel = 3;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.rotation_rel_);
+
+    // required .NeoPose pose_abs = 4;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.pose_abs_);
+
+    // required .NeoRotation rotation_abs = 5;
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.rotation_abs_);
+
+    // required int64 updated_at = 9;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_updated_at());
+
+    // required int64 created_at = 10;
+    total_size += ::_pbi::WireFormatLite::Int64SizePlusOne(this->_internal_created_at());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .NeoKFMeasurement measurement = 8;
+  total_size += 1UL * this->_internal_measurement_size();
+  for (const auto& msg : this->_impl_.measurement_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NeoKeyFrame::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    NeoKeyFrame::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NeoKeyFrame::GetClassData() const { return &_class_data_; }
+
+
+void NeoKeyFrame::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<NeoKeyFrame*>(&to_msg);
+  auto& from = static_cast<const NeoKeyFrame&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:NeoKeyFrame)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.measurement_.MergeFrom(from._impl_.measurement_);
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x000000ffu) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_set_uuid(from._internal_uuid());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_set_pre_kf(from._internal_pre_kf());
+    }
+    if (cached_has_bits & 0x00000004u) {
+      _this->_internal_set_next_kf(from._internal_next_kf());
+    }
+    if (cached_has_bits & 0x00000008u) {
+      _this->_internal_mutable_pose_rel()->::NeoPose::MergeFrom(
+          from._internal_pose_rel());
+    }
+    if (cached_has_bits & 0x00000010u) {
+      _this->_internal_mutable_rotation_rel()->::NeoRotation::MergeFrom(
+          from._internal_rotation_rel());
+    }
+    if (cached_has_bits & 0x00000020u) {
+      _this->_internal_mutable_pose_abs()->::NeoPose::MergeFrom(
+          from._internal_pose_abs());
+    }
+    if (cached_has_bits & 0x00000040u) {
+      _this->_internal_mutable_rotation_abs()->::NeoRotation::MergeFrom(
+          from._internal_rotation_abs());
+    }
+    if (cached_has_bits & 0x00000080u) {
+      _this->_impl_.updated_at_ = from._impl_.updated_at_;
+    }
+    _this->_impl_._has_bits_[0] |= cached_has_bits;
+  }
+  if (cached_has_bits & 0x00000100u) {
+    _this->_internal_set_created_at(from._internal_created_at());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void NeoKeyFrame::CopyFrom(const NeoKeyFrame& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NeoKeyFrame)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NeoKeyFrame::IsInitialized() const {
+  if (_Internal::MissingRequiredFields(_impl_._has_bits_)) return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.measurement_))
+    return false;
+  if (_internal_has_pose_rel()) {
+    if (!_impl_.pose_rel_->IsInitialized()) return false;
+  }
+  if (_internal_has_rotation_rel()) {
+    if (!_impl_.rotation_rel_->IsInitialized()) return false;
+  }
+  if (_internal_has_pose_abs()) {
+    if (!_impl_.pose_abs_->IsInitialized()) return false;
+  }
+  if (_internal_has_rotation_abs()) {
+    if (!_impl_.rotation_abs_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void NeoKeyFrame::InternalSwap(NeoKeyFrame* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.measurement_.InternalSwap(&other->_impl_.measurement_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.uuid_, lhs_arena,
+      &other->_impl_.uuid_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.pre_kf_, lhs_arena,
+      &other->_impl_.pre_kf_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.next_kf_, lhs_arena,
+      &other->_impl_.next_kf_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(NeoKeyFrame, _impl_.created_at_)
+      + sizeof(NeoKeyFrame::_impl_.created_at_)
+      - PROTOBUF_FIELD_OFFSET(NeoKeyFrame, _impl_.pose_rel_)>(
+          reinterpret_cast<char*>(&_impl_.pose_rel_),
+          reinterpret_cast<char*>(&other->_impl_.pose_rel_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NeoKeyFrame::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_PMap_2eproto_getter, &descriptor_table_PMap_2eproto_once,
+      file_level_metadata_PMap_2eproto[10]);
+}
+
+// ===================================================================
+
+class NeoMap::_Internal {
+ public:
+};
+
+NeoMap::NeoMap(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:NeoMap)
+}
+NeoMap::NeoMap(const NeoMap& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  NeoMap* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.mps_){from._impl_.mps_}
+    , decltype(_impl_.kfs_){from._impl_.kfs_}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:NeoMap)
+}
+
+inline void NeoMap::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.mps_){arena}
+    , decltype(_impl_.kfs_){arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+NeoMap::~NeoMap() {
+  // @@protoc_insertion_point(destructor:NeoMap)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void NeoMap::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.mps_.~RepeatedPtrField();
+  _impl_.kfs_.~RepeatedPtrField();
+}
+
+void NeoMap::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void NeoMap::Clear() {
+// @@protoc_insertion_point(message_clear_start:NeoMap)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.mps_.Clear();
+  _impl_.kfs_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* NeoMap::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .NeoMapPoint mps = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_mps(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated .NeoKeyFrame kfs = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_kfs(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* NeoMap::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:NeoMap)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .NeoMapPoint mps = 1;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_mps_size()); i < n; i++) {
+    const auto& repfield = this->_internal_mps(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(1, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  // repeated .NeoKeyFrame kfs = 2;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_kfs_size()); i < n; i++) {
+    const auto& repfield = this->_internal_kfs(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(2, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:NeoMap)
+  return target;
+}
+
+size_t NeoMap::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:NeoMap)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .NeoMapPoint mps = 1;
+  total_size += 1UL * this->_internal_mps_size();
+  for (const auto& msg : this->_impl_.mps_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .NeoKeyFrame kfs = 2;
+  total_size += 1UL * this->_internal_kfs_size();
+  for (const auto& msg : this->_impl_.kfs_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData NeoMap::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    NeoMap::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*NeoMap::GetClassData() const { return &_class_data_; }
+
+
+void NeoMap::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<NeoMap*>(&to_msg);
+  auto& from = static_cast<const NeoMap&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:NeoMap)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.mps_.MergeFrom(from._impl_.mps_);
+  _this->_impl_.kfs_.MergeFrom(from._impl_.kfs_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void NeoMap::CopyFrom(const NeoMap& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:NeoMap)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool NeoMap::IsInitialized() const {
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.mps_))
+    return false;
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(_impl_.kfs_))
+    return false;
+  return true;
+}
+
+void NeoMap::InternalSwap(NeoMap* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.mps_.InternalSwap(&other->_impl_.mps_);
+  _impl_.kfs_.InternalSwap(&other->_impl_.kfs_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata NeoMap::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_PMap_2eproto_getter, &descriptor_table_PMap_2eproto_once,
+      file_level_metadata_PMap_2eproto[11]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 PROTOBUF_NAMESPACE_OPEN
 template<> PROTOBUF_NOINLINE ::PMPDescriptor*
@@ -1461,6 +4249,34 @@ Arena::CreateMaybeMessage< ::PMapPoint >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::PMap*
 Arena::CreateMaybeMessage< ::PMap >(Arena* arena) {
   return Arena::CreateMessageInternal< ::PMap >(arena);
+}
+template<> PROTOBUF_NOINLINE ::NeoScale*
+Arena::CreateMaybeMessage< ::NeoScale >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::NeoScale >(arena);
+}
+template<> PROTOBUF_NOINLINE ::NeoPose*
+Arena::CreateMaybeMessage< ::NeoPose >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::NeoPose >(arena);
+}
+template<> PROTOBUF_NOINLINE ::NeoRotation*
+Arena::CreateMaybeMessage< ::NeoRotation >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::NeoRotation >(arena);
+}
+template<> PROTOBUF_NOINLINE ::NeoMapPoint*
+Arena::CreateMaybeMessage< ::NeoMapPoint >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::NeoMapPoint >(arena);
+}
+template<> PROTOBUF_NOINLINE ::NeoKFMeasurement*
+Arena::CreateMaybeMessage< ::NeoKFMeasurement >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::NeoKFMeasurement >(arena);
+}
+template<> PROTOBUF_NOINLINE ::NeoKeyFrame*
+Arena::CreateMaybeMessage< ::NeoKeyFrame >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::NeoKeyFrame >(arena);
+}
+template<> PROTOBUF_NOINLINE ::NeoMap*
+Arena::CreateMaybeMessage< ::NeoMap >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::NeoMap >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

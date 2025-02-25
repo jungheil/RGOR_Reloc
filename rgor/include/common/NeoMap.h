@@ -16,6 +16,7 @@
 #include <Eigen/Core>
 #include <cassert>
 #include <cstddef>
+#include <fstream>
 #include <iostream>
 #include <iterator>
 #include <limits>
@@ -30,6 +31,7 @@
 
 #include "common/macros.h"
 #include "nanoflann.hpp"
+#include "proto/PMap.pb.h"
 #include "utils/FeatureDB.h"
 #include "utils/utils.h"
 #include "uuid.h"
@@ -129,8 +131,8 @@ class NeoMapPoint {
  private:
   uuids::uuid uuid_;
   Eigen::VectorXf descriptor_;
-  std::unordered_set<uuids::uuid> observations_;
   alignas(64) std::pair<float, float> scale_;
+  std::unordered_set<uuids::uuid> observations_;
   Eigen::Vector3f pos_;
 
   std::chrono::system_clock::time_point updated_at_ =
@@ -149,13 +151,16 @@ class NeoKeyFrame {
               Eigen::Vector3f rel_t_cw, Eigen::Vector4f abs_r_cw,
               Eigen::Vector3f abs_t_cw,
               const std::unordered_map<uuids::uuid, Eigen::Vector3f> mps,
-              Ptr pre_kf)
+              uuids::uuid pre_kf = uuids::uuid(),
+              uuids::uuid next_kf = uuids::uuid())
       : uuid_(uuid),
         rel_r_cw_(rel_r_cw),
         rel_t_cw_(rel_t_cw),
         abs_r_cw_(abs_r_cw),
         abs_t_cw_(abs_t_cw),
-        measurement_mps_(mps) {
+        measurement_mps_(mps),
+        pre_kf_(pre_kf),
+        next_kf_(next_kf) {
     updated_at_ = std::chrono::system_clock::now();
     created_at_ = std::chrono::system_clock::now();
   }
@@ -221,23 +226,23 @@ class NeoKeyFrame {
     updated_at_ = std::chrono::system_clock::now();
   }
 
-  const Ptr get_pre_kf() {
+  const uuids::uuid get_pre_kf() {
     std::shared_lock lock(mutex_);
     return pre_kf_;
   }
 
-  void set_pre_kf(const Ptr &pre_kf) {
+  void set_pre_kf(const uuids::uuid pre_kf) {
     std::unique_lock lock(mutex_);
     pre_kf_ = pre_kf;
     updated_at_ = std::chrono::system_clock::now();
   }
 
-  const Ptr get_next_kf() {
+  const uuids::uuid get_next_kf() {
     std::shared_lock lock(mutex_);
     return next_kf_;
   }
 
-  void set_next_kf(const Ptr &next_kf) {
+  void set_next_kf(const uuids::uuid next_kf) {
     std::unique_lock lock(mutex_);
     next_kf_ = next_kf;
     updated_at_ = std::chrono::system_clock::now();
@@ -272,8 +277,8 @@ class NeoKeyFrame {
 
   std::unordered_map<uuids::uuid, Eigen::Vector3f> measurement_mps_;
 
-  Ptr pre_kf_ = nullptr;
-  Ptr next_kf_ = nullptr;
+  uuids::uuid pre_kf_;
+  uuids::uuid next_kf_;
   std::chrono::system_clock::time_point updated_at_ =
       std::chrono::system_clock::now();
   std::chrono::system_clock::time_point created_at_ =
@@ -458,7 +463,9 @@ class NeoMap {
                    const Eigen::Vector4f &abs_r_cw,
                    const Eigen::Vector3f &abs_t_cw,
                    const std::unordered_map<uuids::uuid, Eigen::Vector3f> &mps,
-                   const NeoKeyFrame::Ptr pre_kf, const bool as_neo = false) {
+                   const uuids::uuid pre_kf = uuids::uuid(),
+                   const uuids::uuid next_kf = uuids::uuid(),
+                   const bool as_neo = false) {
     std::unique_lock lock(mutex_);
     if (kfs_.find(uuid) != kfs_.end()) {
       throw DataExistsException(uuid);
@@ -594,6 +601,248 @@ class NeoMap {
       ret.push_back(uuid);
     }
     return ret;
+  }
+
+  void Dump(std::string_view path) {
+    std::shared_lock lock(mutex_);
+
+    // 创建protobuf消息
+    ::NeoMap proto_map;
+
+    // 添加所有MapPoints
+    for (const auto &[uuid, mp] : mps_) {
+      auto *proto_mp = proto_map.add_mps();
+
+      // 设置UUID
+      proto_mp->set_uuid(uuid.as_bytes().data(), 16);
+
+      // 设置描述子
+      const auto desc = mp->get_descriptor();
+      proto_mp->set_desc(desc.data(), desc.size() * sizeof(float));
+
+      // 设置位置
+      auto *proto_pose = proto_mp->mutable_pose();
+      const auto &pos = mp->get_pos();
+      proto_pose->set_x(pos[0]);
+      proto_pose->set_y(pos[1]);
+      proto_pose->set_z(pos[2]);
+
+      // 设置尺度
+      auto *proto_scale = proto_mp->mutable_scale();
+      const auto &scale = mp->get_scale();
+      proto_scale->set_s(scale.first);
+      proto_scale->set_l(scale.second);
+
+      // 设置观测帧
+      for (const auto &obs_uuid : mp->get_observations()) {
+        proto_mp->add_observations(obs_uuid.as_bytes().data(), 16);
+      }
+
+      // 设置时间戳
+      proto_mp->set_updated_at(
+          std::chrono::duration_cast<std::chrono::milliseconds>(
+              mp->get_updated_at().time_since_epoch())
+              .count());
+      proto_mp->set_created_at(
+          std::chrono::duration_cast<std::chrono::milliseconds>(
+              mp->get_created_at().time_since_epoch())
+              .count());
+    }
+
+    // 添加所有KeyFrames
+    for (const auto &[uuid, kf] : kfs_) {
+      auto *proto_kf = proto_map.add_kfs();
+
+      // 设置UUID
+      proto_kf->set_uuid(uuid.as_bytes().data(), 16);
+
+      // 设置相对位姿
+      auto *proto_pose_rel = proto_kf->mutable_pose_rel();
+      const auto &rel_t = kf->get_rel_t_cw();
+      proto_pose_rel->set_x(rel_t[0]);
+      proto_pose_rel->set_y(rel_t[1]);
+      proto_pose_rel->set_z(rel_t[2]);
+
+      auto *proto_rot_rel = proto_kf->mutable_rotation_rel();
+      const auto &rel_r = kf->get_rel_r_cw();
+      proto_rot_rel->set_w(rel_r[0]);
+      proto_rot_rel->set_x(rel_r[1]);
+      proto_rot_rel->set_y(rel_r[2]);
+      proto_rot_rel->set_z(rel_r[3]);
+
+      // 设置绝对位姿
+      auto *proto_pose_abs = proto_kf->mutable_pose_abs();
+      const auto &abs_t = kf->get_abs_t_cw();
+      proto_pose_abs->set_x(abs_t[0]);
+      proto_pose_abs->set_y(abs_t[1]);
+      proto_pose_abs->set_z(abs_t[2]);
+
+      auto *proto_rot_abs = proto_kf->mutable_rotation_abs();
+      const auto &abs_r = kf->get_abs_r_cw();
+      proto_rot_abs->set_w(abs_r[0]);
+      proto_rot_abs->set_x(abs_r[1]);
+      proto_rot_abs->set_y(abs_r[2]);
+      proto_rot_abs->set_z(abs_r[3]);
+
+      // 设置相邻帧
+      proto_kf->set_pre_kf(kf->get_pre_kf().as_bytes().data(), 16);
+      proto_kf->set_next_kf(kf->get_next_kf().as_bytes().data(), 16);
+
+      // 设置观测到的MapPoints
+      for (const auto &[mp_uuid, mp_pos] : kf->get_measurement_mps()) {
+        auto *measurement = proto_kf->add_measurement();
+        measurement->set_uuid(mp_uuid.as_bytes().data(), 16);
+        auto *mp_proto_pose = measurement->mutable_pose();
+        mp_proto_pose->set_x(mp_pos[0]);
+        mp_proto_pose->set_y(mp_pos[1]);
+        mp_proto_pose->set_z(mp_pos[2]);
+      }
+
+      // 设置时间戳
+      proto_kf->set_updated_at(
+          std::chrono::duration_cast<std::chrono::milliseconds>(
+              kf->get_updated_at().time_since_epoch())
+              .count());
+      proto_kf->set_created_at(
+          std::chrono::duration_cast<std::chrono::milliseconds>(
+              kf->get_created_at().time_since_epoch())
+              .count());
+    }
+
+    // 序列化并保存到文件
+    std::ofstream fout(path.data(), std::ios::binary);
+    if (!fout.is_open()) {
+      throw std::runtime_error("Cannot open file " + std::string(path));
+    }
+    if (!proto_map.SerializeToOstream(&fout)) {
+      throw std::runtime_error("Failed to write to file " + std::string(path));
+    }
+  }
+
+  void Load(std::string_view path) {
+    std::unique_lock lock(mutex_);
+
+    // 从文件读取并解析protobuf消息
+    ::NeoMap proto_map;
+    std::ifstream fin(path.data(), std::ios::binary);
+    if (!fin.is_open()) {
+      throw std::runtime_error("Cannot open file " + std::string(path));
+    }
+    if (!proto_map.ParseFromIstream(&fin)) {
+      throw std::runtime_error("Failed to parse file " + std::string(path));
+    }
+
+    // 清空当前数据
+    mps_.clear();
+    kfs_.clear();
+    mps_uuid_vec_.clear();
+
+    // 加载MapPoints
+    std::array<unsigned char, 16> uuid_bytes;
+
+    for (const auto &proto_mp : proto_map.mps()) {
+      // 解析UUID
+      for (int i = 0; i < 16; i++) {
+        uuid_bytes[i] = proto_mp.uuid().data()[i];
+      }
+      uuids::uuid uuid = uuids::uuid(uuid_bytes);
+
+      Eigen::VectorXf desc(proto_mp.desc().size() / sizeof(float));
+      std::memcpy(desc.data(), proto_mp.desc().data(), proto_mp.desc().size());
+      
+
+      // 解析位置
+      Eigen::Vector3f pos;
+      pos << proto_mp.pose().x(), proto_mp.pose().y(), proto_mp.pose().z();
+
+      // 解析尺度
+      std::pair<float, float> scale{proto_mp.scale().s(), proto_mp.scale().l()};
+
+      // 解析观测帧
+      std::unordered_set<uuids::uuid> observations;
+      for (const auto &obs_bytes : proto_mp.observations()) {
+        for (int i = 0; i < 16; i++) {
+          uuid_bytes[i] = proto_mp.uuid().data()[i];
+        }
+        observations.insert(uuids::uuid(uuid_bytes));
+      }
+
+      // 添加MapPoint
+      AddMapPoint(uuid, desc, pos, scale, observations);
+
+      // 设置时间戳
+      auto mp = mps_[uuid];
+      mp->set_updated_at(std::chrono::system_clock::time_point(
+          std::chrono::milliseconds(proto_mp.updated_at())));
+      mp->set_created_at(std::chrono::system_clock::time_point(
+          std::chrono::milliseconds(proto_mp.created_at())));
+    }
+
+    // 加载KeyFrames
+    for (const auto &proto_kf : proto_map.kfs()) {
+      // 解析UUID
+      for (int i = 0; i < 16; i++) {
+        uuid_bytes[i] = proto_kf.uuid().data()[i];
+      }
+      uuids::uuid uuid = uuids::uuid(uuid_bytes);
+
+      // 解析相对位姿
+      Eigen::Vector4f rel_r;
+      rel_r << proto_kf.rotation_rel().w(), proto_kf.rotation_rel().x(),
+          proto_kf.rotation_rel().y(), proto_kf.rotation_rel().z();
+      Eigen::Vector3f rel_t;
+      rel_t << proto_kf.pose_rel().x(), proto_kf.pose_rel().y(),
+          proto_kf.pose_rel().z();
+
+      // 解析绝对位姿
+      Eigen::Vector4f abs_r;
+      abs_r << proto_kf.rotation_abs().w(), proto_kf.rotation_abs().x(),
+          proto_kf.rotation_abs().y(), proto_kf.rotation_abs().z();
+      Eigen::Vector3f abs_t;
+      abs_t << proto_kf.pose_abs().x(), proto_kf.pose_abs().y(),
+          proto_kf.pose_abs().z();
+
+      // 解析观测到的MapPoints
+      std::unordered_map<uuids::uuid, Eigen::Vector3f> mps;
+      for (const auto &measurement : proto_kf.measurement()) {
+        for (int i = 0; i < 16; i++) {
+          uuid_bytes[i] = measurement.uuid().data()[i];
+        }
+        uuids::uuid mp_uuid = uuids::uuid(uuid_bytes);
+        Eigen::Vector3f mp_pos;
+        mp_pos << measurement.pose().x(), measurement.pose().y(),
+            measurement.pose().z();
+        mps[mp_uuid] = mp_pos;
+      }
+
+      // 解析相邻帧
+      for (int i = 0; i < 16; i++) {
+        uuid_bytes[i] = proto_kf.pre_kf().data()[i];
+      }
+      uuids::uuid pre_kf = uuids::uuid(uuid_bytes);
+
+      for (int i = 0; i < 16; i++) {
+        uuid_bytes[i] = proto_kf.next_kf().data()[i];
+      }
+      uuids::uuid next_kf = uuids::uuid(uuid_bytes);
+
+      // 添加KeyFrame
+      AddKeyFrame(uuid, rel_r, rel_t, abs_r, abs_t, mps, pre_kf, next_kf);
+
+      // 设置时间戳
+      auto kf = kfs_[uuid];
+      kf->set_updated_at(std::chrono::system_clock::time_point(
+          std::chrono::milliseconds(proto_kf.updated_at())));
+      kf->set_created_at(std::chrono::system_clock::time_point(
+          std::chrono::milliseconds(proto_kf.created_at())));
+    }
+
+    // 重建索引
+    for (const auto &[uuid, _] : mps_) {
+      mps_uuid_vec_.push_back(uuid);
+      pos_index_.addPoints(mps_uuid_vec_.size() - 1, mps_uuid_vec_.size() - 1);
+      desc_index_.add_feature(uuid, mps_[uuid]->get_descriptor());
+    }
   }
 
  private:
