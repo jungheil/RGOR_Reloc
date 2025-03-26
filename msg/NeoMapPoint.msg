@@ -2,6 +2,8 @@ string uuid
 string desc
 NeoScale scale
 NeoPose pose
+bool gb_init
+NeoPose gb_pose
 string[] observations
 int64 updated_at
 int64 created_at

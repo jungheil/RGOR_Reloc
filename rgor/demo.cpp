@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "utils/FeatureDB.h"
+#include "RGOR.h"
 
 int main() {
   std::unordered_map<int, int> a;

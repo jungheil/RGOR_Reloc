@@ -16,5 +16,6 @@
 #include "System.h"
 #include "common/Frame.h"
 #include "common/Map.h"
+#include "Global.h"
 
 #endif // RGOR_RGOR_H

@@ -351,9 +351,14 @@ public:
 
   const KeyFrame::Ptr get_children_kf() const { return children_kf_; }
 
-private:
-  void AddMPS(const std::vector<std::shared_ptr<MapPoint<KeyFrame>>> &mps,
-              const std::vector<KFMeasurement> &measurement) {
+  const std::chrono::_V2::system_clock::time_point get_create_time() const {
+    return create_time_;
+  }
+
+  private
+      : void
+        AddMPS(const std::vector<std::shared_ptr<MapPoint<KeyFrame>>> &mps,
+               const std::vector<KFMeasurement> &measurement) {
     std::unique_lock<std::shared_mutex> lck(mtx_);
     mps_.insert(mps_.end(), mps.begin(), mps.end());
     measurement_.insert(measurement_.end(), measurement.begin(),
@@ -379,7 +384,10 @@ private:
 
   time_t timestamp_;
 
-  KeyFrame::Ptr parents_kf_ = nullptr;
+  const std::chrono::system_clock::time_point create_time_ =
+      std::chrono::system_clock::now();
+
+      KeyFrame::Ptr parents_kf_ = nullptr;
   KeyFrame::Ptr children_kf_ = nullptr;
 
   mutable std::shared_mutex mtx_;

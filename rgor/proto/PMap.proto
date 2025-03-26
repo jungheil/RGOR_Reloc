@@ -51,6 +51,8 @@ message NeoMapPoint{
   repeated bytes  observations = 5;
   required int64 updated_at = 6;
   required int64 created_at = 7;
+  required bool gb_init = 8;
+  optional NeoPose gb_pose = 9;
 }
 
 message NeoKFMeasurement{
@@ -69,9 +71,14 @@ message NeoKeyFrame{
   repeated NeoKFMeasurement measurement = 8;
   required int64 updated_at = 9;
   required int64 created_at = 10;
+  required bool gb_init = 11;
+  optional NeoPose gb_pose = 12;
+  optional NeoRotation gb_rotation = 13;
 }
 
 message NeoMap{
   repeated NeoMapPoint mps = 1;
   repeated NeoKeyFrame kfs = 2;
+  required bool gb_init = 3;
+  optional bytes gb_uuid = 4;
 }

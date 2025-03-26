@@ -63,7 +63,7 @@
 #include "RGOR.h"
 #include "utils/draw_sphere.h"
 #include "visualization.h"
-
+#include "neo_map_converter.h"
 struct SysCB {
   ros::Publisher arimg_pub;
   ros::Publisher cpimg_pub_;
@@ -114,6 +114,8 @@ struct SysCB {
         nh.advertise<visualization_msgs::MarkerArray>("/rgor/rloc_pose", 1);
     save_map_srv_ =
         nh.advertiseService("/rgor/save_map", &SysCB::SaveMapCB, this);
+
+    neo_map_pub_ = nh.advertise<rgor_sys::NeoMap>("/rgor/neo_map", 1);
 
     get_marker = GetMarkerArray();
     rgb_cache_ = std::move(rgb_cache);
@@ -324,6 +326,11 @@ struct SysCB {
     }
 
     map_pub_.publish(mp_cloud);
+
+    // pub neo map
+    auto neo_map = sys_->get_map()->GetNeoMap();
+    rgor_sys::NeoMap msg = NeoMapConverter::Convert(neo_map);
+    neo_map_pub_.publish(msg);
 
     // publish map marker
     auto marker_array = get_marker(mps, object_data->header.stamp);

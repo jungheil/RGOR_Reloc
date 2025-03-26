@@ -3,6 +3,9 @@ NeoPose pose_rel
 NeoRotation rotation_rel
 NeoPose pose_abs
 NeoRotation rotation_abs
+bool gb_init
+NeoPose gb_pose
+NeoRotation gb_rotation
 string pre_kf
 string next_kf
 NeoKFMeasurement[] measurement

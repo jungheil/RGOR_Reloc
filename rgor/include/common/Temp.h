@@ -19,7 +19,7 @@ static NeoMap::Ptr map_to_neo_map(Map::Ptr map) {
     if (mp == nullptr || mp->get_bad() || !mp->get_on_map()) continue;
 
     // 获取观测该点的关键帧UUID
-    std::unordered_set<uuids::uuid> observations;
+    std::set<uuids::uuid> observations;
     auto obs = mp->get_observations();
     for (const auto& [uuid, _] : obs) {
       observations.insert(uuid);
@@ -48,7 +48,9 @@ static NeoMap::Ptr map_to_neo_map(Map::Ptr map) {
 
     // 添加关键帧
     neo_map->AddKeyFrame(kf->get_uuid(), kf->get_r_cw(), kf->get_t_cw(),
-                         kf->get_r_cw(), kf->get_t_cw(), measurements);
+                         kf->get_r_cw(), kf->get_t_cw(), measurements,
+                         uuids::uuid(), uuids::uuid(), kf->get_create_time(),
+                         kf->get_create_time());
   }
 
   // 第二遍设置关键帧的父子关系

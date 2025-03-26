@@ -575,9 +575,9 @@ class Relocation {
                        }),
         candidate_uuid.end());
 
-    using MPKDADT = PointCloudAdaptor<std::vector<MP>>;
-    using MPKDTree = nanoflann::KDTreeSingleIndexDynamicAdaptor<
-        nanoflann::L2_Simple_Adaptor<float, MPKDADT>, MPKDADT, 3>;
+//    using MPKDADT = PointCloudAdaptor<std::vector<MP>>;
+//    using MPKDTree = nanoflann::KDTreeSingleIndexDynamicAdaptor<
+//        nanoflann::L2_Simple_Adaptor<float, MPKDADT>, MPKDADT, 3>;
 
     auto [match, r_i, t_i] = CoarseReloc<MAP, MP>(query_uuid, candidate_uuid,
                                                   query_map, candidate_map);

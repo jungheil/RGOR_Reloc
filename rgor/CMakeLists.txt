@@ -31,10 +31,10 @@ target_link_libraries(rgor_sys PUBLIC
 target_include_directories(rgor_sys PUBLIC ${nanoflann_SOURCE_DIR}/include ${stduuid_SOURCE_DIR}/include ${stduuid_SOURCE_DIR}/)
 
 
-add_executable(demo demo.cpp)
-target_link_libraries(demo PRIVATE rgor_sys -pthread)
-message(STATUS "g2o_BINARY_DIR: ${g2o_BINARY_DIR}")
-target_link_directories(rgor_sys PRIVATE ${g2o_BINARY_DIR} ${g2o_SOURCE_DIR})
-
-target_link_libraries(demo PRIVATE  rgor_sys ${OpenCV_LIBS}  Eigen3::Eigen Boost::circular_buffer faiss)
-target_include_directories(demo PRIVATE ${g2o_BINARY_DIR} ${g2o_SOURCE_DIR})
+#add_executable(demo demo.cpp)
+#target_link_libraries(demo PRIVATE rgor_sys -pthread)
+#message(STATUS "g2o_BINARY_DIR: ${g2o_BINARY_DIR}")
+#target_link_directories(rgor_sys PRIVATE ${g2o_BINARY_DIR} ${g2o_SOURCE_DIR})
+#
+#target_link_libraries(demo PRIVATE  rgor_sys ${OpenCV_LIBS}  Eigen3::Eigen Boost::circular_buffer faiss)
+#target_include_directories(demo PRIVATE ${g2o_BINARY_DIR} ${g2o_SOURCE_DIR})

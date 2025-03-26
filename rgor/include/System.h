@@ -50,6 +50,9 @@ class System {
 
   const Map::Ptr get_map() const { return map_; }
 
+  // 获取NeoMap
+  const NeoMap::Ptr get_neo_map() const { return neo_map_; }
+
  private:
   Map::Ptr map_;
 

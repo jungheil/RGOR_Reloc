@@ -375,4 +375,319 @@ void LocalBundleAdjustment(KeyFrame::Ptr ckf, Map::Ptr map) {
   }
   delete optimizer;
 }
+
+
+void OptimizeGBSubMap(GBSubMap *submap,  uuids::uuid fix_kf,
+                                          size_t max_iter) {
+  if (!submap) {
+    return;
+  }
+
+  // 创建优化器
+  auto linearSolver = std::make_unique<
+      g2o::LinearSolverEigen<g2o::BlockSolverX::PoseMatrixType>>();
+  auto blockSolver =
+      std::make_unique<g2o::BlockSolverX>(std::move(linearSolver));
+  auto solver = new g2o::OptimizationAlgorithmLevenberg(std::move(blockSolver));
+
+  g2o::SparseOptimizer optimizer;
+  optimizer.setAlgorithm(solver);
+  optimizer.setVerbose(false);
+
+  // 映射uuid到顶点id
+  std::unordered_map<uuids::uuid, size_t> kf_id_map;
+  size_t vertex_id = 0;
+
+  // 收集所有地图的关键帧
+  const auto &local_maps = submap->get_local_maps();
+
+  // 遍历所有子地图的关键帧
+  for (const auto &[map_uuid, map] : local_maps) {
+    const auto &kfs = map->get_kfs();
+    for (const auto &[kf_uuid, kf] : kfs) {
+      if (kf->get_gb_init()) {
+        g2o::VertexSE3 *v_se3 = new g2o::VertexSE3();
+        Eigen::Quaterniond r_quat(kf->get_gb_r_cw().cast<double>());
+        Eigen::Matrix3d R = r_quat.toRotationMatrix();
+        Eigen::Vector3d t = kf->get_gb_t_cw().cast<double>();
+        v_se3->setEstimate(g2o::SE3Quat(R, t));
+        v_se3->setId(vertex_id);
+
+        kf_id_map[kf_uuid] = vertex_id++;
+        optimizer.addVertex(v_se3);
+      }
+    }
+  }
+
+  // 固定第一个关键帧位姿
+  if (!kf_id_map.empty() && !fix_kf.is_nil() && kf_id_map.find(fix_kf) != kf_id_map.end()) {
+    auto fix_vertex = dynamic_cast<g2o::VertexSE3 *>(optimizer.vertex(kf_id_map[fix_kf]));
+    if (fix_vertex) {
+      fix_vertex->setFixed(true);
+    }
+  }
+
+  // 添加父子关键帧之间的约束边
+  for (const auto &[map_uuid, map] : local_maps) {
+    const auto &kfs = map->get_kfs();
+    // AddParentChildEdges(&optimizer, kfs, kf_id_map);
+    for (const auto &[kf_uuid, kf] : kfs) {
+      auto it_curr = kf_id_map.find(kf_uuid);
+      if (it_curr == kf_id_map.end()) {
+        continue;
+      }
+
+      // 父子关键帧约束
+      auto pre_kf_uuid = kf->get_pre_kf();
+      if (!pre_kf_uuid.is_nil()) {
+        auto it_pre = kf_id_map.find(pre_kf_uuid);
+        if (it_pre != kf_id_map.end()) {
+          auto *edge = new g2o::EdgeSE3();
+          edge->setVertex(0, optimizer.vertex(it_curr->second));
+          edge->setVertex(1, optimizer.vertex(it_pre->second));
+
+          // 计算相对位姿约束
+          Eigen::Quaternionf rel_r(kf->get_rel_r_cw());
+          Eigen::Vector3f rel_t = kf->get_rel_t_cw();
+
+          Eigen::Matrix3d R = rel_r.toRotationMatrix().cast<double>();
+          Eigen::Vector3d t = rel_t.cast<double>();
+
+          edge->setMeasurement(g2o::SE3Quat(R, t));
+
+          // 设置信息矩阵（协方差的逆）
+          Eigen::Matrix<double, 6, 6> information =
+              Eigen::Matrix<double, 6, 6>::Identity();
+          edge->setInformation(information);
+
+          // 添加鲁棒核函数
+          g2o::RobustKernelHuber *rk = new g2o::RobustKernelHuber;
+          rk->setDelta(1.0);
+          edge->setRobustKernel(rk);
+
+          optimizer.addEdge(edge);
+        }
+      }
+    }
+  }
+
+  // 添加跨地图关键帧之间的约束边
+  // AddCrossMapEdges(&optimizer, submap, kf_id_map);
+  const auto &reloc_info = submap->get_reloc_info();
+
+  for (const auto &[reloc_uuid, info] : reloc_info) {
+    auto &[map_pair, constraint] = info;
+    auto &[map_uuid_1, map_uuid_2] = map_pair;
+    auto &[kf_pair, transform] = constraint;
+    auto &[kf_uuid_1, kf_uuid_2] = kf_pair;
+    auto &[reloc_r, reloc_t] = transform;
+
+    // 查找关键帧顶点ID
+    auto it_kf1 = kf_id_map.find(kf_uuid_1);
+    auto it_kf2 = kf_id_map.find(kf_uuid_2);
+
+    if (it_kf1 != kf_id_map.end() && it_kf2 != kf_id_map.end()) {
+      // 添加跨地图约束边
+      auto *edge = new g2o::EdgeSE3();
+      edge->setVertex(0, optimizer.vertex(it_kf1->second));
+      edge->setVertex(1, optimizer.vertex(it_kf2->second));
+
+      // 设置相对位姿约束
+      Eigen::Quaternionf rel_r(reloc_r);
+      Eigen::Vector3f rel_t = reloc_t;
+
+      Eigen::Matrix3d R = rel_r.toRotationMatrix().cast<double>();
+      Eigen::Vector3d t = rel_t.cast<double>();
+
+      edge->setMeasurement(g2o::SE3Quat(R, t));
+
+      // 设置信息矩阵（跨地图约束可能权重较低）
+      Eigen::Matrix<double, 6, 6> information =
+          Eigen::Matrix<double, 6, 6>::Identity() * 0.8;
+      edge->setInformation(information);
+
+      // 添加鲁棒核函数
+      g2o::RobustKernelHuber *rk = new g2o::RobustKernelHuber;
+      rk->setDelta(2.0);
+      edge->setRobustKernel(rk);
+
+      optimizer.addEdge(edge);
+    }
+  }
+
+  // 执行优化
+  optimizer.initializeOptimization();
+  optimizer.optimize(max_iter);
+
+  // 更新关键帧位姿
+  for (const auto &[map_uuid, map] : local_maps) {
+    for (auto &[kf_uuid, kf] : map->get_kfs()) {
+      auto it = kf_id_map.find(kf_uuid);
+      if (it != kf_id_map.end()) {
+        auto vertex =
+            dynamic_cast<g2o::VertexSE3 *>(optimizer.vertex(it->second));
+        if (vertex) {
+          auto se3 = vertex->estimate();
+          Eigen::Quaternionf q(se3.rotation().cast<float>());
+          kf->set_gb_r_cw(q.coeffs());
+          kf->set_gb_t_cw(se3.translation().cast<float>());
+        }
+      }
+    }
+  }
+}
+
+void GlobalBundleAdjustment(GBSubMap *submap, uuids::uuid fix_kf,size_t max_iter){
+  if (!submap) {
+    return;
+  }
+
+  // 创建优化器
+  auto linearSolver = std::make_unique<
+      g2o::LinearSolverEigen<g2o::BlockSolverX::PoseMatrixType>>();
+  auto blockSolver =
+      std::make_unique<g2o::BlockSolverX>(std::move(linearSolver));
+  auto solver = new g2o::OptimizationAlgorithmLevenberg(std::move(blockSolver));
+
+  g2o::SparseOptimizer optimizer;
+  optimizer.setAlgorithm(solver);
+  optimizer.setVerbose(false);
+
+  // 关键帧和路标点的UUID到顶点ID的映射
+  std::unordered_map<uuids::uuid, size_t> kf_id_map;
+  std::unordered_map<uuids::uuid, size_t> mp_id_map;
+  size_t vertex_id = 0;
+
+  // 收集所有地图的关键帧和路标点
+  const auto &local_maps = submap->get_local_maps();
+
+  // 1. 添加关键帧顶点
+  for (const auto &[map_uuid, map] : local_maps) {
+    const auto &kfs = map->get_kfs();
+    // AddKeyFrameVertices(&optimizer, kfs, kf_id_map, vertex_id);
+    for (const auto &[kf_uuid, kf] : kfs) {
+      if (kf->get_gb_init()) {
+        g2o::VertexSE3 *v_se3 = new g2o::VertexSE3();
+        Eigen::Quaterniond r_quat(kf->get_gb_r_cw().cast<double>());
+        Eigen::Matrix3d R = r_quat.toRotationMatrix();
+        Eigen::Vector3d t = kf->get_gb_t_cw().cast<double>();
+        v_se3->setEstimate(g2o::SE3Quat(R, t));
+        v_se3->setId(vertex_id);
+
+        kf_id_map[kf_uuid] = vertex_id++;
+        optimizer.addVertex(v_se3);
+      }
+    }
+  }
+
+  // 2. 固定指定的关键帧位姿（如果存在）
+
+
+  // 如果没有指定固定关键帧或指定的关键帧不存在，则固定第一个关键帧
+  if (!kf_id_map.empty() && !fix_kf.is_nil() &&
+      kf_id_map.find(fix_kf) != kf_id_map.end()) {
+    auto fix_vertex =
+        dynamic_cast<g2o::VertexSE3 *>(optimizer.vertex(kf_id_map[fix_kf]));
+    if (fix_vertex) {
+      fix_vertex->setFixed(true);
+    }
+  }
+
+  // 3. 添加路标点顶点
+  for (const auto &[map_uuid, map] : local_maps) {
+    const auto &mps = map->get_mps();
+    for (const auto &[mp_uuid, mp] : mps) {
+      if (mp->get_gb_init() && !mp->get_observations().empty()) {
+        g2o::VertexPointXYZ *v_point = new g2o::VertexPointXYZ();
+        v_point->setEstimate(mp->get_gb_pos().cast<double>());
+        v_point->setId(vertex_id);
+        v_point->setMarginalized(true);  // 边缘化加速求解
+
+        mp_id_map[mp_uuid] = vertex_id++;
+        optimizer.addVertex(v_point);
+      }
+    }
+  }
+
+  // 4. 添加投影边（关键帧到路标点的观测）
+  for (const auto &[map_uuid, map] : local_maps) {
+    for (const auto &[kf_uuid, kf] : map->get_kfs()) {
+      // 跳过未添加到优化器的关键帧
+      auto kf_it = kf_id_map.find(kf_uuid);
+      if (kf_it == kf_id_map.end()) {
+        continue;
+      }
+
+      // 获取关键帧的观测信息
+      const auto &observations = kf->get_measurement_mps();
+
+      for (const auto &[mp_uuid, mp_pos_cam] : observations) {
+        // 跳过未添加到优化器的路标点
+        auto mp_it = mp_id_map.find(mp_uuid);
+        if (mp_it == mp_id_map.end()) {
+          continue;
+        }
+
+        // 创建投影边
+        g2o::EdgeSE3PointXYZ *edge = new g2o::EdgeSE3PointXYZ();
+        edge->setVertex(0, optimizer.vertex(kf_it->second));  // 关键帧顶点
+        edge->setVertex(1, optimizer.vertex(mp_it->second));  // 路标点顶点
+
+        // 设置测量值（路标点在相机坐标系下的坐标）
+        edge->setMeasurement(mp_pos_cam.cast<double>());
+
+        // // 计算路标点的协方差并设置信息矩阵
+        // Eigen::Matrix3f point_cov = GetPoint3dCov(mp_pos_cam, fx, fy, cx,
+        // cy); Eigen::Matrix3d information =
+        // point_cov.cast<double>().inverse();
+        // edge->setInformation(information);
+
+        // 添加鲁棒核函数
+        g2o::RobustKernelHuber *rk = new g2o::RobustKernelHuber;
+        rk->setDelta(5.99);
+        edge->setRobustKernel(rk);
+
+        // 添加边到优化器
+        optimizer.addEdge(edge);
+      }
+    }
+  }
+  // 5. 执行优化
+  optimizer.initializeOptimization();
+  optimizer.optimize(max_iter);
+
+  // 6. 更新关键帧位姿
+  for (const auto &[map_uuid, map] : local_maps) {
+    for (auto &[kf_uuid, kf] : map->get_kfs()) {
+      auto it = kf_id_map.find(kf_uuid);
+      if (it != kf_id_map.end()) {
+        auto vertex =
+            dynamic_cast<g2o::VertexSE3 *>(optimizer.vertex(it->second));
+        if (vertex) {
+          auto se3 = vertex->estimate();
+          Eigen::Quaternionf q(se3.rotation().cast<float>());
+          kf->set_gb_r_cw(q.coeffs());
+          kf->set_gb_t_cw(se3.translation().cast<float>());
+          kf->set_gb_init(true);
+        }
+      }
+    }
+  }
+
+  // 7. 更新路标点位置
+  for (const auto &[map_uuid, map] : local_maps) {
+    for (auto &[mp_uuid, mp] : map->get_mps()) {
+      auto it = mp_id_map.find(mp_uuid);
+      if (it != mp_id_map.end()) {
+        auto vertex =
+            dynamic_cast<g2o::VertexPointXYZ *>(optimizer.vertex(it->second));
+        if (vertex) {
+          mp->set_gb_pos(vertex->estimate().cast<float>());
+          mp->set_gb_init(true);
+        }
+      }
+    }
+  }
+}
+
 } // namespace rgor

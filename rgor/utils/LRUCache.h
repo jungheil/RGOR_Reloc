@@ -156,6 +156,28 @@ class LRUCache {
     }
   }
 
+  void clear() {
+    std::lock_guard<std::mutex> lock(mutex_);
+    
+    // Delete all nodes between head and tail
+    Node* current = head->next;
+    while (current != tail) {
+      Node* next = current->next;
+      if (callback_) {
+        callback_(current->key, current->value);
+      }
+      delete current;
+      current = next;
+    }
+    
+    // Reset the linked list
+    head->next = tail;
+    tail->prev = head;
+    
+    // Clear the hash map
+    cache_.clear();
+  }
+
   std::unordered_map<Key, Node*> get_cache() const { return cache_; }
 
   size_t size() const { return cache_.size(); }
